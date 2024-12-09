@@ -1,0 +1,114 @@
+/* @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+pre, code {
+    font-family: 'JetBrains Mono', monospace;
+} */
+
+@tailwind utilities;
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    display: none;
+  }
+}
+
+
+
+/* General Pre and Code Styling */
+pre {
+    background-color: #1e1e1e; /* Dark VS Code-like background */
+    color: #d4d4d4; /* Default font color */
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: 'Fira Code', monospace;
+    overflow-x: auto;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid #3c3c3c;
+    margin-bottom: 16px;
+  }
+  
+  /* Line numbers */
+  pre::before {
+    content: attr(data-line-numbers);
+    color: #858585;
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    font-size: 0.8rem;
+    text-align: right;
+    display: block;
+    opacity: 0.8;
+  }
+  
+  /* Code Styling */
+  code {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    display: inline-block;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  
+  /* Syntax Highlighting */
+  .keyword {
+    color: #569cd6; /* Blue for keywords like `const`, `function` */
+    font-weight: bold;
+  }
+  
+  .string {
+    color: #ce9178; /* Orange for strings */
+  }
+  
+  .comment {
+    color: #6a9955; /* Green for comments */
+    font-style: italic;
+  }
+  
+  .number {
+    color: #b5cea8; /* Light green for numbers */
+  }
+  
+  .function {
+    color: #dcdcaa; /* Yellow for functions */
+  }
+  
+  .operator {
+    color: #d4d4d4; /* Light gray for operators like `+`, `=` */
+  }
+  
+  .punctuation {
+    color: #d4d4d4; /* Light gray for punctuation */
+  }
+  
+  .variable {
+    color: #9cdcfe; /* Cyan for variables */
+  }
+  
+  /* Inline Code Styling */
+  code.inline-code {
+    background-color: #252526;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: #d4d4d4;
+  }
+  
+  /* Scrollbar Styling */
+  pre::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  pre::-webkit-scrollbar-thumb {
+    background: #858585; /* Subtle gray */
+    border-radius: 4px;
+  }
+  
+  pre::-webkit-scrollbar-thumb:hover {
+    background: #a6a6a6; /* Lighter on hover */
+  }
+  
+  
