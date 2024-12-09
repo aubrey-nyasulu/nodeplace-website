@@ -20,4 +20,22 @@ export const documentationLinks = {
         { id: 'req.query', name: 'req.query' },
         { id: 'req.res', name: 'req.res' },
     ],
+    response: [
+        { id: 'res.cookie', name: 'res.cookie()' },
+        { id: 'res.clearCookie', name: 'res.clearCookie()' },
+        { id: 'res.json', name: 'res.json()' },
+        { id: 'res.send', name: 'res.send()' },
+        { id: 'res.sendFile', name: 'res.sendFile()' },
+        { id: 'res.set', name: 'res.set()' },
+        { id: 'res.status', name: 'res.status()' },
+        { id: 'res.type', name: 'res.type()' },
+    ],
+    router: [
+        { id: 'router.route', name: 'router.route()' },
+        { id: 'router.delete', name: 'router.delete()' },
+        { id: 'router.get', name: 'router.get()' },
+        { id: 'router.patch', name: 'router.patch()' },
+        { id: 'router.post', name: 'router.post()' },
+        { id: 'router.put', name: 'router.put()' },
+    ],
 }

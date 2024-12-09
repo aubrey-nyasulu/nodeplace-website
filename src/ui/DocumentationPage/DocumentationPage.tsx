@@ -1,6 +1,8 @@
 import ApplicationSection from "./sections/ApplicationSection"
 import NodePlaceSection from "./sections/NodePlaceSection"
 import RequestSection from "./sections/RequestSection"
+import ResponseSection from "./sections/ResponseSection"
+import RouterSection from "./sections/RouterSection"
 
 function DocumentationPage() {
     return (
@@ -8,6 +10,8 @@ function DocumentationPage() {
             <NodePlaceSection />
             <ApplicationSection />
             <RequestSection />
+            <ResponseSection />
+            <RouterSection />
         </section >
     )
 }

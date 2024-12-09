@@ -76,7 +76,18 @@ function DocumentationSideNav() {
                     <a
                         href="#response-route"
                         className={twMerge('w-full block py-3 px-4 rounded-md', currentSection.route === 'response-route' && 'bg-primary text-white')}
-                    >response</a></li>
+                    >response</a>
+                    <ul className={`px-6 pt-2 ${currentSection.route === 'response-route' ? 'block' : 'hidden'} `}>
+                        {
+                            documentationLinks.response.map((meta, index) => (
+                                <LiElement
+                                    key={meta.id + index}
+                                    {...{ meta, currentSection }}
+                                />
+                            ))
+                        }
+                    </ul>
+                </li>
                 <li
                     onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'router-route' }))}
                     className="w-full h-fit"
@@ -84,7 +95,18 @@ function DocumentationSideNav() {
                     <a
                         href="#router-route"
                         className={twMerge('w-full block py-3 px-4 rounded-md', currentSection.route === 'router-route' && 'bg-primary text-white')}
-                    >Router</a></li>
+                    >Router</a>
+                    <ul className={`px-6 pt-2 ${currentSection.route === 'router-route' ? 'block' : 'hidden'} `}>
+                        {
+                            documentationLinks.router.map((meta, index) => (
+                                <LiElement
+                                    key={meta.id + index}
+                                    {...{ meta, currentSection }}
+                                />
+                            ))
+                        }
+                    </ul>
+                </li>
             </ul>
         </aside>
     )
