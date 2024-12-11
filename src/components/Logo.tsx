@@ -14,6 +14,7 @@ function Logo({ headerIsVisible }: { headerIsVisible: boolean }) {
         <Link
             href="/"
             className="pt-1"
+        // className="pt-1 flex gap-1 items-center"
         // className="flex gap-1 md:gap-2 items-center"
         >
             {/* <div className="dark:bg-white/10 backdrop-blur-lg p-1 grid place-content-center aspect-square rounded-full"> */}
@@ -28,9 +29,10 @@ function Logo({ headerIsVisible }: { headerIsVisible: boolean }) {
                 />
             </div>
             {/* </div> */}
-            {/* <div className="">
-              <p className="font-bold text-white">NodePlace</p>
-            </div> */}
+            <div className="">
+                <p className={`font-bold text-white ${invert && 'invert dark:invert-0'} `}>NodePlace</p>
+                {/* <p className="text-2xl font-bold text-white">NodePlace</p> */}
+            </div>
         </Link>
     )
 }

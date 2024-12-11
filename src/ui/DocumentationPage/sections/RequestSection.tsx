@@ -1,5 +1,5 @@
-import Highlighter from '../Highlighter'
-import Note from '../components/Note'
+import Highlighter from '../../../components/Highlighter'
+import Note from '../../../components/Note'
 import Section from '../components/Section'
 
 function RequestSection() {

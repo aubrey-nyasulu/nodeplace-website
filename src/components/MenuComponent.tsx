@@ -1,8 +1,8 @@
 import { usePathname } from "next/navigation"
 import { Menu } from "../assets/SVGComponents"
-import { useEffect, useState } from "react"
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
 
-function MenuComponent({ headerIsVisible }: { headerIsVisible: boolean }) {
+function MenuComponent({ headerIsVisible, setMenuOpen }: { headerIsVisible: boolean, setMenuOpen: SetStateAction<Dispatch<boolean>> }) {
     const [currentTheme, setCurrentTheme] = useState('')
     const [color, setColor] = useState('black')
 
@@ -20,11 +20,12 @@ function MenuComponent({ headerIsVisible }: { headerIsVisible: boolean }) {
     }, [currentTheme, headerIsVisible])
 
     return (
-        <>
+        //@ts-ignore
+        <button onClick={() => setMenuOpen(prevState => !prevState)}>
             {currentTheme === 'light' && <Menu {...{ color: color }} />}
             {currentTheme === 'dark' && <Menu />}
             {currentTheme === '' && <Menu {...{ color: color }} />}
-        </>
+        </button>
     )
 }
 

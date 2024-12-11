@@ -7,8 +7,10 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Logo from "./Logo";
 import MenuComponent from "./MenuComponent";
+import { twMerge } from "tailwind-merge";
 
 function Nav() {
+  const [menuOpen, setMenuOpen] = useState(false)
   const [headerIsVisible, setHeaderIsVisible] = useState(true)
 
   useEffect(() => {
@@ -44,17 +46,30 @@ function Nav() {
         <div className="flex gap-16 items-center">
           <UList {...{ headerIsVisible }} />
 
-          <div className="flex items-center justify-between gap-4 md:gap-6">
+          <div className="relative flex items-center justify-between gap-4 md:gap-6">
             <ThemeSwitcher {...{ headerIsVisible }} />
             <Link
               href='/documentation'
-              className="btn-primary hidden md:block"
+              className="btn-primary hidden md:block whitespace-nowrap"
             >
               API Documentation
             </Link>
             <div className="md:hidden">
-              <MenuComponent {...{ headerIsVisible }} />
+              <MenuComponent {...{ headerIsVisible, setMenuOpen }} />
+
+              <ul className={twMerge('absolute mt-2 right-0 flex-col items-center gap-8 dark:text-gray-200 bg-white  dark:bg-stone-900 border-b border-b-stone-300 dark:border-b-stone-800 p-16 py-8 rounded-md hidden', menuOpen && 'flex')}>
+                <li className="hover:text-primary"><Link href="/guide">Guide</Link></li>
+                <li className="hover:text-primary"><Link href="#">Templates</Link></li>
+                <li className="hover:text-primary"><Link href="#">Blog</Link></li>
+                <Link
+                  href='/documentation'
+                  className="btn-primary whitespace-nowrap"
+                >
+                  API Documentation
+                </Link>
+              </ul>
             </div>
+
           </div>
         </div>
       </div>

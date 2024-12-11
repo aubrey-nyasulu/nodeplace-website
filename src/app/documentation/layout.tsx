@@ -12,8 +12,9 @@ export default function MDXLayout({
       <header className="relative pt-3 w-full h-fit space-y-4 py-24" >
         <Nav />
       </header>
-      <main className="langingpage-container h-full flex gap-4 fixed left-[50%] -translate-x-[50%] top-0 px-4 lg:px-0">
+      <main className="langingpage-container h-fit flex gap-4  px-4 lg:px-0 justify-between">
         <DocumentationSideNav />
+        <div className="w-0 hidden md:block md:w-72"></div>
         {children}
       </main>
     </DocumentationContextProvider>

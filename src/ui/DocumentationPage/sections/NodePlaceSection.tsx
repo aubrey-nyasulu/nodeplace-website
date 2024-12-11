@@ -1,6 +1,6 @@
 import { tableData } from '@/src/lib/constants'
-import Highlighter from '../Highlighter'
-import Note from '../components/Note'
+import Highlighter from '../../../components/Highlighter'
+import Note from '../../../components/Note'
 import Section from '../components/Section'
 import Table from '../components/Table'
 
@@ -84,7 +84,7 @@ function NodePlaceSection() {
                 </p>
 
                 <Note className='bg-purple-800/50'>
-                    <p className='pb-2'>
+                    <p>
                         For best results, use a reverse proxy cache to improve performance of serving static assets.
                     </p>
                 </Note>

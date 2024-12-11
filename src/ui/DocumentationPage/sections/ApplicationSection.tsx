@@ -1,4 +1,4 @@
-import Highlighter from '../Highlighter'
+import Highlighter from '../../../components/Highlighter'
 import Section from '../components/Section'
 
 function ApplicationSection() {

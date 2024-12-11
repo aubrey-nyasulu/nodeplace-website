@@ -62,7 +62,8 @@ img {
   .theme-reverse-text {
     @apply text-gray-50 dark:text-gray-950;
   }
-/* 
+
+  /* 
   h1, h2, h3, h4, h5, p {
     @apply text-gray-800 dark:text-gray-400
   } */
