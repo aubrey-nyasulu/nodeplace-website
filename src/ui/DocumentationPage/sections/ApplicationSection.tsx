@@ -1,5 +1,5 @@
 import Highlighter from '../Highlighter'
-import Section from './Section'
+import Section from '../components/Section'
 
 function ApplicationSection() {
 
@@ -12,9 +12,10 @@ function ApplicationSection() {
             <Section
                 id='application'
             >
-                <h1 className='text-3xl font-bold'>Application()</h1>
-                <p className='py-4'>
-                    The app object conventionally denotes the Express application. Create it by calling the top-level nodeplace() function exported by the Express module:
+                <h2 className='text-3xl font-bold'>Application()</h2>
+
+                <p className='py-2'>
+                    The app object conventionally denotes the Nodeplace application. Create it by calling the top-level nodeplace() function exported by the Nodeplace module:
                 </p>
 
                 <Highlighter language='js'>
@@ -23,33 +24,33 @@ function ApplicationSection() {
                     }
                 </Highlighter>
 
-                <p className='py-4'>
+                {/* <p className=''>
                     The app object has methods for
                 </p>
-                <ul className=''>
-                    <li className='list-disc pl-4'>Routing HTTP requests; see for example, app.METHOD and app.param.</li>
-                    <li className='list-disc pl-4'>Configuring middleware; see app.route.</li>
-                    <li className='list-disc pl-4'>Rendering HTML views; see app.render.</li>
-                    <li className='list-disc pl-4'>Registering a template engine; see app.engine.</li>
-                </ul>
+                <ul className='pt-2 pl-8'>
+                    <li className='list-disc'>Routing HTTP requests; see for example, app.METHOD and app.param.</li>
+                    <li className='list-disc'>Configuring middleware; see app.route.</li>
+                    <li className='list-disc'>Rendering HTML views; see app.render.</li>
+                    <li className='list-disc'>Registering a template engine; see app.engine.</li>
+                </ul> */}
 
-                <p className='py-4'>
+                {/* <p className='py-4'>
                     It also has settings (properties) that affect how the application behaves; for more information, see Application settings.
-                </p>
+                </p> */}
 
             </Section>
 
-            <Section
+            {/* <Section
                 id='app.all'
             >
                 <h2 className='text-xl font-bold'>Methods</h2>
-                <h3 className='text-lg font-bold py-2'>
+                <h3 className='text-xl font-bold py-2'>
                     app.all(path, callback [, callback ...])
                 </h3>
                 <p className='text-base'>
                     This method is like the standard app.METHOD() methods, except it matches all HTTP verbs.
                 </p>
-                <h3 className='text-lg font-bold py-2'>
+                <h3 className='text-xl font-bold py-2'>
                     Examples
                 </h3>
                 <p className='text-base pb-2'>
@@ -77,33 +78,41 @@ function ApplicationSection() {
                 <Highlighter language='js'>
                     {`app.all('/api/(.*)', requireAuthentication)`}
                 </Highlighter>
-            </Section>
+            </Section> */}
 
             <Section
                 id='app.delete'
             >
-                <h3 className='text-lg font-bold py-2'>
+                <h3 className='text-xl font-bold py-2'>
                     app.delete(path, callback [, callback ...])
                 </h3>
-                <p className='text-base pb-2'>
+
+                <p className='pb-2'>
+                    Routes HTTP DELETE requests to the specified path with the specified callback functions.
+                </p>
+
+                <p className='pb-2'>
                     Example
                 </p>
 
                 <Highlighter language='js'>
                     {`app.delete('/', (req, res) => {  \n   res.send('DELETE request to homepage') \n})`}
                 </Highlighter>
-
             </Section>
 
             <Section
                 id='app.get'
             >
-                <h3 className='text-lg font-bold py-2'>
+                <h3 className='text-xl font-bold py-2'>
                     app.get(path, callback [, callback ...])
                 </h3>
 
-                <p>
+                <p className='pb-2'>
                     Routes HTTP GET requests to the specified path with the specified callback functions.
+                </p>
+
+                <p className='pb-2'>
+                    Example
                 </p>
 
                 <Highlighter language='js'>
@@ -114,44 +123,50 @@ function ApplicationSection() {
             <Section
                 id='app.listen'
             >
-                <h3 className='text-lg font-bold py-2'>
+                <h3 className='text-xl font-bold py-2'>
                     app.listen(path, [callback])
                 </h3>
+
                 <p className='pb-2'>
                     Starts a UNIX socket and listens for connections on the given path. This method is identical to Node’s http.Server.listen().
                 </p>
 
+                <p className='pb-2'>
+                    Example
+                </p>
+
                 <Highlighter language='js'>
-                    {`const express = require('express') \n\nconst app = express() \n\napp.listen('/tmp/sock')`}
+                    {`const nodeplace = require('nodeplace') \n\nconst app = nodeplace() \n\napp.listen('/tmp/sock')`}
                 </Highlighter>
 
-                <h4 className='text-lg font-bold py-2'>
+                <h4 className='text-2xl font-bold py-2'>
                     app.listen([port[, host[, backlog]]][, callback])
                 </h4>
 
                 <p className='pb-2'>
                     Binds and listens for connections on the specified host and port. This method is identical to Node’s http.Server.listen().
-                    <br /><br />
+                </p>
+                <p className='pb-2'>
                     If port is omitted or is 0, the operating system will assign an arbitrary unused port, which is useful for cases like automated tasks (tests, etc.).
                 </p>
 
                 <Highlighter language='js'>
-                    {`const express = require('express') \n\nconst app = express() \n\napp.listen(3000)`}
+                    {`const nodeplace = require('nodeplace') \n\nconst app = nodeplace() \n\napp.listen(3000)`}
                 </Highlighter>
 
                 <p className='pb-2'>
-                    The app returned by express() is in fact a JavaScript Function, designed to be passed to Node’s HTTP servers as a callback to handle requests. This makes it easy to provide both HTTP and HTTPS versions of your app with the same code base, as the app does not inherit from these (it is simply a callback):
+                    The app returned by nodeplace() is in fact a JavaScript Function, designed to be passed to Node’s HTTP servers as a callback to handle requests. This makes it easy to provide both HTTP and HTTPS versions of your app with the same code base, as the app does not inherit from these (it is simply a callback):
                 </p>
 
                 <Highlighter language='js'>
-                    {`const express = require('express') \nconst https = require('https') \nconst http = require('http') \nconst app = express() \n\nhttp.createServer(app).listen(80) \n\nhttps.createServer(options, app).listen(443)`}
+                    {`const nodeplace = require('nodeplace') \nconst https = require('https') \nconst http = require('http') \nconst app = nodeplace() \n\nhttp.createServer(app).listen(80) \n\nhttps.createServer(options, app).listen(443)`}
                 </Highlighter>
             </Section>
 
             <Section
                 id='app.post'
             >
-                <h3 className='text-lg font-bold py-2'>
+                <h3 className='text-xl font-bold py-2'>
                     app.post(path, callback [, callback ...])
                 </h3>
 
@@ -159,7 +174,7 @@ function ApplicationSection() {
                     Routes HTTP POST requests to the specified path with the specified callback functions. For more information, see the routing guide.
                 </p>
 
-                <p className='pb-2 font-bold'>Example</p>
+                <p className='pb-2'>Example</p>
 
                 <Highlighter language='js'>
                     {`app.post('/', (req, res) => { \n   res.send('POST request to homepage') \n})`}
@@ -169,7 +184,7 @@ function ApplicationSection() {
             <Section
                 id='app.put'
             >
-                <h3 className='text-lg font-bold py-2'>
+                <h3 className='text-xl font-bold py-2'>
                     app.put(path, callback [, callback ...])
                 </h3>
 
@@ -177,7 +192,7 @@ function ApplicationSection() {
                     Routes HTTP PUT requests to the specified path with the specified callback functions.
                 </p>
 
-                <p className='pb-2 font-bold'>Example</p>
+                <p className='pb-2'>Example</p>
 
                 <Highlighter language='js'>
                     {`app.put('/', (req, res) => { \n   res.send('PUT request to homepage') \n})`}
@@ -187,26 +202,30 @@ function ApplicationSection() {
             <Section
                 id='app.use'
             >
-                <h3 className='text-lg font-bold py-2'>
+                <h3 className='text-xl font-bold py-2'>
                     app.use([path,] callback [, callback...])
                 </h3>
 
                 <p className='pb-2'>
+                    Mounts a middleware, an error handler or a router depending on the call signature
+                </p>
+
+                {/* <p className='pb-2'>
                     Mounts the specified middleware function or functions at the specified path: the middleware function is executed when the base of the requested path matches path.
                 </p>
 
-                <p className='pb-2 font-bold'>Description</p>
+                <h4 className='text-lg pb-0 font-bold'>Description</h4>
 
                 <p className='pb-2'>
                     A route will match any path that follows its path immediately with a “/”. For example: app.use('/apple', ...) will match “/apple”, “/apple/images”, “/apple/images/news”, and so on.
                 </p>
                 <p className='pt-1 pb-2'>
                     Since path defaults to “/”, middleware mounted without a path will be executed for every request to the app. For example, this middleware function will be executed for every request to the app:
-                </p>
+                </p> */}
 
-                <Highlighter language='js'>
+                {/* <Highlighter language='js'>
                     {`app.use('/', (req, res, next) => { \n   console.log('Time: %d', Date.now()) \n\n   next() \n})`}
-                </Highlighter>
+                </Highlighter> */}
             </Section>
         </Section>
     )

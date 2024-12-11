@@ -13,6 +13,7 @@ function Logo({ headerIsVisible }: { headerIsVisible: boolean }) {
     return (
         <Link
             href="/"
+            className="pt-1"
         // className="flex gap-1 md:gap-2 items-center"
         >
             {/* <div className="dark:bg-white/10 backdrop-blur-lg p-1 grid place-content-center aspect-square rounded-full"> */}

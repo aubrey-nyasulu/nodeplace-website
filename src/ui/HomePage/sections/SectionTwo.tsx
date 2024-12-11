@@ -3,7 +3,7 @@ import { Airoplane, DynamicRoute, Fire } from "@/src/assets/SVGComponents";
 function SectionTwo() {
     return (
         <section className="langingpage-container px-4 lg:px-0">
-            <h2 className="text-3xl md:text-[48px] font-bold leading-[1.10] max-w-[800px]">Powerful Features to Supercharge Your Development</h2>
+            <h2 className="text-2xl md:text-[48px] font-bold leading-[1.10] max-w-[800px]">Powerful Features to Supercharge Your Development</h2>
             <div className="grid gap-16 md:grid-cols-2 lg:grid-cols-3 mt-8">
                 <div className="space-y-2">
                     <div className="grid place-content-center aspect-square w-20 rounded-lg bg-gradient-to-br from-teal-400 to-blue-500">

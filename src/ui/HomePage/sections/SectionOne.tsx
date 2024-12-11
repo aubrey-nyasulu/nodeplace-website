@@ -17,7 +17,7 @@ function SectionOne() {
                 </div>
 
                 <div className="w-full">
-                    <h2 className="text-3xl md:text-[48px] font-bold leading-[1.10]">Build robust server applications, the Node.js way.</h2>
+                    <h2 className="text-2xl md:text-[48px] font-bold leading-[1.10]">Build robust server applications, the NodePlace way.</h2>
                     <p className="pt-4">
                         Nodeplace is a lightweight and intuitive Node.js framework designed for building fast and scalable server applications. Inspired by Express.js, it provides all the power of a robust framework with a refined focus on API development. Whether you are creating APIs, microservices, or server-driven applications, Nodeplace ensures a smooth development experience.
 
