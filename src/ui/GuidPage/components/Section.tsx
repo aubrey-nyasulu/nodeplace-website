@@ -33,7 +33,7 @@ function Section({ id, isRoute = false, className, children }: { id: string, isR
     return (
         <section
             id={id}
-            className={`w-full -mt-[120px] pt-[120px] ${className}`}
+            className={`w-full -mt-[120px] pt-[120px] ${className} z-0`}
             ref={ref}
         >
             {children}

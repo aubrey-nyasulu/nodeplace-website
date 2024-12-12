@@ -39,7 +39,7 @@ function Nav() {
   }, [headerIsVisible])
 
   return (
-    <nav className="w-screen px-4 lg:px-0 py-2 h-fit  fixed top-0 left-[50%] -translate-x-[50%] z-50 bg-white/10 dark:bg-black/10 backdrop-blur-lg border-b border-b-[#2a2a2a22] dark:border-b-[#212121] ">
+    <nav className="w-screen px-4 lg:px-0 py-2 h-fit  fixed top-0 left-[50%] -translate-x-[50%] z-50 bg-white/10 dark:bg-black/10 backdrop-blur-lg border-b border-b-stone-300/50 dark:border-b-stone-800 ">
       <div className="langingpage-container flex items-center justify-between">
         <Logo {...{ headerIsVisible }} />
 
@@ -50,7 +50,7 @@ function Nav() {
             <ThemeSwitcher {...{ headerIsVisible }} />
             <Link
               href='/documentation'
-              className="btn-primary hidden md:block whitespace-nowrap"
+              className="btn-primary py-4 hidden md:block whitespace-nowrap"
             >
               API Documentation
             </Link>
@@ -69,7 +69,6 @@ function Nav() {
                 </Link>
               </ul>
             </div>
-
           </div>
         </div>
       </div>

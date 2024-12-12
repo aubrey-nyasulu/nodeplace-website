@@ -6,12 +6,13 @@ import { twMerge } from "tailwind-merge"
 import { GuideNavLinks } from "../../../lib/constants"
 import LiElement from "../../../components/LiElement"
 import { DoubleCaret } from "../../../assets/SVGComponents"
+import Link from "next/link"
 
 function GuideSideNav() {
     const { currentSection, setCurrentSection } = useContext(DocumentationContext)
 
     return (
-        <aside className="fixed top-[0px] w-72 h-screen overflow-y-auto border-r border-r-stone-300 dark:border-stone-800 hidden md:block pt-[108px] pr-2">
+        <aside className="fixed top-[0px] w-72 h-screen overflow-y-auto border-r border-r-stone-300 dark:border-stone-800 hidden md:block pt-[100px] px-2">
             <div className="w-full mb-5 group/main">
                 <button className="w-full flex items-center justify-between p-4 py-2 border border-stone-300 dark:border-stone-800 rounded-md ">
                     <div className="">
@@ -59,10 +60,10 @@ function GuideSideNav() {
                     onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'nodeplace-route' }))}
                     className={`w-full h-fit`}
                 >
-                    <a
+                    <Link
                         href="#nodeplace-route"
-                        className={twMerge('w-full block py-3 px-4 rounded-md', currentSection.route === 'nodeplace-route' && 'bg-primary text-white')}
-                    >nodeplace</a>
+                        className={twMerge('w-full block py-3 px-4 rounded-md bg-stone-300 dark:bg-stone-800', currentSection.route === 'nodeplace-route' && 'bg-primary dark:bg-primary text-white')}
+                    >nodeplace</Link>
                     <ul className={`px-6 pt-2 ${currentSection.route === 'nodeplace-route' ? 'block' : 'hidden'} `}>
                         {
                             GuideNavLinks.nodeplace.map((meta, index) => (
@@ -78,10 +79,10 @@ function GuideSideNav() {
                     onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'routing-route' }))}
                     className="w-full h-fit"
                 >
-                    <a
+                    <Link
                         href="#routing-route"
-                        className={twMerge('w-full block py-3 px-4 rounded-md', currentSection.route === 'routing-route' && 'bg-primary text-white')}
-                    >Routing</a>
+                        className={twMerge('w-full block py-3 px-4 rounded-md bg-stone-300 dark:bg-stone-800', currentSection.route === 'routing-route' && 'bg-primary dark:bg-primary text-white')}
+                    >Routing</Link>
                     <ul className={`px-6 pt-2 ${currentSection.route === 'routing-route' ? 'block' : 'hidden'} `}>
                         {
                             GuideNavLinks.Routing.map((meta, index) => (
@@ -97,10 +98,10 @@ function GuideSideNav() {
                     onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'middleware-route' }))}
                     className="w-full h-fit"
                 >
-                    <a
+                    <Link
                         href="#middleware-route"
-                        className={twMerge('w-full block py-3 px-4 rounded-md', currentSection.route === 'middleware-route' && 'bg-primary text-white')}
-                    >Middleware</a>
+                        className={twMerge('w-full block py-3 px-4 rounded-md bg-stone-300 dark:bg-stone-800', currentSection.route === 'middleware-route' && 'bg-primary dark:bg-primary text-white')}
+                    >Middleware</Link>
                     {/* <ul className={`px-6 pt-2 ${currentSection.route === 'response-route' ? 'block' : 'hidden'} `}>
                         {
                             GuideNavLinks.Middleware.map((meta, index) => (
@@ -116,10 +117,10 @@ function GuideSideNav() {
                     onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'error-handlering-route' }))}
                     className="w-full h-fit"
                 >
-                    <a
+                    <Link
                         href="#error-handlering-route"
-                        className={twMerge('w-full block py-3 px-4 rounded-md', currentSection.route === 'error-handlering-route' && 'bg-primary text-white')}
-                    >Error Handling</a>
+                        className={twMerge('w-full block py-3 px-4 rounded-md bg-stone-300 dark:bg-stone-800', currentSection.route === 'error-handlering-route' && 'bg-primary dark:bg-primary text-white')}
+                    >Error Handling</Link>
                     {/* <ul className={`px-6 pt-2 ${currentSection.route === 'router-route' ? 'block' : 'hidden'} `}>
                         {
                             GuideNavLinks["Error Handling"].map((meta, index) => (

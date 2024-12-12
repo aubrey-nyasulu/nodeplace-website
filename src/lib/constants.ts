@@ -50,9 +50,9 @@ export const GuideNavLinks = {
     ],
     Routing: [
         { id: 'route-methods', name: 'route methods' },
-        { id: 'route-paths', name: 'route paths' },
         { id: 'route-parameters', name: 'route parameters' },
         { id: 'route-handlers', name: 'route handlers' },
+        { id: 'nodeplace-router', name: 'NodePlace Router' },
     ],
     Middleware: [
         { id: 'res.cookie', name: 'res.cookie()' },
@@ -108,5 +108,23 @@ export const tableData = {
             default: 'undefined'
         }
     ]
-
 }
+
+export const features = {
+    coreFeatures: [
+        { feature: "Routing", description: "Defines how HTTP requests are handled based on URL paths." },
+        { feature: "Middleware", description: "Intercepts incoming requests and outgoing responses for various tasks." },
+        { feature: "Error Handling", description: "Gracefully handles exceptions and sends appropriate error responses." },
+    ],
+    additionalFeatures: [
+        { feature: "Zero dependency ", description: "Simplifies development by eliminating peer dependency issues." },
+        { feature: "Fast and Efficient", description: "Built on Node.js for high performance and asynchronous operations." },
+        { feature: "Seamless Integration with Node.js Ecosystem", description: "Integrates easily with other Node.js modules and libraries." },
+    ],
+}
+
+export const responseMethods = [
+    { method: "resizeBy.json()", description: "Send a JSON response with JSONP support." },
+    { method: "res.redirect()", description: "Redirect a request." },
+    { method: "res.sendFile()", description: "Send a file as an octet stream." },
+]

@@ -3,6 +3,9 @@ import Highlighter from '../Highlighter'
 import Note from '../../../components/Note'
 import Section from '../components/Section'
 import Link from 'next/link'
+import FeaturesTable from '../components/FeaturesTable'
+import { features } from '@/src/lib/constants'
+import Divider from '@/src/components/Divider'
 
 function NodePlaceSection() {
 
@@ -15,25 +18,46 @@ function NodePlaceSection() {
             <Section
                 id='introduction'
             >
-                <h2 className='text-4xl font-bold'>Introduction</h2>
+                <h2 className='text-4xl font-bold pb-8'>Introduction</h2>
 
                 {/* <p className='text-lg font-bold pt-2'>Welcome to the NodePlace Guide</p> */}
-                <div className='w-full h-[1px] bg-stone-300 dark:bg-stone-800 mt-8'></div>
+
+                <Divider />
 
                 <h3 className='text-2xl font-bold pt-8'>What is NodePlace.js?</h3>
 
-
-                <p className='pt-2'>
-                    Nodeplace is a lightweight and intuitive Node.js framework designed for building fast and scalable server applications. It provides all the power of a robust framework with a refined focus on API development. Whether you're creating APIs, microservices, or server-driven applications, Nodeplace ensures a smooth development experience.
+                <p className='pt-2 pb-8'>
+                    Nodeplace is a zero dependency, lightweight and intuitive Node.js framework designed for building fast and scalable server applications. It provides all the power of a robust framework with a refined focus on API development. Whether you're creating APIs, microservices, or server-driven applications, Nodeplace ensures a smooth development experience. It is a drop in replacement of Express.js with minor differences.
                 </p>
+
+                <Divider />
+
+                <h4 className='text-xl font-bold pt-8 pb-2'>Pre-Requisite Knowledge</h4>
+
+                <p className='pb-8'>
+                    To effectively utilize this framework, a foundational understanding of Node.js is essential. While not strictly required, prior experience with Express.js can accelerate the learning curve, as this framework serves as a direct replacement, offering a familiar syntax and structure.
+                </p>
+
+                <Divider />
+
+                <h4 className='text-xl font-bold pt-8 pb-2'>Features</h4>
+
+                <p className='pb-2 font-bold'>Core Features</p>
+
+                <FeaturesTable {...{ tableData: features.coreFeatures }} />
+
+                <p className='pb-2 pt-8 font-bold'>Additional Features</p>
+
+                <FeaturesTable {...{ tableData: features.additionalFeatures }} />
             </Section>
 
             <Section
                 id='installing'
             >
-                <div className='w-full h-[1px] mb-8 bg-stone-300 dark:bg-stone-800'></div>
+                <div className='mt-8'></div>
+                <Divider />
 
-                <h3 className='text-2xl font-bold '>Installing</h3>
+                <h3 className='text-2xl font-bold pt-8'>Installing</h3>
 
                 <p className='py-2'>
                     Assuming you’ve already installed Node.js, create a directory to hold your application, and make that your working directory.
@@ -52,10 +76,6 @@ function NodePlaceSection() {
                 </Highlighter>
 
                 <p className='pb-2'>
-                    Enter app.js, or whatever you want the name of the main file to be. If you want it to be index.js, hit RETURN to accept the suggested default file name.
-                </p>
-
-                <p className='pb-2'>
                     Now, install NodePlace in the myapp directory and save it in the dependencies list. For example:
                 </p>
 
@@ -67,9 +87,11 @@ function NodePlaceSection() {
             <Section
                 id='hello-world'
             >
-                <div className='w-full h-[1px] mb-8 bg-stone-300 dark:bg-stone-800'></div>
+                <div className='mt-8'></div>
 
-                <h3 className='text-2xl font-bold '>Hello World</h3>
+                <Divider />
+
+                <h3 className='text-2xl font-bold pt-8'>Hello World</h3>
 
                 <p className='py-2'>
                     This app starts a server and listens on port 3000 for connections. The app responds with “Hello World!” for requests to the root URL (/) or route. For every other path, it will respond with a 404 Not Found.
@@ -87,14 +109,6 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(\`Example app listening on port \${port}\`)
 })`}
-                </Highlighter>
-
-                <p className='pb-2'>
-                    Use the npm init command to create a package.json file for your application. For more information on how package.json works, see Specifics of npm’s package.json handling.
-                </p>
-
-                <Highlighter language='js'>
-                    {`$ npm init -y`}
                 </Highlighter>
 
                 <h4 className='pb-2 text-lg font-bold'>

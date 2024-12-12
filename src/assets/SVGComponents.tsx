@@ -159,8 +159,8 @@ export const Info = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 1920 1920"
-    width="1em"
-    height="1em"
+    width="1.5em"
+    height="1.5em"
   >
     <path
       fill="tomato"
