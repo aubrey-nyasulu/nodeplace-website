@@ -13,8 +13,8 @@ function Logo({ headerIsVisible }: { headerIsVisible: boolean }) {
     return (
         <Link
             href="/"
-            // className="pt-1"
-            className="pt-1 flex gap-1 items-center"
+            className="pt-1"
+        // className="pt-1 flex gap-1 items-center"
         // className="flex gap-1 md:gap-2 items-center"
         >
             <div
@@ -29,7 +29,7 @@ function Logo({ headerIsVisible }: { headerIsVisible: boolean }) {
             </div>
             {/* </div> */}
             <div className="">
-                <p className={`text-xl md:text-2xl font-medium `}>NodePlace</p>
+                <p className={`text-xs font-medium `}>NodePlace</p>
             </div>
         </Link>
     )

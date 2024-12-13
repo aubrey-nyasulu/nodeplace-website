@@ -51,7 +51,7 @@ function ThemeSwitcher({ headerIsVisible }: { headerIsVisible: boolean }) {
                 }
             }}
         >
-            {currentTheme === 'light' && <Sun {...{ color: color }} />}
+            {currentTheme === 'light' && <Sun {...{ color: 'brown' }} />}
             {currentTheme === 'dark' && <Moon />}
             {currentTheme === '' && <MoonSun {...{ color: color }} />}
         </button>

@@ -7,7 +7,7 @@ function SectionOne() {
             <div
                 className="langingpage-container px-4 lg:px-0 flex flex-col md:flex-row gap-8 md:items-center"
             >
-                <div className="w-[200px] md:w-[540px] h-fit rounded-lg overflow-hidden">
+                <div className="w-full md:w-[540px] h-fit rounded-lg overflow-hidden">
                     <Image
                         src={image1}
                         alt="about nodeplace image"

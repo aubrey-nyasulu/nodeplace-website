@@ -2,10 +2,9 @@
 import Highlighter from '../../../components/Highlighter'
 import Note from '../../../components/Note'
 import Section from '../components/Section'
-import Link from 'next/link'
-import FeaturesTable from '../components/FeaturesTable'
 import { features } from '@/src/lib/constants'
 import Divider from '@/src/components/Divider'
+import GeneralTable from '../components/GeneralTable'
 
 function NodePlaceSection() {
 
@@ -44,11 +43,11 @@ function NodePlaceSection() {
 
                 <p className='pb-2 font-bold'>Core Features</p>
 
-                <FeaturesTable {...{ tableData: features.coreFeatures }} />
+                <GeneralTable {...{ tableData: features.coreFeatures }} />
 
                 <p className='pb-2 pt-8 font-bold'>Additional Features</p>
 
-                <FeaturesTable {...{ tableData: features.additionalFeatures }} />
+                <GeneralTable {...{ tableData: features.additionalFeatures }} />
             </Section>
 
             <Section

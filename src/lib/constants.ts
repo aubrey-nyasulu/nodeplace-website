@@ -5,7 +5,7 @@ export const documentationNavLinks = {
         { id: 'nodeplace.urlencoded', name: 'nodeplace.urlencoded()' },
     ],
     application: [
-        // { id: 'app.all', name: 'app.all()' },
+        { id: 'app.all', name: 'app.all()' },
         { id: 'app.delete', name: 'app.delete()' },
         { id: 'app.get', name: 'app.get()' },
         { id: 'app.listen', name: 'app.listen()' },
@@ -30,7 +30,7 @@ export const documentationNavLinks = {
         { id: 'res.sendFile', name: 'res.sendFile()' },
         { id: 'res.set', name: 'res.set()' },
         { id: 'res.status', name: 'res.status()' },
-        // { id: 'res.type', name: 'res.type()' },
+        // { id: 'res.Type', name: 'res.Type()' },
     ],
     router: [
         { id: 'router.route', name: 'router.route()' },
@@ -60,76 +60,137 @@ export const GuideNavLinks = {
     ],
     "Error Handling": [
         { id: 'catching.errors', name: 'Catching Errors' },
-        // { id: 'default.error-handler', name: 'Default Error Handler' },
+        // { id: 'Default.error-handler', name: 'Default Error Handler' },
         { id: 'writing.error.handlers', name: 'Writing Error Handlers' },
     ],
 }
 
 export const tableData = {
+    nodeplaceJsonOptions: [
+        {
+            Option: 'limti',
+            Description: 'Maximum size of the incoming JSON payload.',
+            Type: 'String or Number',
+            Default: '100kb'
+        },
+        {
+            Option: 'strict',
+            Description: 'Ensures only objects and arrays are parsed (if set to true).',
+            Type: 'Boolean',
+            Default: 'true'
+        },
+        {
+            Option: 'reviver',
+            Description: 'A function passed to JSON.parse to transform the parsed JSON.',
+            Type: 'Function',
+            Default: 'undefined'
+        },
+    ],
     nodeplaceStatic: [
         {
-            property: 'dotfiles',
-            description: 'Determines how dotfiles (files or directories that begin with a dot “.”) are treated.',
-            type: 'String',
-            default: 'ignore'
+            Option: 'dotfiles',
+            Description: "	Determines how dotfiles (files starting with .) are treated ('allow' or 'ignore').",
+            Type: 'String',
+            Default: 'ignore'
         },
         {
-            property: 'etag',
-            description: 'Enable or disable etag generation. NodePlace.static always sends weak ETags.',
-            type: 'Boolean',
-            default: 'true'
+            Option: 'etag',
+            Description: 'Enables or disables ETag generation for caching.',
+            Type: 'Boolean',
+            Default: 'true'
         },
         {
-            property: 'extensions',
-            description: 'Sets file extension fallbacks: If a file is not found, search for files with the specified extensions and serve the first one found.',
-            type: 'Array of strings',
-            default: '[]'
+            Option: 'extensions',
+            Description: 'File extensions to try when the requested file is not found.',
+            Type: 'Array<String>',
+            Default: '[]'
         },
         {
-            property: 'lastModified',
-            description: 'Set the Last-Modified header to the last modified date of the file on the OS.',
-            type: 'Boolean',
-            default: 'true'
+            Option: 'maxAge',
+            Description: 'Sets the max-age directive in the Cache-Control header (in milliseconds).',
+            Type: 'Number',
+            Default: '0'
         },
         {
-            property: 'maxAge',
-            description: 'Set the max-age property of the Cache-Control header in milliseconds or a string in ms format.',
-            type: 'Number',
-            default: '0'
+            Option: 'lastModified',
+            Description: 'Sets the Last-Modified header to the file’s modification time.',
+            Type: 'Boolean',
+            Default: 'true'
         },
         {
-            property: 'immutable',
-            description: 'Enable or disable the immutable directive in the Cache-Control response header. If enabled, maxAge must be specified.',
-            type: 'Boolean',
-            default: 'false'
+            Option: 'immutable',
+            Description: 'Adds the immutable directive to Cache-Control for long-lived caching. Requires maxAge.',
+            Type: 'Boolean',
+            Default: 'false'
         },
         {
-            property: 'setHeaders',
-            description: 'Function for setting HTTP headers to serve with the file. It receives the response, file path, and stats.',
-            type: 'Function',
-            default: 'undefined'
+            Option: 'setHeaders',
+            Description: 'A custom function for setting headers on the response.',
+            Type: 'Function(res, path, stat)',
+            Default: 'undefined'
         }
-    ]
+    ],
+    nodeplaceUrlEncodedOptions: [
+        {
+            Option: 'parameterLimit',
+            Description: "Limits the number of parameters parsed to prevent potential denial-of-service attacks.",
+            Type: 'Number',
+            Default: '1000'
+        },
+        {
+            Option: 'type',
+            Description: 'Controls the Content-Type that the middleware will parse.',
+            Type: 'String',
+            Default: 'application/x-www-form-urlencoded'
+        },
+    ],
 }
 
 export const features = {
     coreFeatures: [
-        { feature: "Routing", description: "Intuitive system to define how HTTP requests are handled based on URL paths and methods." },
-        { feature: "Middleware", description: "Handles request/response interception, enabling flexible functionality and modular design." },
-        { feature: "Error Handling", description: "Provides robust error-catching and custom error-handler support for consistent responses." },
-        { feature: "Static File Serving", description: "Efficiently serves static files with options for caching, custom headers, and file extension fallbacks." },
+        { feature: "Routing", Description: "Intuitive system to define how HTTP requests are handled based on URL paths and methods." },
+        { feature: "Middleware", Description: "Handles request/response interception, enabling flexible functionality and modular design." },
+        { feature: "Error Handling", Description: "Provides robust error-catching and custom error-handler support for consistent responses." },
+        { feature: "Static File Serving", Description: "Efficiently serves static files with options for caching, custom headers, and file extension fallbacks." },
     ],
     additionalFeatures: [
-        { feature: "Zero dependency ", description: "Lightweight and simple, with no external dependencies to minimize peer dependency issues." },
-        { feature: "Flexible Event System", description: "Easily manage custom events to streamline workflows for real-time and asynchronous tasks." },
-        { feature: "Seamless Integration with Node.js", description: "Designed to integrate effortlessly with the Node.js ecosystem." },
-        { feature: "Performance-Optimized Architecture", description: "Built with high performance and scalability in mind." },
-        { feature: "Comprehensive API Support", description: "Equipped with modern HTTP utilities for JSON parsing, cookie management, and more." },
+        { feature: "Zero dependency ", Description: "Lightweight and simple, with no external dependencies to minimize peer dependency issues." },
+        { feature: "Flexible Event System", Description: "Easily manage custom events to streamline workflows for real-time and asynchronous tasks." },
+        { feature: "Seamless Integration with Node.js", Description: "Designed to integrate effortlessly with the Node.js ecosystem." },
+        { feature: "Performance-Optimized Architecture", Description: "Built with high performance and scalability in mind." },
+        { feature: "Comprehensive API Support", Description: "Equipped with modern HTTP utilities for JSON parsing, cookie management, and more." },
     ],
 }
 
+export const appMethods = [
+    {
+        Method: "app.listen(port[, callback])",
+        Description: "Starts the server, binding it to the specified port.",
+    },
+    {
+        Method: "app.use([path], callback)",
+        Description: "Mounts middleware functions at the specified path (default is /).",
+    },
+    {
+        Method: "app.get(path, callback)",
+        Description: "Handles HTTP GET requests to the specified path.",
+    },
+    {
+        Method: "app.post(path, callback)",
+        Description: "Handles HTTP POST requests to the specified path.",
+    },
+    {
+        Method: "app.put(path, callback)",
+        Description: "Handles HTTP PUT requests to the specified path.",
+    },
+    {
+        Method: "app.delete(path, callback)",
+        Description: "Handles HTTP DELETE requests to the specified path.",
+    },
+]
+
 export const responseMethods = [
-    { method: "resizeBy.json()", description: "Send a JSON response with JSONP support." },
-    { method: "res.redirect()", description: "Redirect a request." },
-    { method: "res.sendFile()", description: "Send a file as an octet stream." },
+    { method: "resizeBy.json()", Description: "Send a JSON response with JSONP support." },
+    { method: "res.redirect()", Description: "Redirect a request." },
+    { method: "res.sendFile()", Description: "Send a file as an octet stream." },
 ]

@@ -1,5 +1,8 @@
+import Divider from '@/src/components/Divider'
 import Highlighter from '../../../components/Highlighter'
 import Section from '../components/Section'
+import GeneralTable from '../../GuidPage/components/GeneralTable'
+import { appMethods } from '@/src/lib/constants'
 
 function ApplicationSection() {
 
@@ -12,122 +15,377 @@ function ApplicationSection() {
             <Section
                 id='application'
             >
-                <h2 className='text-3xl font-bold'>Application()</h2>
+                <div className='mb-8'></div>
+
+                <Divider />
+
+                <h2 className='text-3xl font-bold pt-8'>Application()</h2>
 
                 <p className='py-2'>
-                    The app object conventionally denotes the Nodeplace application. Create it by calling the top-level nodeplace() function exported by the Nodeplace module:
+                    The app object in NodePlace serves as the foundation of your application. It is created by calling the nodeplace() function and provides methods for defining routes, managing middleware, and controlling how your app handles HTTP requests.
                 </p>
+
+                <p className='pb-2 font-semibold'>Creating an Application</p>
 
                 <Highlighter language='js'>
                     {
-                        `const nodeplace = require('nodeplace') \n\nconst app = nodeplace() \n\napp.get('/', (req, res) => { \n   res.send('hello world') \n}) \n\napp.listen(3000)`
+                        `const nodeplace = require('nodeplace')
+
+const app = nodeplace()
+`
                     }
                 </Highlighter>
 
-                {/* <p className=''>
-                    The app object has methods for
-                </p>
-                <ul className='pt-2 pl-8'>
-                    <li className='list-disc'>Routing HTTP requests; see for example, app.METHOD and app.param.</li>
-                    <li className='list-disc'>Configuring middleware; see app.route.</li>
-                    <li className='list-disc'>Rendering HTML views; see app.render.</li>
-                    <li className='list-disc'>Registering a template engine; see app.engine.</li>
-                </ul> */}
+                <p>This initializes a new NodePlace application.</p>
 
-                {/* <p className='py-4'>
-                    It also has settings (properties) that affect how the application behaves; for more information, see Application settings.
-                </p> */}
+                <p className='py-4'>The app object comes with several methods and properties for managing application behavior, including route handling, middleware mounting, and configuration.</p>
+
+                <p className='pb-2 font-semibold'>Methods</p>
+
+                <GeneralTable tableData={appMethods} />
+
+                <p className='font-semibold pt-4 pb-2'>Examples</p>
+
+                <p className='pb-2'>Starting a Server</p>
+
+                <Highlighter language='js'>
+                    {`const nodeplace = require('nodeplace')
+
+const app = nodeplace()
+
+app.listen(3000, () => {
+    console.log('Server is running on http://localhost:3000')
+})
+`}
+                </Highlighter>
+
+                <p>Adding Routes</p>
+
+                <Highlighter language='js'>
+                    {`app.get('/', (req, res) => {
+    res.send('Hello, world!')
+})
+
+app.post('/submit', (req, res) => {
+    res.send('Form submitted!')
+})
+`}
+                </Highlighter>
+
+                <p>Mounting Middleware</p>
+
+                <Highlighter language='js'>
+                    {`app.use((req, res, next) => {
+    console.log('Time:', Date.now())
+    next()
+})
+`}
+                </Highlighter>
 
             </Section>
 
-            {/* <Section
+            <Section
                 id='app.all'
             >
-                <h2 className='text-xl font-bold'>Methods</h2>
-                <h3 className='text-xl font-bold py-2'>
+                <div className='mb-8'></div>
+
+                <Divider />
+
+                <h3 className='text-xl font-bold py-b pt-8'>
                     app.all(path, callback [, callback ...])
                 </h3>
-                <p className='text-base'>
-                    This method is like the standard app.METHOD() methods, except it matches all HTTP verbs.
+
+                <p className='py-2'>
+                    The app.all() method routes all HTTP methods to the specified path. This is useful for applying middleware or handling requests regardless of the HTTP method.
                 </p>
-                <h3 className='text-xl font-bold py-2'>
-                    Examples
-                </h3>
-                <p className='text-base pb-2'>
-                    The following callback is executed for requests to /secret whether using GET, POST, PUT, DELETE, or any other HTTP request method:
-                </p>
+
+
                 <Highlighter language='js'>
-                    {`app.all('/secret', (req, res, next) => { \n   console.log('Accessing the secret section ...') \n\n   next() // pass control to the next handler
-})`}
+                    app.all(path, callback [, callback ...])
                 </Highlighter>
-                <p className='text-base pb-2'>
-                    The app.all() method is useful for mapping “global” logic for specific path prefixes or arbitrary matches. For example, if you put the following at the top of all other route definitions, it requires that all routes from that point on require authentication, and automatically load a user. Keep in mind that these callbacks do not have to act as end-points: loadUser can perform a task, then call next() to continue matching subsequent routes.
+
+                <p className='pb-2 font-semibold'>
+                    Parameters
                 </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        <span>path:</span>
+                        The path to match for the route.
+                    </li>
+
+                    <li>
+                        <span>callback:</span>
+                        One or more callback functions that handle the request. These follow the standard (req, res, next) signature.
+                    </li>
+                </ul>
+
+                <p className='font-semibold pb-2'>Example: Logging All HTTP Methods</p>
+
                 <Highlighter language='js'>
-                    {`app.all('(.*)', requireAuthentication, loadUser)`}
+                    {`app.all('/logs', (req, res) => {
+    console.log(\`\${req.method} request to \${req.path}\`)
+                    res.send('This route handles all HTTP methods')
+})
+`}
                 </Highlighter>
-                <p className='text-base pb-2'>
-                    Or the equivalent:
+
+                <p className='py-2'>
+                    In this example:
                 </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>A single route /logs is defined to handle any HTTP method (GET, POST, PUT, DELETE, etc.).</li>
+
+                    <li>The server logs the method used for each request.</li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: Middleware Application</p>
+
                 <Highlighter language='js'>
-                    {`app.all('(.*)', requireAuthentication) \napp.all('(.*)', loadUser)`}
+                    {`app.all('/secure/*', (req, res, next) => {
+    if (!req.isAuthenticated) {
+        res.status(401).send('Unauthorized')
+    } else {
+        next()
+    }
+})
+`}
                 </Highlighter>
-                <p className='text-base pb-2'>
-                    Another example is white-listed “global” functionality. The example is similar to the ones above, but it only restricts paths that start with “/api”:
+
+                <p className='pt-2'>
+                    In this example:
                 </p>
-                <Highlighter language='js'>
-                    {`app.all('/api/(.*)', requireAuthentication)`}
-                </Highlighter>
-            </Section> */}
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>Middleware ensures that all requests to paths under /secure/ are authenticated.</li>
+
+                    <li>If the user is authenticated, the next handler is called.</li>
+                </ul>
+            </Section>
 
             <Section
                 id='app.delete'
             >
-                <h3 className='text-xl font-bold py-2'>
+                <div className='mb-8'></div>
+
+                <Divider />
+
+                <h3 className='text-xl font-bold pt-8'>
                     app.delete(path, callback [, callback ...])
                 </h3>
 
-                <p className='pb-2'>
-                    Routes HTTP DELETE requests to the specified path with the specified callback functions.
-                </p>
-
-                <p className='pb-2'>
-                    Example
+                <p className='py-2'>
+                    The app.delete() method routes HTTP DELETE requests to the specified path and handles them with the provided callback(s). It is commonly used to remove resources on the server.
                 </p>
 
                 <Highlighter language='js'>
-                    {`app.delete('/', (req, res) => {  \n   res.send('DELETE request to homepage') \n})`}
+                    app.delete(path, callback [, callback ...])
                 </Highlighter>
+
+                <p className='pb-2'>Parameters</p>
+
+                <ul className='pl-8 space-y-2 list-disc'>
+                    <li>
+                        <span>path:</span>
+                        The route path where the handler should apply.
+                    </li>
+
+                    <li>
+                        <span>callback:</span>
+                        The route path where the handler should apply.
+                    </li>
+                </ul>
+
+                <p className='pb-2 pt-4 font-semibold'>Example: Deleting a Resource</p>
+
+                <Highlighter language='js'>
+                    {`app.delete('/users/:id', (req, res) => {
+    const userId = req.params.id
+    // Logic to delete user by ID
+    res.send(\`User with ID \${userId} deleted\`)
+})
+`}
+                </Highlighter>
+
+                <p className='pb-2'>In this example:</p>
+
+                <ul className='pl-8 space-y-2 list-disc'>
+                    <li>
+                        The route /users/:id accepts DELETE requests.
+                    </li>
+
+                    <li>
+                        The req.params.id retrieves the user ID from the URL, and a confirmation response is sent.
+                    </li>
+                </ul>
+
+                <p className='pb-2 pt-4 font-semibold'>Example: Middleware with DELETE</p>
+
+                <Highlighter language='js'>
+                    {`app.delete('/resources/:id', authenticate, (req, res) => {
+    const resourceId = req.params.id
+    // Logic to delete the resource
+    res.status(200).json({ message: \`Resource \${resourceId} removed\` })
+})
+`}
+                </Highlighter>
+
+                <p className='pb-2'>In this example:</p>
+
+                <ul className='pl-8 space-y-2 list-disc'>
+                    <li>
+                        Middleware authenticate ensures only authorized users can delete resources.
+                    </li>
+
+                    <li>
+                        A JSON response confirms the deletion.
+                    </li>
+                </ul>
             </Section>
 
             <Section
                 id='app.get'
             >
-                <h3 className='text-xl font-bold py-2'>
+                <div className='mb-8'></div>
+
+                <Divider />
+
+                <h3 className='text-xl font-bold pt-8'>
                     app.get(path, callback [, callback ...])
                 </h3>
 
-                <p className='pb-2'>
-                    Routes HTTP GET requests to the specified path with the specified callback functions.
+                <p className='py-2'>
+                    The app.get() method routes HTTP GET requests to the specified path and handles them with the provided callback(s). This method is typically used to retrieve and display data or serve static pages.
                 </p>
 
-                <p className='pb-2'>
-                    Example
-                </p>
+                <p className='pt-4 pb-2'>Syntax</p>
 
                 <Highlighter language='js'>
-                    {`app.get('/', (req, res) => { \n   res.send('GET request to homepage') \n})`}
+                    app.get(path, callback [, callback ...])
                 </Highlighter>
+
+                <p className='pt-2 font-semibold'>
+                    Parameters
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        <span>path:</span>
+                        The route path where the handler should apply.
+                    </li>
+
+                    <li>
+                        <span>callback:</span>
+                        One or more callback functions to handle the request, with the standard (req, res, next) signature.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: Basic GET Handler</p>
+
+                <Highlighter language='js'>
+                    {`app.get('/', (req, res) => {
+    res.send('Welcome to the Homepage')
+})
+`}
+                </Highlighter>
+
+                <p className='font-semibold p-2'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        The route / accepts GET requests.
+                    </li>
+
+                    <li>
+                        A simple text response is sent to the client.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: Dynamic Routes</p>
+
+                <Highlighter language='js'>
+                    {`app.get('/users/:id', (req, res) => {
+    const userId = req.params.id
+    res.send(\`User ID: \${userId}\`)
+})
+`}
+                </Highlighter>
+
+                <p className='font-semibold p-2'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        The route /users/:id dynamically handles GET requests for user IDs.
+                    </li>
+
+                    <li>
+                        The req.params.id retrieves the dynamic portion of the URL.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: Middleware with GET</p>
+
+                <Highlighter language='js'>
+                    {`app.get('/dashboard', authenticate, (req, res) => {
+    res.send('Welcome to your dashboard')
+})
+`}
+                </Highlighter>
+
+                <p className='font-semibold p-2'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        Middleware authenticate ensures only logged-in users can access the dashboard.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: JSON Response</p>
+
+                <Highlighter language='js'>
+                    {`app.get('/api/products', (req, res) => {
+    res.json([
+        { id: 1, name: 'Laptop', price: 1200 },
+        { id: 2, name: 'Phone', price: 800 }
+    ])
+})
+`}
+                </Highlighter>
+
+                <p className='font-semibold p-2'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        The route /api/products serves a JSON array of products.
+                    </li>
+
+                    <li>
+                        Use this for API endpoints.
+                    </li>
+                </ul>
             </Section>
 
             <Section
                 id='app.listen'
             >
-                <h3 className='text-xl font-bold py-2'>
+                <div className='mb-8'></div>
+
+                <Divider />
+
+                <h3 className='text-xl font-bold pt-8'>
                     app.listen(path, [callback])
                 </h3>
 
-                <p className='pb-2'>
+                <p className='py-2'>
                     Starts a UNIX socket and listens for connections on the given path. This method is identical to Node’s http.Server.listen().
                 </p>
 
