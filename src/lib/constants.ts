@@ -55,13 +55,15 @@ export const GuideNavLinks = {
         { id: 'nodeplace-router', name: 'NodePlace Router' },
     ],
     Middleware: [
-        { id: 'res.cookie', name: 'res.cookie()' },
+        { id: 'using-middleware', name: 'Using Middleware' },
+        { id: 'writing-middleware', name: 'Writing Middleware' },
     ],
     "Error Handling": [
-        { id: 'router.route', name: 'router.route()' },
+        { id: 'catching.errors', name: 'Catching Errors' },
+        // { id: 'default.error-handler', name: 'Default Error Handler' },
+        { id: 'writing.error.handlers', name: 'Writing Error Handlers' },
     ],
 }
-
 
 export const tableData = {
     nodeplaceStatic: [
@@ -112,14 +114,17 @@ export const tableData = {
 
 export const features = {
     coreFeatures: [
-        { feature: "Routing", description: "Defines how HTTP requests are handled based on URL paths." },
-        { feature: "Middleware", description: "Intercepts incoming requests and outgoing responses for various tasks." },
-        { feature: "Error Handling", description: "Gracefully handles exceptions and sends appropriate error responses." },
+        { feature: "Routing", description: "Intuitive system to define how HTTP requests are handled based on URL paths and methods." },
+        { feature: "Middleware", description: "Handles request/response interception, enabling flexible functionality and modular design." },
+        { feature: "Error Handling", description: "Provides robust error-catching and custom error-handler support for consistent responses." },
+        { feature: "Static File Serving", description: "Efficiently serves static files with options for caching, custom headers, and file extension fallbacks." },
     ],
     additionalFeatures: [
-        { feature: "Zero dependency ", description: "Simplifies development by eliminating peer dependency issues." },
-        { feature: "Fast and Efficient", description: "Built on Node.js for high performance and asynchronous operations." },
-        { feature: "Seamless Integration with Node.js Ecosystem", description: "Integrates easily with other Node.js modules and libraries." },
+        { feature: "Zero dependency ", description: "Lightweight and simple, with no external dependencies to minimize peer dependency issues." },
+        { feature: "Flexible Event System", description: "Easily manage custom events to streamline workflows for real-time and asynchronous tasks." },
+        { feature: "Seamless Integration with Node.js", description: "Designed to integrate effortlessly with the Node.js ecosystem." },
+        { feature: "Performance-Optimized Architecture", description: "Built with high performance and scalability in mind." },
+        { feature: "Comprehensive API Support", description: "Equipped with modern HTTP utilities for JSON parsing, cookie management, and more." },
     ],
 }
 

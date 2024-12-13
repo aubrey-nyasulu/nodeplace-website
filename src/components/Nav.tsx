@@ -38,6 +38,11 @@ function Nav() {
     return () => document.removeEventListener('scroll', scrollCallback)
   }, [headerIsVisible])
 
+  useEffect(() => {
+    const main = document.querySelector('main')
+    main?.classList.toggle('blur', menuOpen)
+  }, [menuOpen])
+
   return (
     <nav className="w-screen px-4 lg:px-0 py-2 h-fit  fixed top-0 left-[50%] -translate-x-[50%] z-50 bg-white/10 dark:bg-black/10 backdrop-blur-lg border-b border-b-stone-300/50 dark:border-b-stone-800 ">
       <div className="langingpage-container flex items-center justify-between">
@@ -56,20 +61,19 @@ function Nav() {
             </Link>
             <div className="md:hidden">
               <MenuComponent {...{ headerIsVisible, setMenuOpen }} />
-
-              <ul className={twMerge('absolute mt-2 right-0 flex-col items-center gap-8 dark:text-gray-200 bg-white  dark:bg-stone-900 border-b border-b-stone-300 dark:border-b-stone-800 p-16 py-8 rounded-md hidden', menuOpen && 'flex')}>
-                <li className="hover:text-primary"><Link href="/guide">Guide</Link></li>
-                <li className="hover:text-primary"><Link href="#">Templates</Link></li>
-                <li className="hover:text-primary"><Link href="#">Blog</Link></li>
-                <Link
-                  href='/documentation'
-                  className="btn-primary whitespace-nowrap"
-                >
-                  API Documentation
-                </Link>
-              </ul>
             </div>
           </div>
+          <ul className={twMerge('absolute top-16 w-full mt-2 right-0 flex-col items-start gap-8 dark:text-gray-200 bg-white  dark:bg-stone-900 border border-b-stone-300 dark:border-orange-600/10 p-4 py-8 rounded-md hidden md:hidden', menuOpen && 'flex')}>
+            <li className="hover:text-primary"><Link href="/guide">📌 Guide</Link></li>
+            <li className="hover:text-primary"><Link href="#">🚀 Templates</Link></li>
+            <li className="hover:text-primary"><Link href="/blog">📰 Blog</Link></li>
+            <Link
+              href='/documentation'
+              className="btn-primary w-full rounded-md whitespace-nowrap"
+            >
+              API Documentation
+            </Link>
+          </ul>
         </div>
       </div>
     </nav>

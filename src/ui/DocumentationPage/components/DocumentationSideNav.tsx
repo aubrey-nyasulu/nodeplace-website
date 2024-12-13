@@ -7,55 +7,15 @@ import { documentationNavLinks } from "../../../lib/constants"
 import LiElement from "../../../components/LiElement"
 import { DoubleCaret } from "../../../assets/SVGComponents"
 import Link from "next/link"
+import VersionSelector from "@/src/components/VersionSelector"
 
 function DocumentationSideNav() {
     const { currentSection, setCurrentSection } = useContext(DocumentationContext)
 
     return (
         <aside className="fixed top-[0px] w-72 h-screen overflow-y-auto border-r border-r-stone-300 dark:border-r-stone-800 hidden md:block pt-[100px] px-2">
-            <div className="w-full mb-5 group/main">
-                <button className="w-full flex items-center justify-between p-4 py-2 border border-stone-300 dark:border-stone-800 rounded-md ">
-                    <div className="">
-                        <p>Alpha Version</p>
-                        <small className="text-gray-600 dark:text-gray-400 text-start block">v0.3.0</small>
-                    </div>
-                    <DoubleCaret {...{ color: 'gray' }} />
-                </button>
-                <div>
-                    <div className="w-[calc(calc(100%_-_8px))] group-hover/main:flex flex-col gap-0 justify-between p-0 border border-stone-300 dark:border-stone-800 rounded-md mt-[1px] absolute z-50 bg-[#f5f6fa] dark:bg-[#100a06] hidden group/btns ">
-                        <button
-                            disabled
-                            className="w-full flex items-center justify-between p-4 py-2 hover:bg-black/10 dark:hover:bg-white/10 "
-                        >
-                            <div className="opacity-30">
-                                <p>Beta Version</p>
-                                <small className="text-gray-600 dark:text-gray-400 text-start block">v0.5.0</small>
-                            </div>
-                            <DoubleCaret {...{ color: 'gray' }} />
-                        </button>
-                        <button
-                            disabled
-                            className="w-full flex items-center justify-between p-4 py-2 hover:bg-black/10 dark:hover:bg-white/10"
-                        >
-                            <div className="opacity-30">
-                                <p>Stable Release</p>
-                                <small className="text-gray-600 dark:text-gray-400 text-start block">v1.0.0</small>
-                            </div>
-                            <DoubleCaret {...{ color: 'gray' }} />
-                        </button>
-                        <button
-                            className="w-full flex items-center justify-between p-4 py-2 bg-black/10 dark:bg-white/10 group-hover/btns:bg-transparent hover:bg-black/10 dark:hover:bg-white/10"
-                        >
-                            <div className="">
-                                <p>Alpha Version</p>
-                                <small className="text-gray-600 dark:text-gray-400 text-start block">v0.3.0</small>
-                            </div>
-                            <DoubleCaret {...{ color: 'gray' }} />
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <ul className="sticky top-0 space-y-2">
+            <VersionSelector />
+            <ul className="sticky top-0 space-y-2 mt-5">
                 <li
                     onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'nodeplace-route' }))}
                     className={`w-full h-fit`}

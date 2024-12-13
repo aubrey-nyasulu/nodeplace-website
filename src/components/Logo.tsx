@@ -8,7 +8,7 @@ import { usePathname } from 'next/navigation'
 function Logo({ headerIsVisible }: { headerIsVisible: boolean }) {
     const path = usePathname()
 
-    const invert = path === '/' && !headerIsVisible || path === '/documentation' || path === '/guide'
+    const invert = path === '/' && !headerIsVisible || path === '/documentation' || path === '/guide' || path === '/blog'
 
     return (
         <Link
@@ -18,7 +18,7 @@ function Logo({ headerIsVisible }: { headerIsVisible: boolean }) {
         // className="flex gap-1 md:gap-2 items-center"
         >
             <div
-                className={`w-16 h-fit overflow-hidden ${invert && 'invert dark:invert-0'} `}
+                className={`w-16 h-fit overflow-hidden ${invert && 'invert dark:invert-0'} opacity-80 `}
             >
                 <Image
                     src={logo}
@@ -29,7 +29,7 @@ function Logo({ headerIsVisible }: { headerIsVisible: boolean }) {
             </div>
             {/* </div> */}
             <div className="">
-                <p className={`text-xl font-medium text-white ${invert && 'invert dark:invert-0'} `}>NodePlace</p>
+                <p className={`text-xl md:text-2xl font-medium `}>NodePlace</p>
             </div>
         </Link>
     )

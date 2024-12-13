@@ -1,5 +1,5 @@
 
-import Highlighter from '../Highlighter'
+import Highlighter from '../../../components/Highlighter'
 import Note from '../../../components/Note'
 import Section from '../components/Section'
 import Link from 'next/link'
@@ -13,7 +13,7 @@ function NodePlaceSection() {
         <Section
             id='nodeplace-route'
             isRoute={true}
-            className="w-full flex flex-col gap-8"
+            className="w-full flex flex-col gap-8 z-40"
         >
             <Section
                 id='introduction'
@@ -27,15 +27,15 @@ function NodePlaceSection() {
                 <h3 className='text-2xl font-bold pt-8'>What is NodePlace.js?</h3>
 
                 <p className='pt-2 pb-8'>
-                    Nodeplace is a zero dependency, lightweight and intuitive Node.js framework designed for building fast and scalable server applications. It provides all the power of a robust framework with a refined focus on API development. Whether you're creating APIs, microservices, or server-driven applications, Nodeplace ensures a smooth development experience. It is a drop in replacement of Express.js with minor differences.
+                    NodePlace is a lightweight, zero-dependency Node.js framework designed for building fast, scalable server-side applications. With a strong focus on simplicity and performance, NodePlace is ideal for creating APIs, microservices, or server-driven applications. Its intuitive design makes it a perfect drop-in replacement for Express.js, sharing familiar syntax and structure while introducing additional features tailored for modern development.
                 </p>
 
                 <Divider />
 
-                <h4 className='text-xl font-bold pt-8 pb-2'>Pre-Requisite Knowledge</h4>
+                <h4 className='text-xl font-bold pt-8 pb-2'>Pre-Requisites</h4>
 
                 <p className='pb-8'>
-                    To effectively utilize this framework, a foundational understanding of Node.js is essential. While not strictly required, prior experience with Express.js can accelerate the learning curve, as this framework serves as a direct replacement, offering a familiar syntax and structure.
+                    To get the most out of NodePlace, it’s recommended that you have a foundational understanding of Node.js. While not strictly required, prior experience with Express.js can accelerate the learning curve, as this framework have a similar syntax and structure.
                 </p>
 
                 <Divider />
@@ -59,29 +59,31 @@ function NodePlaceSection() {
 
                 <h3 className='text-2xl font-bold pt-8'>Installing</h3>
 
+                <h4 className='text-lg font-bold pt-8'>Installation via NPM</h4>
+
                 <p className='py-2'>
-                    Assuming you’ve already installed Node.js, create a directory to hold your application, and make that your working directory.
+                    To start using NodePlace, install it using your preferred package manager. We recommend using npm or yarn for simplicity:
                 </p>
 
-                <Highlighter language='js'>
-                    {`$ mkdir myapp \n$ cd myapp`}
+                <Highlighter language='bash'>
+                    npm install nodeplace
                 </Highlighter>
 
                 <p className='pb-2'>
-                    Use the npm init command to create a package.json file for your application. For more information on how package.json works, see Specifics of npm’s package.json handling.
+                    or if you use yarn:
                 </p>
 
-                <Highlighter language='js'>
-                    {`$ npm init -y`}
+                <Highlighter language='bash'>
+                    yarn add nodeplace
                 </Highlighter>
 
-                <p className='pb-2'>
-                    Now, install NodePlace in the myapp directory and save it in the dependencies list. For example:
-                </p>
+                <h4 className='text-lg font-bold py-2'>Requirements</h4>
 
-                <Highlighter language='js'>
-                    {`$ npm install nodeplace`}
-                </Highlighter>
+                <ul className="list-disc space-y-2 pl-8">
+                    <li>
+                        <span className='font-semibold'>Node.js 16 or higher:</span> NodePlace leverages modern JavaScript features, so ensure your environment is up to date.</li>
+                    <li><span className='font-semibold'>Package Manager:</span> Ensure you have npm or yarn installed to manage dependencies effectively.</li>
+                </ul>
             </Section>
 
             <Section
@@ -94,44 +96,61 @@ function NodePlaceSection() {
                 <h3 className='text-2xl font-bold pt-8'>Hello World</h3>
 
                 <p className='py-2'>
-                    This app starts a server and listens on port 3000 for connections. The app responds with “Hello World!” for requests to the root URL (/) or route. For every other path, it will respond with a 404 Not Found.
+                    Getting started with NodePlace is simple. Here's a quick example to set up a basic server:
                 </p>
 
                 <Highlighter language='js'>
-                    {`const nodeplace = require('nodeplace')
+                    {`import nodeplace from 'nodeplace'
+
 const app = nodeplace()
-const port = 3000
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+    res.send('Hello, World!')
 })
 
-app.listen(port, () => {
-  console.log(\`Example app listening on port \${port}\`)
-})`}
+app.listen(3000, () => {
+    console.log('Server is running on http://localhost:3000')
+})
+`}
                 </Highlighter>
 
-                <h4 className='pb-2 text-lg font-bold'>
-                    Running Locally
-                </h4>
+                <h4 className='text-lg font-bold py-2'>Explanation</h4>
 
-                <p className='pb-2'>
-                    Follow the <Link className='text-[dodgerblue]' href="#installing">installation guide</Link> to Install the package. In the myapp directory, create a file named app.js and copy the code from the example above.
-                </p>
+                <ul className="pl-8">
+                    <li className='list-decimal font-semibold'>Import the Framework:</li>
+                    <p className='pb-2'>Use the nodeplace package to access all the core functionalities.</p>
+
+                    <li className='list-decimal font-semibold'>Create an Application Instance:</li>
+                    <p className='pb-2'>nodeplace() initializes a new app, similar to other Node.js frameworks.</p>
+
+                    <li className='list-decimal font-semibold'>Define a Route:</li>
+                    <p className='pb-2'>The app.get() method specifies an HTTP GET handler for the root URL (/).</p>
+
+                    <li className='list-decimal font-semibold'>Start the Server:</li>
+                    <p className='pb-2'>The app.listen() method starts the server on port 3000 and listens for incoming requests.</p>
+                </ul>
 
                 <Note>
                     <p>
-                        The <span className='bg-black/80 text-white px-1 pb-[2px] rounded-md'>req</span> (request) and <span className='bg-black/80 text-white px-1 pb-[2px] rounded-md'>res</span> (response) are the exact same objects that Node provides, so you can invoke <span className='bg-black/80 text-white px-1 pb-[2px] rounded-md'>req.pipe()</span>, <span className='bg-black/80 text-white px-1 pb-[2px] rounded-md'>req.on('data', callback)</span>, and anything else you would do without NodePlace involved.
+                        "The <span className='bg-black/80 text-white px-1 pb-[2px] rounded-md'>req</span> (request) and <span className='bg-black/80 text-white px-1 pb-[2px] rounded-md'>res</span> (response)  objects in NodePlace are built on the native Node.js objects, with added methods and properties to simplify common tasks. You can still use native methods like <span className='bg-black/80 text-white px-1 pb-[2px] rounded-md'>req.pipe()</span> or <span className='bg-black/80 text-white px-1 pb-[2px] rounded-md'>req.on('data', callback)</span> seamlessly, while benefiting from the extended capabilities provided by NodePlace."
                     </p>
                 </Note>
 
-                <p className='py-2'>
-                    Run the app with the following command:
-                </p>
+                <h4 className='text-lg font-bold pt-4'>Running the Server</h4>
+
+                <ul className="pl-8 pb-2">
+                    <li className='list-decimal'>Create a file named server.js and paste the code above into it.</li>
+
+                    <li className='list-decimal'>Run the app with:</li>
+                </ul>
 
                 <Highlighter language='js'>
-                    {`$ node app.js`}
+                    node server.js
                 </Highlighter>
+
+                <p className=''>
+                    Visit http://localhost:3000 in your browser or API testing tool (e.g., Postman or Insomnia). You should see the text "Hello, World!".
+                </p>
             </Section>
         </Section>
     )
