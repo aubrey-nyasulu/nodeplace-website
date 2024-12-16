@@ -1,20 +1,11 @@
 'use client'
 
-import { useContext } from "react"
-import DocumentationContext from "../../../context/DocumentationStateProvider"
-import { twMerge } from "tailwind-merge"
-import { GuideNavLinks } from "../../../lib/constants"
-import LiElement from "../../../components/LiElement"
-import Link from "next/link"
-import VersionSelector from "@/src/components/VersionSelector"
-
-function GuideSideNav() {
-    const { currentSection, setCurrentSection } = useContext(DocumentationContext)
+function TemplatesSideNav() {
 
     return (
         <aside className="fixed top-[0px] w-72 h-screen overflow-y-auto border-r border-r-stone-300 dark:border-stone-800 hidden md:block pt-[100px] px-2 pb-8">
-            <VersionSelector />
-            <ul className="sticky top-0 space-y-2 mt-5">
+            {/* <VersionSelector /> */}
+            {/* <ul className="sticky top-0 space-y-2 mt-5">
                 <li
                     onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'nodeplace-route' }))}
                     className={`w-full h-fit`}
@@ -91,9 +82,9 @@ function GuideSideNav() {
                         }
                     </ul>
                 </li>
-            </ul>
+            </ul> */}
         </aside>
     )
 }
 
-export default GuideSideNav
+export default TemplatesSideNav

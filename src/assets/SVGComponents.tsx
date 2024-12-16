@@ -169,3 +169,28 @@ export const Info = () => (
     />
   </svg>
 )
+
+export const NewWindow = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width="1em"
+    height="1em"
+  >
+    <g id="SVGRepo_iconCarrier">
+      <defs>
+        <style>
+          {
+            ".cls-1{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:bevel;stroke-width:1.5px}"
+          }
+        </style>
+      </defs>
+      <g id="ic-actions-new-window">
+        <path
+          d="M22 14.553V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h5.532M21.391 2.477 9.255 14.085M16.968 1.904h3.09a1.822 1.822 0 0 1 1.91 1.719v3.281"
+          className="cls-1"
+        />
+      </g>
+    </g>
+  </svg>
+)

@@ -68,7 +68,7 @@ function Nav() {
           </div>
           <ul className={twMerge('absolute top-20 w-full mt-2 right-0 flex-col items-start gap-8 dark:text-gray-200 bg-white  dark:bg-stone-900 border border-b-stone-300 dark:border-orange-600/10 p-4 py-8 rounded-md hidden md:hidden', menuOpen && 'flex')}>
             <li className="hover:text-primary"><Link href="/guide">📌 Guide</Link></li>
-            <li className="hover:text-primary"><Link href="#">🚀 Templates</Link></li>
+            <li className="hover:text-primary"><Link href="/templates">🚀 Templates</Link></li>
             <li className="hover:text-primary"><Link href="/blog">📰 Blog</Link></li>
             <Link
               href='/documentation'
