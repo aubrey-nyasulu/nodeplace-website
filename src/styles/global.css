@@ -62,6 +62,19 @@ img {
   filter: blur(20);
 }
 
+.infinite-vertical-scroll{
+  animation: infinite-vertical-scroll 20s linear infinite;
+}
+
+@keyframes infinite-vertical-scroll{
+  from{
+    transform: translateX(0%) ;
+  }
+  to{
+    transform: translateX(-50%) ;
+  }
+}
+
 @layer components {
   .langingpage-container {
     @apply w-full md:max-w-[900px] md:w-full lg:max-w-[1000px] xl:max-w-6xl 2xl:max-w-7xl mx-auto relative;
@@ -73,7 +86,7 @@ img {
   }
 
   .btn-secondary {
-    @apply bg-black w-fit h-fit border-2 border-[#481d11] py-3 px-6 rounded-full font-semibold;
+    @apply bg-black w-fit h-fit border-2 dark:border-orange-300/30 py-3 px-6 rounded-full font-semibold;
   }
 
 }

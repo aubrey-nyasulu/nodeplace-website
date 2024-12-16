@@ -148,6 +148,8 @@ app.listen(3000, () => {
 `}
                 </Highlighter>
 
+                <div className='mb-8'></div>
+
                 <Note className='bg-red-800/70 dark:bg-red-800/40'>
                     <p>As <span className='bg-black/80 text-white px-1 pb-[2px] rounded-md'>req.body</span>’s shape is based on user-controlled input, all properties and values in this object are untrusted and should be validated before trusting. For example, <span className='bg-black/80 text-white px-1 pb-[2px] rounded-md'>req.body.foo.toString()</span> may fail in multiple ways, for example <span className='bg-black/80 text-white px-1 pb-[2px] rounded-md'>foo</span> may not be there or may not be a string, and <span className='bg-black/80 text-white px-1 pb-[2px] rounded-md'>toString</span> may not be a function and instead a string or other user-input.</p>
                 </Note>
@@ -263,6 +265,8 @@ app.listen(3000, () => {
 })
 `}
                 </Highlighter>
+
+                <div className='mb-8'></div>
 
                 <Note>
                     {`

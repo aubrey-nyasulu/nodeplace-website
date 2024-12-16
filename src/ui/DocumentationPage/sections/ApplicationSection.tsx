@@ -59,7 +59,7 @@ app.listen(3000, () => {
 `}
                 </Highlighter>
 
-                <p>Adding Routes</p>
+                <p className='pb-2'>Adding Routes</p>
 
                 <Highlighter language='js'>
                     {`app.get('/', (req, res) => {
@@ -72,7 +72,7 @@ app.post('/submit', (req, res) => {
 `}
                 </Highlighter>
 
-                <p>Mounting Middleware</p>
+                <p className='pb-2'>Mounting Middleware</p>
 
                 <Highlighter language='js'>
                     {`app.use((req, res, next) => {
@@ -81,13 +81,16 @@ app.post('/submit', (req, res) => {
 })
 `}
                 </Highlighter>
-
             </Section>
 
             <Section
                 id='app.all'
             >
-                <div className='mb-8'></div>
+                <div className='mt-8'></div>
+
+                <Divider />
+
+                <h2 className='text-2xl font-bold py-8'>Methods</h2>
 
                 <Divider />
 
@@ -104,7 +107,7 @@ app.post('/submit', (req, res) => {
                     app.all(path, callback [, callback ...])
                 </Highlighter>
 
-                <p className='pb-2 font-semibold'>
+                <p className='py-2 font-semibold'>
                     Parameters
                 </p>
 
@@ -120,7 +123,7 @@ app.post('/submit', (req, res) => {
                     </li>
                 </ul>
 
-                <p className='font-semibold pb-2'>Example: Logging All HTTP Methods</p>
+                <p className='font-semibold pb-2 pt-4'>Example: Logging All HTTP Methods</p>
 
                 <Highlighter language='js'>
                     {`app.all('/logs', (req, res) => {
@@ -183,7 +186,7 @@ app.post('/submit', (req, res) => {
                     app.delete(path, callback [, callback ...])
                 </Highlighter>
 
-                <p className='pb-2'>Parameters</p>
+                <p className='py-2'>Parameters</p>
 
                 <ul className='pl-8 space-y-2 list-disc'>
                     <li>
@@ -208,7 +211,7 @@ app.post('/submit', (req, res) => {
 `}
                 </Highlighter>
 
-                <p className='pb-2'>In this example:</p>
+                <p className='py-2'>In this example:</p>
 
                 <ul className='pl-8 space-y-2 list-disc'>
                     <li>
@@ -231,7 +234,7 @@ app.post('/submit', (req, res) => {
 `}
                 </Highlighter>
 
-                <p className='pb-2'>In this example:</p>
+                <p className='py-2'>In this example:</p>
 
                 <ul className='pl-8 space-y-2 list-disc'>
                     <li>
@@ -386,24 +389,50 @@ app.post('/submit', (req, res) => {
                 </h3>
 
                 <p className='py-2'>
-                    Starts a UNIX socket and listens for connections on the given path. This method is identical to Node’s http.Server.listen().
+                    The app.listen() method binds and listens for connections on the specified port or path. It is typically the final step in starting your NodePlace application, making it ready to handle incoming requests.
                 </p>
 
-                <p className='pb-2'>
-                    Example
+                <p className='pb-2 font-semibold'>
+                    Syntax
                 </p>
 
                 <Highlighter language='js'>
-                    {`const nodeplace = require('nodeplace') \n\nconst app = nodeplace() \n\napp.listen('/tmp/sock')`}
+                    {`app.listen([port[, host[, backlog]]][, callback])
+app.listen(path, [callback])
+`}
                 </Highlighter>
 
-                <h4 className='text-2xl font-bold py-2'>
-                    app.listen([port[, host[, backlog]]][, callback])
-                </h4>
-
-                <p className='pb-2'>
-                    Binds and listens for connections on the specified host and port. This method is identical to Node’s http.Server.listen().
+                <p className='pt-2 pb-1 font-semibold'>
+                    Parameters
                 </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        <span>Port</span>
+                        (optional): The port number for the server to listen on.
+                    </li>
+
+                    <li>
+                        <span>host</span>
+                        (optional): The hostname or IP address to bind the server to. Defaults to "0.0.0.0".
+                    </li>
+
+                    <li>
+                        <span>backlog</span>
+                        (optional): The maximum number of pending connections the server will allow.
+                    </li>
+
+                    <li>
+                        <span>path</span>
+                        (optional): A Unix domain socket path or Windows named pipe for server connections.
+                    </li>
+
+                    <li>
+                        <span>callback</span>
+                        (optional): A function that executes once the server starts successfully.
+                    </li>
+                </ul>
+
                 <p className='pb-2'>
                     If port is omitted or is 0, the operating system will assign an arbitrary unused port, which is useful for cases like automated tasks (tests, etc.).
                 </p>
@@ -412,78 +441,634 @@ app.post('/submit', (req, res) => {
                     {`const nodeplace = require('nodeplace') \n\nconst app = nodeplace() \n\napp.listen(3000)`}
                 </Highlighter>
 
-                <p className='pb-2'>
-                    The app returned by nodeplace() is in fact a JavaScript Function, designed to be passed to Node’s HTTP servers as a callback to handle requests. This makes it easy to provide both HTTP and HTTPS versions of your app with the same code base, as the app does not inherit from these (it is simply a callback):
-                </p>
+
+                <p className='pt-4 pb-2'>Example: Listening on a Port</p>
 
                 <Highlighter language='js'>
-                    {`const nodeplace = require('nodeplace') \nconst https = require('https') \nconst http = require('http') \nconst app = nodeplace() \n\nhttp.createServer(app).listen(80) \n\nhttps.createServer(options, app).listen(443)`}
+                    {`app.listen(3000, () => {
+    console.log('Server is running at http://localhost:3000')
+})
+`}
                 </Highlighter>
+
+                <p className='pb-1'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        The server listens on port 3000.
+                    </li>
+
+                    <li>
+                        A success message is logged to the console.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: Listening on a Unix Socket</p>
+
+                <Highlighter language='js'>
+                    {`app.listen('/tmp/app.sock', () => {
+    console.log('Server is listening on /tmp/app.sock')
+})
+`}
+                </Highlighter>
+
+                <p className='pb-1'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        The server listens on a Unix domain socket at /tmp/app.sock.
+                    </li>
+
+                    <li>
+                        Suitable for inter-process communication on Unix-like systems.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: Dynamic Port Assignment</p>
+
+                <Highlighter language='js'>
+                    {`app.listen('/tmp/app.sock', () => {
+    console.log('Server is listening on /tmp/app.sock')
+})
+`}
+                </Highlighter>
+
+                <p className='pb-1'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        The operating system assigns an unused port dynamically.
+                    </li>
+
+                    <li>
+                        Use this for scenarios like test automation.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Using HTTPS and HTTP Together</p>
+
+                <Highlighter language='js'>
+                    {`import http from 'http'
+import https from 'https'
+
+const app = nodeplace()
+
+http.createServer(app).listen(80, () => {
+    console.log('HTTP server running on port 80')
+})
+
+https.createServer({ key: privateKey, cert: certificate }, app).listen(443, () => {
+    console.log('HTTPS server running on port 443')
+})
+`}
+                </Highlighter>
+
+                <p className='pb-1'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        The same app handles both HTTP and HTTPS requests using Node.js' http and https modules.
+                    </li>
+
+                    <li>
+                        Use this for scenarios like test automation.
+                    </li>
+                </ul>
             </Section>
 
             <Section
-                id='app.post'
+                id='app.patch'
             >
-                <h3 className='text-xl font-bold py-2'>
-                    app.post(path, callback [, callback ...])
+                <div className='mb-8'></div>
+
+                <Divider />
+
+                <h3 className='text-xl font-bold pt-8'>
+                    app.patch(path, callback [, callback ...])
                 </h3>
 
-                <p className='pb-2'>
-                    Routes HTTP POST requests to the specified path with the specified callback functions. For more information, see the routing guide.
+                <p className='py-2'>
+                    The app.patch() method routes HTTP PATCH requests to the specified path and handles them with the provided callback(s). This method is typically used for partially updating resources.
                 </p>
 
-                <p className='pb-2'>Example</p>
+                <p className='pb-2 font-semibold'>
+                    Syntax
+                </p>
 
                 <Highlighter language='js'>
-                    {`app.post('/', (req, res) => { \n   res.send('POST request to homepage') \n})`}
+                    app.patch(path, callback [, callback ...])
                 </Highlighter>
+
+                <p className='pb-1 font-semibold'>
+                    Parameters
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        <span>path:</span>
+                        The route path where the handler should apply.
+                    </li>
+
+                    <li>
+                        <span>callback:</span>
+                        One or more callback functions to handle the request, with the standard (req, res, next) signature.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: Basic PATCH Handler</p>
+
+                <Highlighter language='js'>
+                    {`app.patch('/user', (req, res) => {
+    res.send('User updated')
+})
+`}
+                </Highlighter>
+
+                <p className='pb-1'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        The route /user accepts PATCH requests.
+                    </li>
+
+                    <li>
+                        A simple confirmation message is sent to the client.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: Dynamic Routes</p>
+
+                <Highlighter language='js'>
+                    {`app.patch('/users/:id', (req, res) => {
+    const userId = req.params.id
+    res.send(\`User with ID \${userId} has been updated\`)
+})
+`}
+                </Highlighter>
+
+                <p className='pb-1'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        The route /users/:id dynamically handles PATCH requests for specific user IDs.
+                    </li>
+
+                    <li>
+                        req.params.id retrieves the dynamic portion of the URL to identify the user.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: Middleware with PATCH</p>
+
+                <Highlighter language='js'>
+                    {`app.patch('/settings', verifyToken, (req, res) => {
+    res.send('Settings have been updated')
+})
+`}
+                </Highlighter>
+
+                <p className='pb-1'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        Middleware verifyToken ensures that only authorized users can access the /settings route.
+                    </li>
+
+                    <li>
+                        The response confirms the successful update of settings.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: JSON Payload</p>
+
+                <Highlighter language='js'>
+                    {`app.patch('/api/products/:id', (req, res) => {
+    const { id } = req.params
+    const { name, price } = req.body
+
+    res.json({ id, updated: { name, price } })
+})
+`}
+                </Highlighter>
+
+                <p className='pb-1'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        The route /api/products/:id accepts PATCH requests with a JSON payload.
+                    </li>
+
+                    <li>
+                        The response includes the updated product details.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: Chained Middleware</p>
+
+                <Highlighter language='js'>
+                    {`app.patch(
+    '/profile',
+    validateProfileUpdate,
+    saveChanges,
+    (req, res) => {
+        res.send('Profile updated successfully')
+    }
+)
+`}
+                </Highlighter>
+
+                <p className='pb-1'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        Multiple middleware functions are chained together:
+                        <ul className='pl-8 list-disc space-y-1'>
+                            <li>validateProfileUpdate ensures incoming data is valid.</li>
+                            <li>saveChanges persists updates to the database.</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        The final callback sends a success message to the client.
+                    </li>
+                </ul>
             </Section>
 
             <Section
                 id='app.put'
             >
-                <h3 className='text-xl font-bold py-2'>
+                <div className='mb-8'></div>
+
+                <Divider />
+
+                <h3 className='text-xl font-bold pt-8'>
                     app.put(path, callback [, callback ...])
                 </h3>
 
-                <p className='pb-2'>
-                    Routes HTTP PUT requests to the specified path with the specified callback functions.
+                <p className='py-2'>
+                    The app.put() method routes HTTP PUT requests to the specified path and handles them with the provided callback(s). This method is generally used to update or replace existing resources on the server.
                 </p>
 
-                <p className='pb-2'>Example</p>
+                <p className='pb-2 font-semibold'>
+                    Syntax
+                </p>
 
                 <Highlighter language='js'>
-                    {`app.put('/', (req, res) => { \n   res.send('PUT request to homepage') \n})`}
+                    app.put(path, callback [, callback ...])
                 </Highlighter>
+
+                <p className='pb-1 font-semibold'>
+                    Parameters
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        <span>path:</span>
+                        The route path where the handler should apply.
+                    </li>
+
+                    <li>
+                        <span>callback:</span>
+                        One or more callback functions to handle the request, with the standard (req, res, next) signature.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: Basic PUT Handler</p>
+
+                <Highlighter language='js'>
+                    {`app.put('/profile', (req, res) => {
+    res.send('Profile updated successfully')
+})
+`}
+                </Highlighter>
+
+                <p className='pb-1'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        The route /profile accepts PUT requests.
+                    </li>
+
+                    <li>
+                        A success message is sent to the client.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: Updating Resource Data</p>
+
+                <Highlighter language='js'>
+                    {`app.put('/users/:id', (req, res) => {
+    const userId = req.params.id
+    const updatedData = req.body
+    res.json({ message: \`User \${userId} updated\`, updatedData })
+})
+`}
+                </Highlighter>
+
+                <p className='pb-1'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        The route /users/:id dynamically handles PUT requests for specific users.
+                    </li>
+
+                    <li>
+                        req.params.id retrieves the user ID from the URL.
+                    </li>
+
+                    <li>
+                        req.body contains the updated user data sent in the request payload.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: Middleware with PUT</p>
+
+                <Highlighter language='js'>
+                    {`app.put('/settings', authenticate, (req, res) => {
+    res.send('Settings updated successfully')
+})
+`}
+                </Highlighter>
+
+                <p className='pb-1'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        Middleware authenticate ensures only authorized users can update settings.
+                    </li>
+
+                    <li>
+                        The final callback confirms the update.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: Handling Partial Updates with PUT</p>
+
+                <Highlighter language='js'>
+                    {`app.put('/orders/:orderId', (req, res) => {
+    const orderId = req.params.orderId
+    const changes = req.body
+    res.json({ message: \`Order \${orderId} updated\`, changes })
+})
+`}
+                </Highlighter>
+
+                <p className='pb-1'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        The route /orders/:orderId accepts PUT requests for modifying order details.
+                    </li>
+
+                    <li>
+                        The server responds with the applied changes.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: Chained Middleware for Validation</p>
+
+                <Highlighter language='js'>
+                    {`app.put(
+    '/posts/:id',
+    validatePostData,
+    updatePostInDatabase,
+    (req, res) => {
+        res.send('Post updated successfully')
+    }
+)
+`}
+                </Highlighter>
+
+                <p className='pb-1'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        Middleware functions validatePostData and updatePostInDatabase are chained together:
+                        <ul className='pl-8 list-disc space-y-1'>
+                            <li>validatePostData ensures the submitted data is valid.</li>
+                            <li>updatePostInDatabase applies the updates in the database.</li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        The final callback sends a success response to the client.
+                    </li>
+                </ul>
             </Section>
 
             <Section
                 id='app.use'
             >
-                <h3 className='text-xl font-bold py-2'>
-                    app.use([path,] callback [, callback...])
+                <div className='mb-8'></div>
+
+                <Divider />
+
+                <h3 className='text-xl font-bold pt-8'>
+                    app.use([path,] callback [, callback ...])
                 </h3>
 
-                <p className='pb-2'>
-                    Mounts a middleware, an error handler or a router depending on the call signature
+                <p className='py-2'>
+                    The app.use() method mounts middleware, error handlers, or routers onto your NodePlace application. It is a versatile method that allows you to enhance your application’s functionality by adding reusable components to the request-response cycle.
                 </p>
 
-                {/* <p className='pb-2'>
-                    Mounts the specified middleware function or functions at the specified path: the middleware function is executed when the base of the requested path matches path.
+                <p className='pb-2 font-semibold'>
+                    Syntax
                 </p>
 
-                <h4 className='text-lg pb-0 font-bold'>Description</h4>
+                <Highlighter language='js'>
+                    app.use([path,] callback [, callback ...])
+                </Highlighter>
 
-                <p className='pb-2'>
-                    A route will match any path that follows its path immediately with a “/”. For example: app.use('/apple', ...) will match “/apple”, “/apple/images”, “/apple/images/news”, and so on.
+                <p className='pb-1 font-semibold'>
+                    Parameters
                 </p>
-                <p className='pt-1 pb-2'>
-                    Since path defaults to “/”, middleware mounted without a path will be executed for every request to the app. For example, this middleware function will be executed for every request to the app:
-                </p> */}
 
-                {/* <Highlighter language='js'>
-                    {`app.use('/', (req, res, next) => { \n   console.log('Time: %d', Date.now()) \n\n   next() \n})`}
-                </Highlighter> */}
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        <span>path</span>
+                        (optional): The base path at which the middleware or router is mounted. Defaults to /, applying the middleware globally.
+                    </li>
+
+                    <li>
+                        <span>callback:</span>
+                        One or more middleware functions, error handlers, or routers to process requests.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: Global Middleware</p>
+
+                <Highlighter language='js'>
+                    {`app.use((req, res, next) => {
+    console.log(\`\${req.method} \${req.url}\`)
+                    next()
+})
+`}
+                </Highlighter>
+
+                <p className='pb-1'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        A middleware logs each incoming request’s method and URL.
+                    </li>
+
+                    <li>
+                        It applies globally to all routes.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: Path-Specific Middleware</p>
+
+                <Highlighter language='js'>
+                    app.use('/admin', authenticate)
+                </Highlighter>
+
+                <p className='pb-1'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        The authenticate middleware is applied to all routes under /admin.
+                    </li>
+
+                    <li>
+                        Only authenticated users can access these routes.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: Mounting a Router</p>
+
+                <Highlighter language='js'>
+                    {`const userRouter = nodeplace.Router()
+
+userRouter.get('/', (req, res) => {
+    res.send('User Home')
+})
+
+userRouter.get('/:id', (req, res) => {
+    res.send(\`User ID: \{req.params.id}\`)
+})
+
+                    app.use('/users', userRouter)
+`}
+                </Highlighter>
+
+                <p className='pb-1'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        A userRouter handles requests to /users and its subpaths.
+                    </li>
+
+                    <li>
+                        The routes /users/ and /users/:id are defined within the router.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: Serving Static Files</p>
+
+                <Highlighter language='js'>
+                    app.use(nodeplace.static('public'))
+                </Highlighter>
+
+                <p className='pb-1'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        The static middleware serves files from the public directory.
+                    </li>
+
+                    <li>
+                        Requests for files like /images/logo.png are automatically handled.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: Middleware Chain</p>
+
+                <Highlighter language='js'>
+                    {`app.use(
+    '/dashboard',
+    authenticate,
+    logActivity,
+    (req, res) => {
+        res.send('Welcome to the Dashboard')
+    }
+)
+`}
+                </Highlighter>
+
+                <p className='pb-1'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        Multiple middleware functions (authenticate and logActivity) process requests to /dashboard.
+                    </li>
+
+                    <li>
+                        The final callback sends a success response.
+                    </li>
+                </ul>
+
+                <p className='pt-4 pb-2'>Example: Error Handling</p>
+
+                <Highlighter language='js'>
+                    {`app.use((err, req, res, next) => {
+    console.error(err.stack)
+    res.status(500).send('Something went wrong!')
+})
+`}
+                </Highlighter>
+
+                <p className='pb-1'>
+                    In this example:
+                </p>
+
+                <ul className='pl-8 list-disc space-y-2'>
+                    <li>
+                        An error-handling middleware catches unhandled errors in the application.
+                    </li>
+
+                    <li>
+                        It sends a 500 status code along with an error message.
+                    </li>
+                </ul>
             </Section>
         </Section>
     )

@@ -9,9 +9,9 @@ export const documentationNavLinks = {
         { id: 'app.delete', name: 'app.delete()' },
         { id: 'app.get', name: 'app.get()' },
         { id: 'app.listen', name: 'app.listen()' },
+        { id: 'app.patch', name: 'app.patch()' },
         { id: 'app.post', name: 'app.post()' },
         { id: 'app.put', name: 'app.put()' },
-        // { id: 'app.patch', name: 'app.patch()' },
         { id: 'app.use', name: 'app.use()' },
     ],
     request: [
@@ -30,15 +30,15 @@ export const documentationNavLinks = {
         { id: 'res.sendFile', name: 'res.sendFile()' },
         { id: 'res.set', name: 'res.set()' },
         { id: 'res.status', name: 'res.status()' },
-        // { id: 'res.Type', name: 'res.Type()' },
+        { id: 'res.type', name: 'res.type()' },
     ],
     router: [
-        { id: 'router.route', name: 'router.route()' },
-        { id: 'router.delete', name: 'router.delete()' },
-        { id: 'router.get', name: 'router.get()' },
-        { id: 'router.patch', name: 'router.patch()' },
-        { id: 'router.post', name: 'router.post()' },
-        { id: 'router.put', name: 'router.put()' },
+        { id: 'creating.router', name: 'Creating a Router' },
+        { id: 'handling.routes', name: 'Handling Routes with Router' },
+        { id: 'mounting.routers', name: 'Mounting Routers' },
+        { id: 'router.level.middleware', name: 'Router-Level Middleware' },
+        // { id: 'nested.routers', name: 'Nested Routers' },
+        { id: 'router.route.method', name: 'Method: router.route(path)' },
     ],
 }
 
@@ -142,6 +142,70 @@ export const tableData = {
             Description: 'Controls the Content-Type that the middleware will parse.',
             Type: 'String',
             Default: 'application/x-www-form-urlencoded'
+        },
+    ],
+    nodeplaceCookieOptions: [
+        {
+            Option: 'domain',
+            Description: "Specifies the domain for the cookie.",
+            Type: 'string',
+            Default: 'null'
+        },
+        {
+            Option: 'expires',
+            Description: 'Sets the cookie’s expiration date.',
+            Type: 'Date',
+            Default: 'null'
+        },
+        {
+            Option: 'httpOnly',
+            Description: 'Marks the cookie as accessible only via HTTP(S), not JavaScript.',
+            Type: 'boolean',
+            Default: 'false'
+        },
+        {
+            Option: 'maxAge',
+            Description: 'Specifies the time in milliseconds until the cookie expires.',
+            Type: 'number',
+            Default: 'null'
+        },
+        {
+            Option: 'path',
+            Description: 'Specifies the path for the cookie.',
+            Type: 'string',
+            Default: '/'
+        },
+        {
+            Option: 'secure',
+            Description: 'Marks the cookie to be sent only over HTTPS.',
+            Type: 'boolean',
+            Default: 'false'
+        },
+        {
+            Option: 'sameSite',
+            Description: '	Controls whether the cookie is sent with cross-site requests (Strict or Lax).',
+            Type: 'string',
+            Default: 'null'
+        },
+    ],
+    nodeplaceSendFileOptions: [
+        {
+            Option: 'maxAge',
+            Description: "Cache-Control max-age in milliseconds.",
+            Type: 'number',
+            Default: '0'
+        },
+        {
+            Option: 'root',
+            Description: 'The root directory for resolving the relative file path.',
+            Type: 'string',
+            Default: 'null'
+        },
+        {
+            Option: 'headers',
+            Description: 'The root directory for resolving the relative file path.',
+            Type: 'string',
+            Default: 'null'
         },
     ],
 }

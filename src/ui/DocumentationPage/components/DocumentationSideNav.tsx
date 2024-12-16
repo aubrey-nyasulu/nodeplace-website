@@ -13,7 +13,7 @@ function DocumentationSideNav() {
     const { currentSection, setCurrentSection } = useContext(DocumentationContext)
 
     return (
-        <aside className="fixed top-[0px] w-72 h-screen overflow-y-auto border-r border-r-stone-300 dark:border-r-stone-800 hidden md:block pt-[100px] px-2">
+        <aside className="fixed top-[0px] w-72 h-screen overflow-y-auto border-r border-r-stone-300 dark:border-r-stone-800 hidden md:block pt-[100px] px-2 pb-8">
             <VersionSelector />
             <ul className="sticky top-0 space-y-2 mt-5">
                 <li

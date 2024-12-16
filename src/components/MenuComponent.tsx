@@ -20,8 +20,11 @@ function MenuComponent({ headerIsVisible, setMenuOpen }: { headerIsVisible: bool
     }, [currentTheme, headerIsVisible])
 
     return (
-        //@ts-ignore
-        <button onClick={() => setMenuOpen(prevState => !prevState)}>
+        <button
+            className="P-0"
+            //@ts-ignore
+            onClick={() => setMenuOpen(prevState => !prevState)}
+        >
             {currentTheme === 'light' && <Menu {...{ color: color }} />}
             {currentTheme === 'dark' && <Menu />}
             {currentTheme === '' && <Menu {...{ color: color }} />}

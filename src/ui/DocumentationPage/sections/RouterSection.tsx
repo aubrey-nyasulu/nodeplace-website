@@ -1,3 +1,4 @@
+import Divider from '@/src/components/Divider'
 import Highlighter from '../../../components/Highlighter'
 import Section from '../components/Section'
 
@@ -12,141 +13,302 @@ function RouterSection() {
             <Section
                 id='router'
             >
-                <h2 className='text-3xl font-bold'>Router</h2>
+                <div className='mb-8'></div>
+
+                <Divider />
+
+                <h2 className='text-3xl font-bold pt-8'>Router</h2>
 
                 <p className='py-2'>
-                    A router object is an instance of middleware and routes. You can think of it as a “mini-application,” capable only of performing middleware and routing functions. Every NodePlace application has a built-in app router.
+                    The Router object in NodePlace is an instance of middleware and routing functionality. It acts as a "mini-application" that can have its own middleware, routes, and error-handling logic. Routers are particularly useful for modularizing your application by separating concerns and grouping related routes.
                 </p>
 
-                <p className='pb-2'>
-                    A router behaves like middleware itself, so you can use it as an argument to app.use() or as the argument to another router’s use() method.
-                </p>
+                <p className='font-semibold pb-2'>Syntax</p>
 
-                <p className='pb-2'>
-                    The top-level nodeplace object has a Router() method that creates a new router object.
-                </p>
+                <Highlighter language='js'>
+                    const router = nodeplace.Router()
+                </Highlighter>
 
-                <p className='pb-2'>
-                    Once you’ve created a router object, you can add middleware and HTTP method routes (such as get, put, post, and so on) to it just like an application. For example:
+                <p className='pb-1'>Features of Router</p>
+
+                <ul className='pl-8 space-y-2 list-disc'>
+                    <li>Modular and mountable, allowing for clean separation of application logic.</li>
+
+                    <li>Can handle its own middleware, routes, and error handlers.</li>
+
+                    {/* <li>Works seamlessly with app.use() or another router's .use() method.</li> */}
+                </ul>
+
+            </Section>
+
+            <Section
+                id='creating.router'
+            >
+                <Divider />
+
+                <h3 className='text-xl font-bold pt-8'>
+                    Creating a Router
+                </h3>
+
+                <p className='font-semibold py-2'>
+                    Example: Basic Router Setup
                 </p>
 
                 <Highlighter language='js'>
-                    {
-                        `// will handle any request that ends in /events \n// depends on where the router is "use()'d" \nrouter.route('/events').get((req, res, next) => { \n   // .. \n}) \n\n// you can also use this pattern \nrouter.get('/events', (req, res, next) => { \n   // .. \n})`
-                    }
+                    {`const router = nodeplace.Router()
+
+router.get('/', (req, res) => {
+    res.send('Welcome to the Router!')
+})
+
+app.use('/router', router)
+`}
                 </Highlighter>
 
-                <p className='pb-2'>
-                    You can then use a router for a particular root URL in this way separating your routes into files or even mini-apps.
+                <p className='pb-1'>Features of Router</p>
+
+                <ul className='pl-8 space-y-2 list-disc'>
+                    <li>A router is created using nodeplace.Router().</li>
+
+                    <li>The router handles requests to /router and responds to /router/ with a welcome message.</li>
+                </ul>
+            </Section>
+
+            <Section
+                id='handling.routes'
+            >
+                <div className='mb-8'></div>
+
+                <Divider />
+
+                <h3 className='text-xl font-bold pt-8'>
+                    Handling Routes with Router
+                </h3>
+
+                <p className='font-semibold py-2'>
+                    Dynamic Routes
+                </p>
+
+                <p className="pb-2">You can define dynamic routes with parameters directly in the router.</p>
+
+                <Highlighter language='js'>
+                    {`router.get('/user/:id', (req, res) => {
+    res.send(\`User ID: \${req.params.id}\`)
+})
+`}
+                </Highlighter>
+
+                <p className='pb-1'>Explanation:</p>
+
+                <ul className='pl-8 space-y-2 list-disc'>
+                    <li>The router handles requests to /user/:id, where :id is a dynamic parameter.</li>
+
+                    <li>Use req.params.id to access the dynamic value.</li>
+                </ul>
+
+                <p className='font-semibold py-2'>
+                    Using Middleware in Routers
+                </p>
+
+                <p className="pb-2">Routers can have middleware specific to their routes.</p>
+
+                <Highlighter language='js'>
+                    {`router.use((req, res, next) => {
+    console.log('Router-specific middleware')
+    next()
+})
+
+router.get('/dashboard', (req, res) => {
+    res.send('Router-specific Dashboard')
+})
+`}
+                </Highlighter>
+
+                <p className='pb-1'>Explanation:</p>
+
+                <ul className='pl-8 space-y-2 list-disc'>
+                    <li>Middleware added to the router applies only to routes defined within that router.</li>
+                </ul>
+
+                <p className='font-semibold py-2'>
+                    Combining Middleware and Routes
                 </p>
 
                 <Highlighter language='js'>
-                    {
-                        `// only requests to /calendar/* will be sent to our "router" \napp.use('/calendar', router)`
-                    }
+                    {`router.get(
+    '/example',
+    (req, res, next) => {
+        console.log('Middleware before response')
+        next()
+    },
+    (req, res) => {
+        res.send('Hello from Example!')
+    }
+)
+`}
                 </Highlighter>
 
-                {/* <p className='py-4'>
-                    Keep in mind that any middleware applied to a router will run for all requests on that router’s path, even those that aren’t part of the router.
-                </p> */}
+                <p className='pb-1'>Explanation:</p>
+
+                <ul className='pl-8 space-y-2 list-disc'>
+                    <li>Middleware added to the router applies only to routes defined within that router.</li>
+                </ul>
             </Section>
 
             <Section
-                id='router.route'
+                id='mounting.routers'
             >
-                <h3 className='text-xl font-bold'>router.route(path)</h3>
-                <p className='py-2'>
-                    Returns an instance of a single route which you can then use to handle HTTP verbs with optional middleware. Use router.route() to avoid duplicate route naming and thus typing errors.
-                </p>
+                <div className='mb-8'></div>
+
+                <Divider />
+
+                <h3 className='text-xl font-bold pt-8'>
+                    Mounting Routers
+                </h3>
+
+                <p className="pb-2">Routers can be mounted on specific paths in the main application.</p>
 
                 <p className='pb-2'>
-                    Building on the router.param() example above, the following code shows how to use router.route() to specify various HTTP method handlers.
+                    Example: Mounting a Router
                 </p>
 
                 <Highlighter language='js'>
-                    {
-                        `const router = nodeplace.Router() \n    router.param('user_id', (req, res, next, id) => { \n    // sample user, would actually fetch from DB, etc... \n    req.user = { \n        id, \n        name: 'TJ' \n    } \n    next()  \n router.route('/users/:user_id') \n  .get((req, res, next) => {
-    res.json(req.user)
-  })
-  .put((req, res, next) => {
-  // just an example of maybe updating the user
-    req.user.name = req.params.name
-    // save user ... etc
-    res.json(req.user)
-  })
-  .post((req, res, next) => {
-    next(new Error('not implemented'))
-  })
-  .delete((req, res, next) => {
-    next(new Error('not implemented'))
-  })`
-                    }
+                    {`const adminRouter = nodeplace.Router()
+
+adminRouter.get('/settings', (req, res) => {
+    res.send('Admin Settings')
+})
+
+app.use('/admin', adminRouter)
+`}
                 </Highlighter>
 
+                <p className='pb-1'>Explanation:</p>
+
+                <ul className='pl-8 space-y-2 list-disc'>
+                    <li>The adminRouter handles routes prefixed with /admin.</li>
+
+                    <li>Requests to /admin/settings are served by the router.</li>
+                </ul>
+            </Section>
+
+            <Section
+                id='router.level.middleware'
+            >
+                <div className='mb-8'></div>
+
+                <Divider />
+
+                <h3 className='text-xl font-bold pt-8'>
+                    Router-Level Middleware
+                </h3>
+
+                <p className="pb-2">Middleware specific to a router can be added using router.use().</p>
+
                 <p className='pb-2'>
-                    You can then use a router for a particular root URL in this way separating your routes into files or even mini-apps.
+                    Example: Router Middleware
                 </p>
 
                 <Highlighter language='js'>
-                    {
-                        `// only requests to /calendar/* will be sent to our "router" \napp.use('/calendar', router)`
-                    }
+                    {`const loggingMiddleware = (req, res, next) => {
+    console.log(\`Request Method: \${req.method}, Path: \${req.path}\`)
+                    next()
+}
+
+                    router.use(loggingMiddleware)
+
+router.get('/profile', (req, res) => {
+                        res.send('Profile Page')
+                    })
+`}
                 </Highlighter>
 
-                {/* <p className='pb-2'>
-                    Keep in mind that any middleware applied to a router will run for all requests on that router’s path, even those that aren’t part of the router.
-                </p> */}
+                <p className='pb-1'>Explanation:</p>
+
+                <ul className='pl-8 space-y-2 list-disc'>
+                    <li>The middleware logs each request method and path before the route handler is executed.</li>
+                </ul>
             </Section>
 
-            <Section
-                id='router.delete'
+            {/* <Section
+                id='router.level.middleware'
             >
-                <h2 className='text-xl font-bold'>Methods</h2>
-                <h3 className='text-lg font-bold py-2'>
-                    router.delete()
+                <div className='mb-8'></div>
+
+                <Divider />
+
+                <h3 className='text-xl font-bold pt-8'>
+                    Router-Level Middleware
                 </h3>
 
-            </Section>
+                <p className="pb-2">Middleware specific to a router can be added using router.use().</p>
+
+                <p className='pb-2'>
+                    Example: Router Middleware
+                </p>
+
+                <Highlighter language='js'>
+                    {`const loggingMiddleware = (req, res, next) => {
+    console.log(\`Request Method: \${req.method}, Path: \${req.path}\`)
+                    next()
+}
+
+                    router.use(loggingMiddleware)
+
+router.get('/profile', (req, res) => {
+                        res.send('Profile Page')
+                    })
+`}
+                </Highlighter>
+
+                <p className='pb-1'>Explanation:</p>
+
+                <ul className='pl-8 space-y-2 list-disc'>
+                    <li>The middleware logs each request method and path before the route handler is executed.</li>
+                </ul>
+            </Section> */}
 
             <Section
-                id='router.get'
+                id='router.route.method'
             >
-                <h2 className='text-xl font-bold'>Methods</h2>
-                <h3 className='text-lg font-bold py-2'>
-                    router.get()
+                <div className='mb-8'></div>
+
+                <Divider />
+
+                <h3 className='text-xl font-bold pt-8'>
+                    Method: router.route(path)
                 </h3>
 
+                <p className="pb-2">Defines multiple HTTP method handlers for a single route.</p>
+
+                <p className='pb-2'>
+                    Example: Handling Multiple Methods
+                </p>
+
+                <Highlighter language='js'>
+                    {`router.route('/items')
+    .get((req, res) => {
+        res.send('List of Items')
+    })
+    .post((req, res) => {
+        res.send('Create a New Item')
+    })
+    .put((req, res) => {
+        res.send('Update an Item')
+    })
+    .delete((req, res) => {
+        res.send('Delete an Item')
+    })
+`}
+                </Highlighter>
+
+                <p className='pb-1'>Explanation:</p>
+
+                <ul className='pl-8 space-y-2 list-disc'>
+                    <li>Use router.route() to define GET, POST, PUT, and DELETE handlers for /items.</li>
+                </ul>
             </Section>
 
-            <Section
-                id='router.patch'
-            >
-                <h2 className='text-xl font-bold'>Methods</h2>
-                <h3 className='text-lg font-bold py-2'>
-                    router.patch()
-                </h3>
-
-            </Section>
-
-            <Section
-                id='router.post'
-            >
-                <h2 className='text-xl font-bold'>Methods</h2>
-                <h3 className='text-lg font-bold py-2'>
-                    router.post()
-                </h3>
-
-            </Section>
-
-            <Section
-                id='router.put'
-            >
-                <h2 className='text-xl font-bold'>Methods</h2>
-                <h3 className='text-lg font-bold py-2'>
-                    router.put()
-                </h3>
-
-            </Section>
         </Section>
     )
 }
