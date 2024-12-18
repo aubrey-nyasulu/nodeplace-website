@@ -1,6 +1,6 @@
 export default function TrustedBySection() {
     return (
-        <section className="flex items-center w-fit py-12 border-y border-y-stone-800 infinite-vertical-scroll text-xl">
+        <section className="flex items-center w-fit py-12 border-y  border-y-stone-400/50 dark:border-y-stone-800 infinite-vertical-scroll text-xl">
             <div className="w-screen w-svw flex gap-8 items-center justify-around">
                 <div className="flex-1">Your</div>
                 <div className="flex-1">Company</div>

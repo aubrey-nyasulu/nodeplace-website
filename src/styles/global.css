@@ -42,9 +42,32 @@ body {
 
 
 body {
-  background: #f5f6fa;
+  background: #d6d3d1;
   overflow-x: hidden;
-  color: #666c70;
+}
+
+h2 {
+  opacity: 0.9;
+}
+
+h3 {
+  opacity: 0.8;
+}
+
+h4 {
+  opacity: 0.7.5;
+}
+
+p {
+  opacity: 0.7;
+}
+
+td {
+  opacity: 0.7;
+}
+
+a {
+  opacity: 0.;
 }
 
 .dark body {
@@ -62,16 +85,24 @@ img {
   filter: blur(20);
 }
 
-.infinite-vertical-scroll{
+@media (min-width: 768px) {
+
+  .blur {
+    filter: blur(0);
+  }
+}
+
+.infinite-vertical-scroll {
   animation: infinite-vertical-scroll 20s linear infinite;
 }
 
-@keyframes infinite-vertical-scroll{
-  from{
-    transform: translateX(0%) ;
+@keyframes infinite-vertical-scroll {
+  from {
+    transform: translateX(0%);
   }
-  to{
-    transform: translateX(-50%) ;
+
+  to {
+    transform: translateX(-50%);
   }
 }
 
@@ -82,11 +113,11 @@ img {
   }
 
   .btn-primary {
-    @apply bg-white/20 dark:bg-black/20 backdrop-blur-lg w-fit h-fit border-2 border-orange-900/80 text-orange-900/90 dark:border-orange-300/30 py-3 px-6 rounded-full dark:text-orange-300 font-semibold;
+    @apply bg-white/20 dark:bg-black/20 backdrop-blur-lg w-fit h-fit border-2 border-stone-600 dark:border-stone-800 py-3 px-6 rounded-full dark:text-orange-300 font-semibold;
   }
 
   .btn-secondary {
-    @apply bg-black w-fit h-fit border-2 dark:border-orange-300/30 py-3 px-6 rounded-full font-semibold;
+    @apply bg-stone-950 text-white w-fit h-fit border-2 border-orange-400/40 dark:border-orange-300/30 py-3 px-6 rounded-full font-semibold;
   }
 
 }

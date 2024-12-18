@@ -1,59 +1,20 @@
-"use client"
+"ue client"
 
-import { Moon, MoonSun, Sun } from "@/src/assets/SVGComponents"
-import { usePathname } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useContext } from "react"
+import AppContext from "../context/AppstateProvider"
+import { Moon, MoonSun, Sun } from "../assets/SVGComponents"
 
-function ThemeSwitcher({ headerIsVisible }: { headerIsVisible: boolean }) {
-    const [currentTheme, setCurrentTheme] = useState('')
-    const [color, setColor] = useState('black')
+function ThemeSwitcher() {
 
-    const applyTheme = (theme: 'light' | 'dark' | 'system') => {
-        if (theme === 'light') {
-            document.documentElement.classList.remove('dark')
-            localStorage.setItem('theme', 'light')
-        } else if (theme === 'dark') {
-            document.documentElement.classList.add('dark')
-            localStorage.setItem('theme', 'dark')
-        } else {
-            document.documentElement.classList.add('dark')
-        }
-    }
-
-    const path = usePathname()
-    useEffect(() => {
-        const theme = localStorage.getItem('theme') || 'light'
-        setCurrentTheme(theme)
-        if (theme === 'light' || theme === 'dark') {
-            applyTheme(theme)
-        }
-
-        if (path === '/') {
-            if (currentTheme !== 'dark') {
-                setColor(headerIsVisible ? 'white' : 'black')
-            }
-        }
-    }, [currentTheme, headerIsVisible])
-
+    const { currentTheme, setThemeState } = useContext(AppContext)
 
     return (
         <button
-            onClick={() => {
-                if (currentTheme === 'light') {
-                    setCurrentTheme('dark')
-                    applyTheme('dark')
-                } else if (currentTheme === 'dark') {
-                    setCurrentTheme('light')
-                    applyTheme('light')
-                } else {
-                    applyTheme('dark')
-                    setCurrentTheme('dark')
-                }
-            }}
+            onClick={setThemeState}
         >
-            {currentTheme === 'light' && <Sun {...{ color: 'brown' }} />}
+            {currentTheme === 'light' && <Sun {...{ color: '#57534e' }} />}
             {currentTheme === 'dark' && <Moon />}
-            {currentTheme === '' && <MoonSun {...{ color: color }} />}
+            {currentTheme === 'system' && <MoonSun {...{ color: '#57534e' }} />}
         </button>
     )
 }

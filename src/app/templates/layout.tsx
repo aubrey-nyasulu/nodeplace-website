@@ -1,5 +1,4 @@
 import Nav from "@/src/components/Nav"
-import { DocumentationContextProvider } from "@/src/context/DocumentationStateProvider";
 
 export default function MDXLayout({
   children,
@@ -7,13 +6,13 @@ export default function MDXLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <DocumentationContextProvider>
+    <>
       <header className="relative pt-3 w-full h-fit space-y-4 py-24" >
         <Nav />
       </header>
       <>
         {children}
       </>
-    </DocumentationContextProvider>
+    </>
   )
 }

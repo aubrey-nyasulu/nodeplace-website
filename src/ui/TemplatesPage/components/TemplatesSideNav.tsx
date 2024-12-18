@@ -4,7 +4,7 @@ import Link from 'next/link'
 function TemplatesSideNav() {
 
     return (
-        <aside className="fixed top-[0px] w-96 h-screen overflow-y-auto border-r border-r-stone-300 dark:border-stone-800 hidden md:block pt-[160px] px-2 pr-8 ">
+        <aside className="fixed top-[0px] w-96 h-screen overflow-y-auto border-r border-r-stone-400/50 dark:border-stone-800 hidden md:block pt-[160px] px-2 pr-8 ">
             <Link
                 href='#'
                 className='flex gap-4 items-center pb-8'

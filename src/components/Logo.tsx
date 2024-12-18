@@ -1,24 +1,21 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useContext } from 'react'
 
 import logo from '@/public/hero/nodeplace logo - white2.png'
-import { usePathname } from 'next/navigation'
+import AppContext from '../context/AppstateProvider'
 
-function Logo({ headerIsVisible }: { headerIsVisible: boolean }) {
-    const path = usePathname()
-
-    const invert = path === '/' && !headerIsVisible || path === '/documentation' || path === '/guide' || path === '/blog'
+function Logo() {
+    const { isMenuOpen, setMenuState } = useContext(AppContext)
 
     return (
         <Link
             href="/"
-            className="pt-1"
-        // className="pt-1 flex gap-1 items-center"
-        // className="flex gap-1 md:gap-2 items-center"
+            className="pt-1 opacity-100"
+            onClick={() => setMenuState(false)}
         >
             <div
-                className={`w-16 h-fit overflow-hidden ${invert && 'invert dark:invert-0'} opacity-80 `}
+                className={`w-16 h-fit overflow-hidden invert dark:invert-0 opacity-80 `}
             >
                 <Image
                     src={logo}

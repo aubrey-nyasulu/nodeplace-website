@@ -64,8 +64,8 @@ export const MoonSun = ({ color = 'white' }) => (
     aria-labelledby="nightModeIconTitle"
     color={color}
     viewBox="0 0 24 24"
-    width="1.7em"
-    height="1.7em"
+    width="2em"
+    height="2em"
   >
     <title>{"Night Mode"}</title>
     <path d="M12 19a7 7 0 1 0 0-14 7 7 0 0 0 0 14z" />

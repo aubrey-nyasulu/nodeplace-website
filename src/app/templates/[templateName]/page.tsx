@@ -3,8 +3,9 @@ import Main from '@/src/app/templates/[templateName]/Main.mdx'
 import Head from "./Head"
 import Link from "next/link"
 
-function page({ params }: { params: { templateName: string } }) {
-    const { templateName } = params
+// function page({ params }: { params: { templateName: string } }) {
+//     const { templateName } = params
+function page() {
 
     return (
         <main className="langingpage-container h-fit flex gap-4  px-2 lg:px-0 justify-between">

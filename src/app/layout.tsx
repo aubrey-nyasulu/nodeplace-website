@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 // import localFont from "next/font/local";
 import { inter } from '@/src/assets/fonts/fonts';
 import "@/src/styles/global.css";
+import { AppStateProvider } from "../context/AppstateProvider";
 
 export const metadata: Metadata = {
   title: "NodePlace",
@@ -16,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} antialiased text-black/80 dark:text-white/90`}
+        className={`${inter.className} antialiased text-stone-800 dark:text-white/90`}
       >
-        {children}
+        <AppStateProvider>
+          {children}
+        </AppStateProvider>
       </body>
     </html>
   );

@@ -16,7 +16,7 @@ export default function MDXLayout({
       </header>
       {children}
       <footer className="w-full px-2 md:px-0">
-        <div className="langingpage-container border-x border-x-stone-800 px-8 py-8 md:py-16 flex gap-8 flex-col-reverse md:flex-row items-center justify-between">
+        <div className="langingpage-container border-x border-x-stone-400/50 dark:border-x-stone-800 px-8 py-8 md:py-16 flex gap-8 flex-col-reverse md:flex-row items-center justify-between stroke-stone-300">
           <p>
             NodePlace &copy; {<Year />}. All rights reserved
           </p>

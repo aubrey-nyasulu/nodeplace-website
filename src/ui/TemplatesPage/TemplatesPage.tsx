@@ -5,7 +5,7 @@ import Link from "next/link"
 
 function TemplatesPage() {
     return (
-        <section className="langingpage-container w-full min-h-screen px-2 md:px-4 flex gap-4 flex-col pt-0 pb-16 border-x border-x-stone-800">
+        <section className="langingpage-container w-full min-h-screen px-2 md:px-4 flex gap-4 flex-col pt-0 pb-16 border-x border-x-stone-400/50 dark:border-x-stone-800">
             <button className="btn-secondary fixed bottom-4 right-4 z-40">Submit Template</button>
 
             <div className="w-full flex gap-4 md:gap-16 md:items-center flex-col md:flex-row">
@@ -15,14 +15,14 @@ function TemplatesPage() {
                     <input
                         type="text"
                         placeholder="Search Templates"
-                        className="w-full bg-transparent px-4 py-3 rounded-md border border-stone-800 outline-none"
+                        className="w-full bg-transparent px-4 py-3 rounded-md border border-stone-400/50 dark:border-stone-800 outline-none"
                     />
 
                 </form>
             </div>
 
             <section className="w-full h-full relative mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                <div className="h-fit p-1 border border-stone-800 rounded-md">
+                <div className="h-fit p-1 border border-stone-400/50 dark:border-stone-800 rounded-md">
                     <Link
                         href='/templates/API-CRUD'
                         className="block aspect-[3/2] overflow-hidden rounded-md"

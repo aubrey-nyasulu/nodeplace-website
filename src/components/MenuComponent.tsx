@@ -1,33 +1,18 @@
-import { usePathname } from "next/navigation"
 import { Menu } from "../assets/SVGComponents"
-import { Dispatch, SetStateAction, useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import AppContext from "../context/AppstateProvider"
 
-function MenuComponent({ headerIsVisible, setMenuOpen }: { headerIsVisible: boolean, setMenuOpen: SetStateAction<Dispatch<boolean>> }) {
-    const [currentTheme, setCurrentTheme] = useState('')
-    const [color, setColor] = useState('black')
-
-    const path = usePathname()
-
-    useEffect(() => {
-        const theme = localStorage.getItem('theme') || 'light'
-        setCurrentTheme(theme)
-
-        if (path === '/') {
-            if (currentTheme !== 'dark') {
-                setColor(headerIsVisible ? 'white' : 'black')
-            }
-        }
-    }, [currentTheme, headerIsVisible])
+function MenuComponent() {
+    const { currentTheme, isMenuOpen, setMenuState } = useContext(AppContext)
 
     return (
         <button
-            className="P-0"
-            //@ts-ignore
-            onClick={() => setMenuOpen(prevState => !prevState)}
+            className="P-0 "
+            onClick={() => setMenuState(!isMenuOpen)}
         >
-            {currentTheme === 'light' && <Menu {...{ color: color }} />}
-            {currentTheme === 'dark' && <Menu />}
-            {currentTheme === '' && <Menu {...{ color: color }} />}
+            {currentTheme === 'light' && <Menu {...{ color: 'black' }} />}
+            {currentTheme === 'dark' && <Menu {...{ color: 'white' }} />}
+            {currentTheme === 'system' && <Menu {...{ color: 'black' }} />}
         </button>
     )
 }
