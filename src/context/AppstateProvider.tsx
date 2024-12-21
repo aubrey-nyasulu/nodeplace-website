@@ -79,7 +79,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
             setCurrentTheme('light')
             document.documentElement.classList.remove('dark')
             localStorage.setItem('theme', 'light')
-        } else {
+        } else if(currentTheme === 'system') {
             setCurrentTheme('dark')
             document.documentElement.classList.add('dark')
         }

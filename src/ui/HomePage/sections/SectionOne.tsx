@@ -7,13 +7,14 @@ function SectionOne() {
             <div
                 className="langingpage-container flex flex-col md:flex-row gap-4 md:gap-0 items-center border border-stone-400/50 dark:border-stone-800 border-y-0 p-4 md:p-16"
             >
-                <div className="w-full md:w-[540px] h-fit rounded-full overflow-hidden animate-pulse hidden md:block">
+                <div className="w-full md:w-[540px] h-fit rounded-full overflow-hidden hidden md:block bg-stone-900 dark:bg-transparent">
                     <Image
                         src={image1}
                         alt="about nodeplace image"
                         width={2000}
                         height={2000}
                         placeholder="blur"
+                        className="animate-pulse"
                     />
                 </div>
 

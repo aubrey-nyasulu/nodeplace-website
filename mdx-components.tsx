@@ -75,8 +75,6 @@ const components = {
     );
   },
   code: ({ children }: { children: string }) => {
-    console.log({ children })
-
     const highlightedCode = highlight(children, 'js')
 
     return (

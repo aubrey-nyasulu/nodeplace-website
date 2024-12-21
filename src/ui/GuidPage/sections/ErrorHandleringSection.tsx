@@ -23,7 +23,7 @@ function ErrorHandleringSection() {
           Error Handling
         </h3>
 
-        <p className=''>
+        <p className='pt-2'>
           Error handling in NodePlace ensures your application gracefully handles unexpected issues, both synchronously and asynchronously. NodePlace provides a built-in error handler, so you don't need to start from scratch. However, customizing error handling allows for tailored responses and better debugging.
         </p>
       </Section>

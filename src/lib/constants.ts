@@ -68,7 +68,7 @@ export const GuideNavLinks = {
 export const tableData = {
     nodeplaceJsonOptions: [
         {
-            Option: 'limti',
+            Option: 'limit',
             Description: 'Maximum size of the incoming JSON payload.',
             Type: 'String or Number',
             Default: '100kb'
@@ -138,10 +138,10 @@ export const tableData = {
             Default: '1000'
         },
         {
-            Option: 'type',
-            Description: 'Controls the Content-Type that the middleware will parse.',
-            Type: 'String',
-            Default: 'application/x-www-form-urlencoded'
+            Option: 'limit',
+            Description: 'Maximum size of the incoming JSON payload.',
+            Type: 'String or Number',
+            Default: '100kb'
         },
     ],
     nodeplaceCookieOptions: [

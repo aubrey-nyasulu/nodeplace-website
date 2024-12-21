@@ -3,6 +3,7 @@ import Highlighter from '../../../components/Highlighter'
 import Section from '../components/Section'
 import GeneralTable from '../../GuidPage/components/GeneralTable'
 import { tableData } from '@/src/lib/constants'
+import Note from '@/src/components/Note'
 
 function ResponseSection() {
 
@@ -31,7 +32,7 @@ function ResponseSection() {
             >
                 <Divider />
 
-                <h2 className='text-2xl font-bold py-8'>Methods</h2>
+                <h2 className='text-2xl font-bold py-8'>Additional Methods</h2>
 
                 <Divider />
 
@@ -58,6 +59,13 @@ function ResponseSection() {
                 <p className='pt-4 pb-2'>Options</p>
 
                 <GeneralTable tableData={tableData.nodeplaceCookieOptions} />
+
+                <div className='mb-8'></div>
+
+                <Note>
+                    <p>The Cookie API is currently unstable. Use with caution</p>
+                </Note>
+
             </Section>
 
             <Section
@@ -86,6 +94,12 @@ function ResponseSection() {
 })
 `}
                 </Highlighter>
+
+                <div className='mb-8'></div>
+
+                <Note>
+                    <p>The Cookie API is currently unstable. Use with caution</p>
+                </Note>
             </Section>
 
             <Section

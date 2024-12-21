@@ -35,9 +35,9 @@ const app = nodeplace()
                     }
                 </Highlighter>
 
-                <p className='font-bold'>Description</p>
+                <p className='font-bold pb-1'>Description</p>
 
-                <ul className='pl-8 list-disc'>
+                <ul className='pl-8 list-disc space-y-2'>
                     <li><span className='font-semibold'>Purpose:</span> Initializes the core application instance for defining routes, mounting middleware, and configuring the framework.</li>
                     <li><span className='font-semibold'>Return Value:</span> Returns an application object with methods for handling requests, managing middleware, and starting the server.</li>
                 </ul>
@@ -63,11 +63,11 @@ const app = nodeplace()
                     nodeplace.json is a built-in middleware function that parses incoming requests with JSON payloads. It populates the req.body property with the parsed data.
                 </p>
 
-                <p className='pb-2 pt-4 font-semibold'>
+                <p className='pb-1 pt-4 font-semibold'>
                     Features
                 </p>
 
-                <ul className='pl-8 list-disc pb-4'>
+                <ul className='pl-8 list-disc space-y-2 pb-4'>
                     <li><span className='font-semibold'>Content-Type Matching:</span> Only processes requests where the Content-Type header matches application/json.</li>
 
                     <li><span className='font-semibold'>Unicode Support:</span> Accepts any Unicode encoding of the body.</li>
@@ -83,7 +83,7 @@ const app = nodeplace()
 
                 <GeneralTable tableData={tableData.nodeplaceJsonOptions} />
 
-                <p className='pb-2 pt-4 font-semibold'>
+                <p className='pb-1 pt-4 font-semibold'>
                     Behavior
                 </p>
 
@@ -176,11 +176,11 @@ app.listen(3000, () => {
                     </p>
                 </Note>
 
-                <p className='pb-2 pt-4 font-semibold'>
+                <p className='pb-1 pt-4 font-semibold'>
                     Features
                 </p>
 
-                <ul className='pl-8 list-disc pb-4'>
+                <ul className='pl-8 list-disc space-y-2 pb-4'>
                     <li>
                         <span className='font-semibold'>File Serving:</span>
                         Serves static files such as HTML, png, and pdf.
@@ -206,9 +206,9 @@ app.listen(3000, () => {
                     app.use(nodeplace.static(root, options))
                 </Highlighter>
 
-                <p className='py-2 font-semibold'>Arguments</p>
+                <p className='pt-2 pb-1 font-semibold'>Arguments</p>
 
-                <ul className='pl-8 list-decimal'>
+                <ul className='pl-8 list-decimal space-y-2'>
                     <li>root: (Optional) The directory from which to serve static assets. Defaults to 'public'.</li>
 
                     <li>options: (Optional) An object specifying configuration options for serving static files.</li>
@@ -218,7 +218,7 @@ app.listen(3000, () => {
 
                 <GeneralTable {...{ tableData: tableData.nodeplaceStatic }} />
 
-                <p className='pb-2 pt-8 font-bold'>Behavior</p>
+                <p className='pb-1 pt-8 font-bold'>Behavior</p>
 
                 <ul className='pl-8 list-disc space-y-2'>
                     <li>
@@ -292,11 +292,11 @@ Use setHeaders to add headers like X-Timestamp for debugging or tracking.`
                     nodeplace.urlencoded is a built-in middleware function for parsing incoming requests with URL-encoded payloads. It is commonly used to parse form submissions.
                 </p>
 
-                <p className='pb-2 font-semibold'>
+                <p className='pb-1 font-semibold'>
                     Features
                 </p>
 
-                <ul className='pl-8 pb-4 list-disc'>
+                <ul className='pl-8 pb-4 space-y-2 list-disc'>
                     <li>
                         <span>Form Data Parsing:</span>
                         application/x-www-form-urlencoded payloads into a JavaScript object.
@@ -317,13 +317,13 @@ Use setHeaders to add headers like X-Timestamp for debugging or tracking.`
                     app.use(nodeplace.urlencoded(options))
                 </Highlighter>
 
-                <p className='pb-2 font-semibold'>
+                <p className='pb-2 pt-4 font-semibold'>
                     Arguments (Optional)
                 </p>
 
                 <GeneralTable tableData={tableData.nodeplaceUrlEncodedOptions} />
 
-                <p className='pb-2 pt-4'>Behavior</p>
+                <p className='p1-2 pt-4'>Behavior</p>
 
                 <ul className='pl-8 space-y-2 list-disc'>
                     <li>Parses the request body and populates req.body with a key-value object.</li>

@@ -17,7 +17,7 @@ function GuideSideNav() {
             <ul className="sticky top-0 space-y-2 mt-5 peer-hover:blur-sm">
                 <li
                     onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'nodeplace-route' }))}
-                    className={`w-full h-fit`}
+                    className={`w-full opacity-100 h-fit`}
                 >
                     <Link
                         href="#nodeplace-route"
@@ -36,7 +36,7 @@ function GuideSideNav() {
                 </li>
                 <li
                     onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'routing-route' }))}
-                    className="w-full h-fit"
+                    className="w-full opacity-100 h-fit"
                 >
                     <Link
                         href="#routing-route"
@@ -55,7 +55,7 @@ function GuideSideNav() {
                 </li>
                 <li
                     onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'middleware-route' }))}
-                    className="w-full h-fit"
+                    className="w-full opacity-100 h-fit"
                 >
                     <Link
                         href="#middleware-route"
@@ -74,7 +74,7 @@ function GuideSideNav() {
                 </li>
                 <li
                     onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'error-handlering-route' }))}
-                    className="w-full h-fit"
+                    className="w-full opacity-100 h-fit"
                 >
                     <Link
                         href="#error-handlering-route"

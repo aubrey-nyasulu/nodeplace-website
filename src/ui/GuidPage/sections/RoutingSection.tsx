@@ -229,7 +229,7 @@ app.get('/example', [middleware1, middleware2, (req, res) => {
                 </h3>
 
                 <p className='py-2'>
-                    The Router class in NodePlace lets you modularize routes and middleware, treating them as mini-apps. This is helpful for organizing related routes.
+                    The Router module in NodePlace lets you modularize routes and middleware, treating them as mini-apps. This is helpful for organizing related routes.
                 </p>
 
                 <p className='pb-2'>

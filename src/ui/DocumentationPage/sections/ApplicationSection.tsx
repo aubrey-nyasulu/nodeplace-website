@@ -36,9 +36,9 @@ const app = nodeplace()
                     }
                 </Highlighter>
 
-                <p>This initializes a new NodePlace application.</p>
+                <p className='pt-2'>This initializes a new NodePlace application.</p>
 
-                <p className='py-4'>The app object comes with several methods and properties for managing application behavior, including route handling, middleware mounting, and configuration.</p>
+                <p className='pb-4 pt-2'>The app object comes with several methods and properties for managing application behavior, including route handling, middleware mounting, and configuration.</p>
 
                 <p className='pb-2 font-semibold'>Methods</p>
 
@@ -107,7 +107,7 @@ app.post('/submit', (req, res) => {
                     app.all(path, callback [, callback ...])
                 </Highlighter>
 
-                <p className='py-2 font-semibold'>
+                <p className='pt-2 pb-1 font-semibold'>
                     Parameters
                 </p>
 
@@ -128,12 +128,13 @@ app.post('/submit', (req, res) => {
                 <Highlighter language='js'>
                     {`app.all('/logs', (req, res) => {
     console.log(\`\${req.method} request to \${req.path}\`)
-                    res.send('This route handles all HTTP methods')
+
+    res.send('This route handles all HTTP methods')
 })
 `}
                 </Highlighter>
 
-                <p className='py-2'>
+                <p className='pt-1'>
                     In this example:
                 </p>
 
@@ -406,7 +407,7 @@ app.listen(path, [callback])
                     Parameters
                 </p>
 
-                <ul className='pl-8 list-disc space-y-2'>
+                <ul className='pl-8 pb-4 list-disc space-y-2'>
                     <li>
                         <span>Port</span>
                         (optional): The port number for the server to listen on.
@@ -928,7 +929,8 @@ https.createServer({ key: privateKey, cert: certificate }, app).listen(443, () =
                 <Highlighter language='js'>
                     {`app.use((req, res, next) => {
     console.log(\`\${req.method} \${req.url}\`)
-                    next()
+
+    next()
 })
 `}
                 </Highlighter>
@@ -980,7 +982,7 @@ userRouter.get('/:id', (req, res) => {
     res.send(\`User ID: \{req.params.id}\`)
 })
 
-                    app.use('/users', userRouter)
+app.use('/users', userRouter)
 `}
                 </Highlighter>
 

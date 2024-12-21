@@ -212,14 +212,15 @@ app.use('/admin', adminRouter)
                 <Highlighter language='js'>
                     {`const loggingMiddleware = (req, res, next) => {
     console.log(\`Request Method: \${req.method}, Path: \${req.path}\`)
-                    next()
+
+    next()
 }
 
-                    router.use(loggingMiddleware)
+router.use(loggingMiddleware)
 
 router.get('/profile', (req, res) => {
-                        res.send('Profile Page')
-                    })
+    res.send('Profile Page')
+})
 `}
                 </Highlighter>
 

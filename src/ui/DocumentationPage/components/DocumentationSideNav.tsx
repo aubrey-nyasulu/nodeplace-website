@@ -18,7 +18,7 @@ function DocumentationSideNav() {
             <ul className="sticky top-0 space-y-2 mt-5 peer-hover:blur-sm">
                 <li
                     onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'nodeplace-route' }))}
-                    className={`w-full h-fit`}
+                    className={`w-full opacity-100 h-fit`}
                 >
                     <Link
                         href="#nodeplace-route"
@@ -37,7 +37,7 @@ function DocumentationSideNav() {
                 </li>
                 <li
                     onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'application-route' }))}
-                    className="w-full h-fit"
+                    className="w-full h opacity-100-fit"
                 >
                     <Link
                         href="#application-route"
@@ -56,7 +56,7 @@ function DocumentationSideNav() {
                 </li>
                 <li
                     onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'request-route' }))}
-                    className="w-full h-fit"
+                    className="w-full h opacity-100-fit"
                 >
                     <Link
                         href="#request-route"
@@ -75,7 +75,7 @@ function DocumentationSideNav() {
                 </li>
                 <li
                     onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'response-route' }))}
-                    className="w-full h-fit"
+                    className="w-full h opacity-100-fit"
                 >
                     <Link
                         href="#response-route"
@@ -94,7 +94,7 @@ function DocumentationSideNav() {
                 </li>
                 <li
                     onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'router-route' }))}
-                    className="w-full h-fit"
+                    className="w-full h opacity-100-fit"
                 >
                     <Link
                         href="#router-route"

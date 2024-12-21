@@ -32,7 +32,7 @@ function RequestSection() {
 
                 <Divider />
 
-                <h2 className='text-2xl font-bold py-8'>Properties</h2>
+                <h2 className='text-2xl font-bold py-8'>Additional Properties</h2>
 
                 <Divider />
 

@@ -68,7 +68,7 @@ function NodePlaceSection() {
                     npm install nodeplace
                 </Highlighter>
 
-                <p className='pb-2'>
+                <p className='py-2'>
                     or if you use yarn:
                 </p>
 
@@ -128,6 +128,8 @@ app.listen(3000, () => {
                     <li className='list-decimal font-semibold'>Start the Server:</li>
                     <p className='pb-2'>The app.listen() method starts the server on port 3000 and listens for incoming requests.</p>
                 </ul>
+
+                <div className='mb-4'></div>
 
                 <Note>
                     <p>

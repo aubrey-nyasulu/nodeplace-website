@@ -5,7 +5,7 @@ import Link from "next/link"
 
 function TemplatesPage() {
     return (
-        <section className="langingpage-container w-full min-h-screen px-2 md:px-4 flex gap-4 flex-col pt-0 pb-16 border-x border-x-stone-400/50 dark:border-x-stone-800">
+        <>
             <button className="btn-secondary fixed bottom-4 right-4 z-40">Submit Template</button>
 
             <div className="w-full flex gap-4 md:gap-16 md:items-center flex-col md:flex-row">
@@ -43,7 +43,10 @@ function TemplatesPage() {
                         >
                             <p className="font-bold">API-CRUD</p>
                         </Link>
-                        <Link href="#">
+                        <Link
+                            href="#"
+                            className="invert dark:invert-0 opacity-70"
+                        >
                             <NewWindow />
                         </Link>
                     </div>
@@ -56,7 +59,7 @@ function TemplatesPage() {
                 </div>
 
             </section>
-        </section>
+        </>
     )
 }
 

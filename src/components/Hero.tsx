@@ -25,7 +25,7 @@ function Hero() {
           <div className="flex w-full md:w-fit justify-center md:justify-start gap-4 mt-8">
             <Link
               href="/guide"
-              className="btn-primary w-full whitespace-nowrap"
+              className="btn-secondary w-full whitespace-nowrap"
             >
               Get Started
             </Link>
