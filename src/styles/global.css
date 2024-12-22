@@ -24,20 +24,33 @@ body {
 
 /* Customize the scrollbar thumb */
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #8889;
+  backdrop-filter: blur(64px);
   border-radius: 10px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #8885;
 }
 
 /* Customize the scrollbar track */
 ::-webkit-scrollbar-track {
   /* background: #f1f1f1; */
-  border: 1px solid #292524;
+  border: 1px solid #29252430;
   border-radius: 10px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  border: 1px solid #292524;
 }
 
 /* Hover effects */
 ::-webkit-scrollbar-thumb:hover {
-  background: #77301C;
+  background: #888;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #888;
 }
 
 

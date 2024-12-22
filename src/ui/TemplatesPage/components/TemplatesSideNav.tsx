@@ -20,8 +20,8 @@ function TemplatesSideNav() {
             <p className='pt-8'>Ecommerce store template built with Next.js App Router, Medusa and TailwindCSS, with features like Algolia search and Stripe checkout.</p>
 
             <div className='pt-8 flex gap-4'>
-                <button className='btn-primary'>Live Demo</button>
                 <button className='btn-secondary'>GitHub Repo</button>
+                <button className='btn-primary'>Live Demo</button>
             </div>
         </aside>
     )

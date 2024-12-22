@@ -4,6 +4,7 @@ import Section from '../components/Section'
 import GeneralTable from '../../GuidPage/components/GeneralTable'
 import { tableData } from '@/src/lib/constants'
 import Note from '@/src/components/Note'
+import Link from 'next/link'
 
 function ResponseSection() {
 
@@ -61,11 +62,6 @@ function ResponseSection() {
                 <GeneralTable tableData={tableData.nodeplaceCookieOptions} />
 
                 <div className='mb-8'></div>
-
-                <Note>
-                    <p>The Cookie API is currently unstable. Use with caution</p>
-                </Note>
-
             </Section>
 
             <Section
@@ -76,11 +72,11 @@ function ResponseSection() {
                 <Divider />
 
                 <h3 className='text-xl font-bold pt-8'>
-                    res.clearCookie(name, value [, options])
+                    res.clearCookie(name [, options])
                 </h3>
 
                 <p className='py-2'>
-                    Clears a cookie in the response.
+                    Clears the cookie specified by name. For the cookie to be cleared properly, the options provided to res.clearCookie must match those used when setting the cookie with res.cookie(), excluding expires and maxAge.
                 </p>
 
                 <p className='font-semibold py-2'>
@@ -89,17 +85,45 @@ function ResponseSection() {
 
                 <Highlighter language='js'>
                     {`app.get('/clear-cookie', (req, res) => {
-    res.clearCookie('username')
+    res.cookie('username', 'john_doe', { path: '/user', httpOnly: true })
+    res.clearCookie('username', { path: '/user', httpOnly: true })
     res.send('Cookie cleared')
 })
 `}
                 </Highlighter>
 
-                <div className='mb-8'></div>
+                <p className='pt-2 pb-1 font-semibold'>
+                    Parameters
+                </p>
+
+                <ul className='pl-8 pb-4 list-disc space-y-2'>
+                    <li>
+                        <span>name:</span>
+                        (string, required) The name of the cookie to clear.
+                    </li>
+
+                    <li>
+                        <span>options (optional):</span>
+                        (optional) An object specifying attributes of the cookie to match when clearing it. See <Link href="/documentation#res.cookie" className='text-[dodgerblue]'>res.cookie()</Link> for the available options.
+                    </li>
+                </ul>
+
+                <p className='font-semibold pb-2 pt-4'>
+                    Behavior:
+                </p>
+                <p className='pb-2'>If options like path, domain, or secure were specified when the cookie was set using res.cookie(), they must be included in res.clearCookie() to match the original cookie. For example:</p>
+
+                <Highlighter language='js'>
+                    {`res.cookie('key', 'value', { path: '/api' })
+res.clearCookie('key', { path: '/api' }) // Matches and clears the cookie.
+`}
+                </Highlighter>
 
                 <Note>
-                    <p>The Cookie API is currently unstable. Use with caution</p>
+                    Options like httpOnly and sameSite will also be preserved when clearing the cookie if they were used during the original res.cookie() call. The options parameter is optional but strongly recommended to ensure the cookie is properly matched and cleared.
                 </Note>
+
+                <div className='mb-8'></div>
             </Section>
 
             <Section
@@ -218,7 +242,11 @@ function ResponseSection() {
                 </h3>
 
                 <p className='py-2'>
-                    Sends a file as the response.
+                    Transfers the file at the given path to the client. Sets the Content-Type response HTTP header field based on the file’s extension. If the root option is set, the path argument can be a relative path; otherwise, it must be an absolute path.
+                </p>
+
+                <p className='pb-2'>
+                    The method supports caching, range requests, and additional headers to fine-tune the response. Use it to serve static files or dynamically generated paths.
                 </p>
 
                 <p className='font-semibold py-2'>
@@ -227,7 +255,40 @@ function ResponseSection() {
 
                 <Highlighter language='js'>
                     {`app.get('/download', (req, res) => {
-    res.sendFile('/path/to/file.zip')
+    res.sendFile('/absolute/path/to/file.zip', {
+        cacheControl: true,
+        maxAge: 3600, // 1 hour
+    })
+})
+`}
+                </Highlighter>
+
+                <p className='font-semibold pb-2 pt-4'>
+                    Example: Serving with Options
+                </p>
+
+                <Highlighter language='js'>
+                    {`app.get('/file/:name', (req, res, next) => {
+    const options = {
+        root: path.join(__dirname, 'public'),
+        dotfiles: 'deny',
+        maxAge: '1d',
+        cacheControl: true,
+        immutable: true,
+        headers: {
+            'x-timestamp': Date.now(),
+            'x-sent': true,
+        },
+    }
+
+    const fileName = req.params.name
+    res.sendFile(fileName, options, (err) => {
+        if (err) {
+            next(err) // Pass control to error handling middleware
+        } else {
+            console.log('File sent:', fileName)
+        }
+    })
 })
 `}
                 </Highlighter>

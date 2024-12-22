@@ -22,7 +22,7 @@ function DocumentationSideNav() {
                 >
                     <Link
                         href="#nodeplace-route"
-                        className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'nodeplace-route' && 'bg-stone-800 dark:bg-primary text-white')}
+                        className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'nodeplace-route' && 'bg-stone-800 dark:bg-orange-500/20 text-white')}
                     >nodeplace()</Link>
                     <ul className={`px-6 pt-2 ${currentSection.route === 'nodeplace-route' ? 'block' : 'hidden'} `}>
                         {
@@ -41,7 +41,7 @@ function DocumentationSideNav() {
                 >
                     <Link
                         href="#application-route"
-                        className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'application-route' && 'bg-stone-800 dark:bg-primary text-white')}
+                        className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'application-route' && 'bg-stone-800 dark:bg-orange-500/20 text-white')}
                     >Application</Link>
                     <ul className={`px-6 pt-2 ${currentSection.route === 'application-route' ? 'block' : 'hidden'} `}>
                         {
@@ -60,7 +60,7 @@ function DocumentationSideNav() {
                 >
                     <Link
                         href="#request-route"
-                        className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'request-route' && 'bg-stone-800 dark:bg-primary text-white')}
+                        className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'request-route' && 'bg-stone-800 dark:bg-orange-500/20 text-white')}
                     >request</Link>
                     <ul className={`px-6 pt-2 ${currentSection.route === 'request-route' ? 'block' : 'hidden'} `}>
                         {
@@ -79,7 +79,7 @@ function DocumentationSideNav() {
                 >
                     <Link
                         href="#response-route"
-                        className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'response-route' && 'bg-stone-800 dark:bg-primary text-white')}
+                        className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'response-route' && 'bg-stone-800 dark:bg-orange-500/20 text-white')}
                     >response</Link>
                     <ul className={`px-6 pt-2 ${currentSection.route === 'response-route' ? 'block' : 'hidden'} `}>
                         {
@@ -98,7 +98,7 @@ function DocumentationSideNav() {
                 >
                     <Link
                         href="#router-route"
-                        className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'router-route' && 'bg-stone-800 dark:bg-primary text-white')}
+                        className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'router-route' && 'bg-stone-800 dark:bg-orange-500/20 text-white')}
                     >Router</Link>
                     <ul className={`px-6 pt-2 ${currentSection.route === 'router-route' ? 'block' : 'hidden'} `}>
                         {

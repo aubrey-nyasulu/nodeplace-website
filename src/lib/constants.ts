@@ -153,9 +153,15 @@ export const tableData = {
         },
         {
             Option: 'expires',
-            Description: 'Sets the cookie’s expiration date.',
+            Description: 'Sets the cookie’s expiration date in GMT format.',
             Type: 'Date',
             Default: 'null'
+        },
+        {
+            Option: 'encode',
+            Description: 'A synchronous function used for cookie value encoding.',
+            Type: 'Function',
+            Default: 'encodeURIComponent'
         },
         {
             Option: 'httpOnly',
@@ -183,15 +189,21 @@ export const tableData = {
         },
         {
             Option: 'sameSite',
-            Description: '	Controls whether the cookie is sent with cross-site requests (Strict or Lax).',
+            Description: 'Controls whether the cookie is sent with cross-site requests (Strict, Lax, or None).',
             Type: 'string',
             Default: 'null'
+        },
+        {
+            Option: 'signed',
+            Description: '	Indicates if the cookie should be signed.',
+            Type: 'boolean',
+            Default: 'false'
         },
     ],
     nodeplaceSendFileOptions: [
         {
             Option: 'maxAge',
-            Description: "Cache-Control max-age in milliseconds.",
+            Description: "Specifies the Cache-Control max-age in milliseconds.",
             Type: 'number',
             Default: '0'
         },
@@ -203,9 +215,45 @@ export const tableData = {
         },
         {
             Option: 'headers',
-            Description: 'The root directory for resolving the relative file path.',
-            Type: 'string',
+            Description: 'Allows you to set additional HTTP headers. This can be useful for security or metadata requirements.',
+            Type: 'Object',
             Default: 'null'
+        },
+        {
+            Option: 'dotfiles',
+            Description: 'Determines how dotfiles (hidden files starting with .) are handled. Can be one of "allow", "deny", or "ignore".',
+            Type: 'string',
+            Default: '"ignore"'
+        },
+        {
+            Option: 'acceptRanges',
+            Description: 'Enables or disables support for range requests.',
+            Type: 'Boolean',
+            Default: 'true'
+        },
+        {
+            Option: 'cacheControl',
+            Description: 'Enables or disables the Cache-Control header in the response. When enabled, use maxAge to specify the cache duration.',
+            Type: 'Boolean',
+            Default: 'true'
+        },
+        {
+            Option: 'immutable',
+            Description: 'Adds the immutable directive to the Cache-Control header. This is useful for static files that will never change. If enabled, maxAge should also be set to allow caching.',
+            Type: 'Boolean',
+            Default: 'false'
+        },
+        {
+            Option: 'lastModified',
+            Description: 'Automatically sets the Last-Modified header based on the file’s last modified timestamp on the file system. Setting this to false disables the header.',
+            Type: 'Boolean',
+            Default: 'true'
+        },
+        {
+            Option: 'disposition',
+            Description: 'Controls the Content-Disposition header for the file. Can be "inline" (display in-browser) or "attachment" (download file). If unspecified, it defaults to "inline" for most files and "attachment" for certain MIME types like archives.',
+            Type: 'String',
+            Default: '"inline" / "attachment" based on file type'
         },
     ],
 }

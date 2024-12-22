@@ -21,7 +21,7 @@ function GuideSideNav() {
                 >
                     <Link
                         href="#nodeplace-route"
-                        className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'nodeplace-route' && 'bg-stone-800 dark:bg-primary text-white')}
+                        className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'nodeplace-route' && 'bg-stone-800 dark:bg-orange-500/20 text-white')}
                     >nodeplace</Link>
                     <ul className={`px-6 pt-2 ${currentSection.route === 'nodeplace-route' ? 'block' : 'hidden'} `}>
                         {
@@ -40,7 +40,7 @@ function GuideSideNav() {
                 >
                     <Link
                         href="#routing-route"
-                        className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'routing-route' && 'bg-stone-800 dark:bg-primary text-white')}
+                        className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'routing-route' && 'bg-stone-800 dark:bg-orange-500/20 text-white')}
                     >Routing</Link>
                     <ul className={`px-6 pt-2 ${currentSection.route === 'routing-route' ? 'block' : 'hidden'} `}>
                         {
@@ -59,7 +59,7 @@ function GuideSideNav() {
                 >
                     <Link
                         href="#middleware-route"
-                        className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'middleware-route' && 'bg-stone-800 dark:bg-primary text-white')}
+                        className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'middleware-route' && 'bg-stone-800 dark:bg-orange-500/20 text-white')}
                     >Middleware</Link>
                     <ul className={`px-6 pt-2 ${currentSection.route === 'middleware-route' ? 'block' : 'hidden'} `}>
                         {
@@ -78,7 +78,7 @@ function GuideSideNav() {
                 >
                     <Link
                         href="#error-handlering-route"
-                        className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'error-handlering-route' && 'bg-stone-800 dark:bg-primary text-white')}
+                        className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'error-handlering-route' && 'bg-stone-800 dark:bg-orange-500/20 text-white')}
                     >Error Handling</Link>
                     <ul className={`px-6 pt-2 ${currentSection.route === 'error-handlering-route' ? 'block' : 'hidden'} `}>
                         {
