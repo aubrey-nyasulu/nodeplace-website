@@ -13,6 +13,7 @@ function SectionFive() {
                         alt="about nodeplace image"
                         width={2000}
                         height={2000}
+                        placeholder="blur"
                     />
                 </div>
 

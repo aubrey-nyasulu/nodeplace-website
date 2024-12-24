@@ -11,8 +11,8 @@ function SectionSix() {
                             <Fire />
                         </div>
                         <div>
-                            <h3 className="text-lg font-bold pb-2">Zero Dependency Framework</h3>
-                            <p>Uprade with ease, zero peer dependecy issues. Just code</p>
+                            <h3 className="text-lg font-bold pb-2">Zero External Dependencies</h3>
+                            <p>Upgrade effortlessly, no compatibility headaches, just focus on building your server applications</p>
                         </div>
                     </div>
                     <div className="p-4 space-y-2 border border-stone-400/50 dark:border-stone-800 rounded-md">
@@ -21,7 +21,7 @@ function SectionSix() {
                         </div>
                         <div>
                             <h3 className="text-lg font-bold pb-2">Typescript Support</h3>
-                            <p>NodePlace Ships with its own type definitions. Just Code</p>
+                            <p>NodePlace ships with built-in type definitions for seamless integration. No extra setup—just start coding.</p>
                         </div>
                     </div>
                     {/* <div className="space-y-2">
