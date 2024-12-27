@@ -7,11 +7,14 @@ export const documentationNavLinks = {
     application: [
         { id: 'app.all', name: 'app.all()' },
         { id: 'app.delete', name: 'app.delete()' },
+        { id: 'app.disable', name: 'app.disable()' },
+        { id: 'app.enable', name: 'app.enable()' },
         { id: 'app.get', name: 'app.get()' },
         { id: 'app.listen', name: 'app.listen()' },
         { id: 'app.patch', name: 'app.patch()' },
         { id: 'app.post', name: 'app.post()' },
         { id: 'app.put', name: 'app.put()' },
+        { id: 'app.settings', name: 'app.settings()' },
         { id: 'app.use', name: 'app.use()' },
     ],
     request: [
@@ -37,7 +40,7 @@ export const documentationNavLinks = {
         { id: 'handling.routes', name: 'Handling Routes with Router' },
         { id: 'mounting.routers', name: 'Mounting Routers' },
         { id: 'router.level.middleware', name: 'Router-Level Middleware' },
-        // { id: 'nested.routers', name: 'Nested Routers' },
+        { id: 'nested.routers', name: 'Nested Routers' },
         { id: 'router.route.method', name: 'Method: router.route(path)' },
     ],
 }
@@ -45,7 +48,7 @@ export const documentationNavLinks = {
 export const GuideNavLinks = {
     nodeplace: [
         { id: 'introduction', name: 'Introduction' },
-        { id: 'installing', name: 'installing' },
+        { id: 'installing', name: 'installion' },
         { id: 'hello-world', name: 'Hello World' },
     ],
     Routing: [
@@ -62,6 +65,9 @@ export const GuideNavLinks = {
         { id: 'catching.errors', name: 'Catching Errors' },
         // { id: 'Default.error-handler', name: 'Default Error Handler' },
         { id: 'writing.error.handlers', name: 'Writing Error Handlers' },
+    ],
+    Miscellaneous: [
+        { id: 'settings', name: 'Application Settings' },
     ],
 }
 

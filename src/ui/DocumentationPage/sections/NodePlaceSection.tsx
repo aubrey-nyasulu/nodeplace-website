@@ -28,7 +28,7 @@ function NodePlaceSection() {
 
                 <Highlighter language='js'>
                     {
-                        `const nodeplace = require('nodeplace')
+                        `import nodeplace from 'nodeplace'
 
 const app = nodeplace()
 `
@@ -130,7 +130,7 @@ const app = nodeplace()
                 <p className='pb-2 pt-4'>Example</p>
 
                 <Highlighter language='js'>
-                    {`const nodeplace = require('nodeplace')
+                    {`import nodeplace from 'nodeplace'
 
 const app = nodeplace()
 
@@ -243,7 +243,7 @@ app.listen(3000, () => {
                 </p>
 
                 <Highlighter language='js'>
-                    {`const nodeplace = require('nodeplace')
+                    {`import nodeplace from 'nodeplace'
 
 const options = {
     dotfiles: 'ignore',
@@ -336,7 +336,7 @@ Use setHeaders to add headers like X-Timestamp for debugging or tracking.`
                 <p className='pb-2'>Basic Form Parsing</p>
 
                 <Highlighter language='js'>
-                    {`const nodeplace = require('nodeplace')
+                    {`import nodeplace from 'nodeplace'
 
 const app = nodeplace()
 

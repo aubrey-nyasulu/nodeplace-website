@@ -4,7 +4,7 @@ import RoutingSection from "./sections/RoutingSection"
 import MiddlewareSection from "./sections/MiddlewareSection"
 import ErrorHandleringSection from "./sections/ErrorHandleringSection"
 import { Info } from "@/src/assets/SVGComponents"
-import GuideSideNavMobile from "./components/GuideSideNavMobile"
+import MisceleniousSection from "./sections/MisceleniousSection"
 
 function GuidePage() {
     return (
@@ -34,6 +34,7 @@ function GuidePage() {
             <RoutingSection />
             <MiddlewareSection />
             <ErrorHandleringSection />
+            <MisceleniousSection />
         </section >
     )
 }

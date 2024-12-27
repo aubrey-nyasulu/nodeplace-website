@@ -27,10 +27,18 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     useEffect(() => {
         if (!document) return
 
-        const theme: Theme = localStorage.getItem('theme') as Theme || initialState.currentTheme
 
-        setCurrentTheme(theme)
-        setThemeState()
+        const theme: Theme | null = localStorage.getItem('theme') as Theme
+
+        if (theme) {
+            setCurrentTheme(theme)
+        } else {
+            const userTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+
+            setCurrentTheme('system')
+            document.documentElement.classList.add(userTheme ? 'dark' : 'light')
+            localStorage.setItem('theme', 'system')
+        }
     }, [])
 
     function setMenuState(state: boolean) {
@@ -71,6 +79,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     }
 
     function setThemeState(arg?: any) {
+        console.log('setting theme', { currentTheme })
         if (currentTheme === 'light') {
             setCurrentTheme('dark')
             document.documentElement.classList.add('dark')
@@ -79,9 +88,12 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
             setCurrentTheme('light')
             document.documentElement.classList.remove('dark')
             localStorage.setItem('theme', 'light')
-        } else if(currentTheme === 'system') {
-            setCurrentTheme('dark')
-            document.documentElement.classList.add('dark')
+        } else if (currentTheme === 'system') {
+            const userTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+
+            setCurrentTheme(userTheme ? 'light' : 'dark')
+            document.documentElement.classList.toggle('dark', !userTheme)
+            localStorage.setItem('theme', userTheme ? 'light' : 'dark')
         }
     }
 

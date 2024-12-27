@@ -34,6 +34,7 @@ function GuideSideNav() {
                         }
                     </ul>
                 </li>
+
                 <li
                     onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'routing-route' }))}
                     className="w-full opacity-100 h-fit"
@@ -53,6 +54,7 @@ function GuideSideNav() {
                         }
                     </ul>
                 </li>
+
                 <li
                     onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'middleware-route' }))}
                     className="w-full opacity-100 h-fit"
@@ -72,6 +74,7 @@ function GuideSideNav() {
                         }
                     </ul>
                 </li>
+
                 <li
                     onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'error-handlering-route' }))}
                     className="w-full opacity-100 h-fit"
@@ -83,6 +86,26 @@ function GuideSideNav() {
                     <ul className={`px-6 pt-2 ${currentSection.route === 'error-handlering-route' ? 'block' : 'hidden'} `}>
                         {
                             GuideNavLinks["Error Handling"].map((meta, index) => (
+                                <LiElement
+                                    key={meta.id + index}
+                                    {...{ meta, currentSection }}
+                                />
+                            ))
+                        }
+                    </ul>
+                </li>
+
+                <li
+                    onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'miscellenious-route' }))}
+                    className="w-full opacity-100 h-fit"
+                >
+                    <Link
+                        href="#miscellaneous-route"
+                        className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'miscellaneous-route' && 'bg-stone-800 dark:bg-orange-500/20 text-white')}
+                    >Miscellaneous</Link>
+                    <ul className={`px-6 pt-2 ${currentSection.route === 'miscellaneous-route' ? 'block' : 'hidden'} `}>
+                        {
+                            GuideNavLinks["Miscellaneous"].map((meta, index) => (
                                 <LiElement
                                     key={meta.id + index}
                                     {...{ meta, currentSection }}

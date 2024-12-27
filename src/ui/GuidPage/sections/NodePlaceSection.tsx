@@ -56,7 +56,7 @@ function NodePlaceSection() {
                 <div className='mt-8'></div>
                 <Divider />
 
-                <h3 className='text-2xl font-bold pt-8'>Installing</h3>
+                <h3 className='text-2xl font-bold pt-8'>Installation</h3>
 
                 <h4 className='text-lg font-bold pt-8'>Installation via NPM</h4>
 
@@ -76,7 +76,36 @@ function NodePlaceSection() {
                     yarn add nodeplace
                 </Highlighter>
 
-                <h4 className='text-lg font-bold py-2'>Requirements</h4>
+                <h4 className='text-lg font-bold pt-8'>Installation via NodePlace CLI</h4>
+
+                <p className='py-2'>For users who want to get started with NodePlace alongside an existing template, either from NodePlace itself or the community, the NodePlace CLI provides a seamless solution.</p>
+
+                <p className="py-2">Install the CLI globally using npm:</p>
+
+                <Highlighter language='bash'>
+                    ynpm install -g @nodeplace/cli
+                </Highlighter>
+
+                <p className='py-2'>After installation, you can create a new NodePlace application by running:</p>
+
+                <Highlighter language='bash'>
+                    npx create-nodeplace-app
+                </Highlighter>
+
+                <p className='py-2'>Follow the prompts to select a template from the list.</p>
+
+                <p className='py-2'>Alternatively, you can specify a template directly:</p>
+
+                <Highlighter language='bash'>
+                    npx create-nodeplace-app --template@template-name
+                </Highlighter>
+
+                <Note>
+                    <p>Note: The CLI is in alpha; feedback is appreciated to improve its functionality.</p>
+                </Note>
+
+
+                <h4 className='text-lg font-bold pb-2 pt-8'>Requirements</h4>
 
                 <ul className="list-disc space-y-2 pl-8">
                     <li>

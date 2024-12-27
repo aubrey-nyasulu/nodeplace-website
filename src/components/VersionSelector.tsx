@@ -3,8 +3,8 @@ import { DoubleCaret } from '../assets/SVGComponents'
 
 export default function VersionSelector() {
     return (
-        <div className="w-full group/main peer flex gap-1 flex-col items-center z-50">
-            <button className="w-full h-fit flex items-center justify-between p-4 py-2 md:border border-stone-400/50 dark:border-stone-800 md:rounded-md bg-stone-900 ">
+        <div className="w-full group/main peer flex gap-1 flex-col items-center z-50 relative">
+            <button className="w-full h-fit flex items-center justify-between p-4 py-2 md:border border-stone-400/50 dark:border-stone-800 md:rounded-md ">
                 <div className="">
                     <p>Alpha Version</p>
                     <small className="text-gray-600 dark:text-gray-400 text-start block">v0.3.0</small>
@@ -12,7 +12,7 @@ export default function VersionSelector() {
                 <DoubleCaret {...{ color: 'gray' }} />
             </button>
 
-            <div className="w-[calc(calc(100%_-_16px))] group-hover/main:flex flex-col gap-0 justify-between p-0 border border-stone-400/50 dark:border-orange-300/10 rounded-md mt-[1px] z-50 bg-white/40 dark:bg-black/40 backdrop-blur-3xl hidden group/btns overflow-hidden ">
+            <div className="w-[calc(calc(100%_-_16px))] absolute top-16 group-hover/main:flex flex-col gap-0 justify-between p-0 border border-stone-400/50 dark:border-orange-300/10 rounded-md mt-[1px] z-50 bg-white/40 dark:bg-black/40 backdrop-blur-3xl hidden group/btns overflow-hidden ">
                 <button
                     disabled
                     className="w-full flex items-center justify-between p-4 py-2 hover:bg-black/10 dark:hover:bg-white/10"

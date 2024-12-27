@@ -232,14 +232,14 @@ router.get('/profile', (req, res) => {
             </Section>
 
             {/* <Section
-                id='router.level.middleware'
+                id='nested.routers'
             >
                 <div className='mb-8'></div>
 
                 <Divider />
 
                 <h3 className='text-xl font-bold pt-8'>
-                    Router-Level Middleware
+                    Nested Routers
                 </h3>
 
                 <p className="pb-2">Middleware specific to a router can be added using router.use().</p>

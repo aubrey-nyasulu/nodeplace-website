@@ -29,7 +29,7 @@ function ApplicationSection() {
 
                 <Highlighter language='js'>
                     {
-                        `const nodeplace = require('nodeplace')
+                        `import nodeplace from 'nodeplace'
 
 const app = nodeplace()
 `
@@ -49,7 +49,7 @@ const app = nodeplace()
                 <p className='pb-2'>Starting a Server</p>
 
                 <Highlighter language='js'>
-                    {`const nodeplace = require('nodeplace')
+                    {`import nodeplace from 'nodeplace'
 
 const app = nodeplace()
 
@@ -249,6 +249,78 @@ app.post('/submit', (req, res) => {
             </Section>
 
             <Section
+                id='app.disable'
+            >
+                <div className='mb-8'></div>
+
+                <Divider />
+
+                <h3 className='text-xl font-bold pt-8'>
+                    app.disable(setting)
+                </h3>
+
+                <p className='py-2'>
+                    The app.disable method disables a specific setting.
+                </p>
+
+                <p className='pb-2 font-semibold'>
+                    Parameters:
+                </p>
+
+                <ul className='pl-8 mb-4 list-disc'>
+                    <li>setting (String): The name of the setting to disable.</li>
+                </ul>
+
+                <p className='pb-2 font-semibold'>
+                    Example:
+                </p>
+
+                <Highlighter language='js'>
+                    {`app.disable('poweredBy')`}
+                </Highlighter>
+
+                <p className='pt-2 font-semibold'>
+                    This disables the poweredBy header.
+                </p>
+            </Section>
+
+            <Section
+                id='app.settings'
+            >
+                <div className='mb-8'></div>
+
+                <Divider />
+
+                <h3 className='text-xl font-bold pt-8'>
+                    app.enable(setting)
+                </h3>
+
+                <p className='py-2'>
+                    The app.enable method explicitly enables a specific setting.
+                </p>
+
+                <p className='pb-2 font-semibold'>
+                    Parameters:
+                </p>
+
+                <ul className='pl-8 mb-4 list-disc'>
+                    <li>setting (String): The name of the setting to enable.</li>
+                </ul>
+
+                <p className='pb-2 font-semibold'>
+                    Example:
+                </p>
+
+                <Highlighter language='js'>
+                    {`app.enable('poweredBy');`}
+                </Highlighter>
+
+                <p className='pt-2 font-semibold'>
+                    This enables the poweredBy header.
+                </p>
+            </Section>
+
+            <Section
                 id='app.get'
             >
                 <div className='mb-8'></div>
@@ -439,7 +511,7 @@ app.listen(path, [callback])
                 </p>
 
                 <Highlighter language='js'>
-                    {`const nodeplace = require('nodeplace') \n\nconst app = nodeplace() \n\napp.listen(3000)`}
+                    {`import nodeplace from 'nodeplace' \n\nconst app = nodeplace() \n\napp.listen(3000)`}
                 </Highlighter>
 
 
@@ -883,6 +955,42 @@ https.createServer({ key: privateKey, cert: certificate }, app).listen(443, () =
                         The final callback sends a success response to the client.
                     </li>
                 </ul>
+            </Section>
+
+            <Section
+                id='app.settings'
+            >
+                <div className='mb-8'></div>
+
+                <Divider />
+
+                <h3 className='text-xl font-bold pt-8'>
+                    app.settings(options)
+                </h3>
+
+                <p className='py-2'>
+                    The app.settings method allows you to configure application-level settings, enabling or disabling specific features.
+                </p>
+
+                <p className='pb-2 font-semibold'>
+                    Parameters:
+                </p>
+
+                <ul className='pl-8 mb-4 list-disc'>
+                    <li>options (Object): An object containing key-value pairs for settings.</li>
+                </ul>
+
+                <p className='pb-2 font-semibold'>
+                    Example:
+                </p>
+
+                <Highlighter language='js'>
+                    {`app.settings({poweredBy: false })`}
+                </Highlighter>
+
+                <p className='pt-2 font-semibold'>
+                    In this example, the poweredBy header is disabled.
+                </p>
             </Section>
 
             <Section

@@ -9,7 +9,7 @@ import hereLogo from '@/public/logos/here.jpg'
 export default function TrustedBySection() {
     return (
         <section className="flex gap-8 items-center w-fit py-4 md:py-8 border-y  border-y-stone-400/50 dark:border-y-stone-800 infinite-vertical-scroll hover:animate-pulse text-xl">
-            <div className="w-screen w-svw flex gap-8 items-center justify-around">
+            <div className="w-[200vw] md:w-screen md:w-svw flex gap-8 items-center justify-around">
                 <div className="w-24 flex items-center justify-center overflow-hidden ">
                     <Image
                         src={yourLogo}
@@ -72,7 +72,7 @@ export default function TrustedBySection() {
                 </div>
             </div>
 
-            <div className="w-screen w-svw flex gap-8 items-center justify-around">
+            <div className="w-[200vw] md:w-screen md:w-svw flex gap-8 items-center justify-around">
                 <div className="w-24 flex items-center justify-center overflow-hidden">
                     <Image
                         src={yourLogo}

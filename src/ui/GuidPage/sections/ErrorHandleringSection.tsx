@@ -1,8 +1,6 @@
 import Divider from '@/src/components/Divider'
 import Highlighter from '../../../components/Highlighter'
 import Section from '../components/Section'
-import Note from '@/src/components/Note'
-import Color from '@/src/components/Color'
 
 function ErrorHandleringSection() {
 
