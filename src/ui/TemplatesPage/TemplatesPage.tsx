@@ -41,7 +41,7 @@ function TemplatesPage() {
                             href='/templates/API-CRUD'
                             className="w-full"
                         >
-                            <p className="font-bold">API-CRUD</p>
+                            <p className="font-bold">nodeplace-crud-mongodb</p>
                         </Link>
                         <Link
                             href="#"

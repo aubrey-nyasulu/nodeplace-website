@@ -11,7 +11,7 @@ function MenuComponent() {
             onClick={() => setMenuState(!isMenuOpen)}
         >
             {currentTheme === 'light' && <Menu {...{ color: 'black' }} />}
-            {currentTheme === 'dark' && <Menu {...{ color: 'white' }} />}
+            {currentTheme === 'dark' && <Menu {...{ color: '#FFE5CD' }} />}
             {currentTheme === 'system' && <Menu {...{ color: 'black' }} />}
         </button>
     )

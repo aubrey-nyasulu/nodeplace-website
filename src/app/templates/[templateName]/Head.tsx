@@ -1,4 +1,4 @@
-import img from '@/public/templates/dynamic/1.avif'
+import img from '@/public/templates/1.jpeg'
 import Image from 'next/image'
 
 export default function Head() {

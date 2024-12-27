@@ -15,7 +15,7 @@ function page() {
 
             <section className="w-full md:w-[calc(100%_-_384px)] flex flex-col gap-8 pt-0 pb-16">
                 <Head />
-                <section className="w-full block md:hidden ">
+                <section className="w-full block md:hidden mb-8">
                     <Link
                         href='#'
                         className='flex gap-4 items-center pb-8'
@@ -23,16 +23,16 @@ function page() {
                         <div className='w-6 aspect-square bg-black dark:bg-white rounded-full'>
                         </div>
 
-                        <p>medusajs/nextjs-starter-medusa</p>
+                        <p>@nodeplace-crud-mongodb</p>
                     </Link>
 
-                    <h1 className='text-4xl font-bold'>Medusa Next.js Ecommerce Store Starter</h1>
+                    <h1 className='text-4xl font-bold'>Nodeplace REST-API with MongoDB</h1>
 
-                    <p className='pt-8'>Ecommerce store template built with Next.js App Router, Medusa and TailwindCSS, with features like Algolia search and Stripe checkout.</p>
+                    <p className='pt-8'>This template provides a solid foundation for building efficient and scalable RESTful APIs with the Nodeplace framework.</p>
 
-                    <div className='pt-8 flex gap-4'>
-                        <button className='btn-primary flex-1'>Live Demo</button>
-                        <button className='btn-secondary flex-1'>GitHub Repo</button>
+                    <div className='pt-8 md:pt-12 flex gap-4'>
+                        <button className='btn-secondary'>GitHub Repo</button>
+                        <button className='btn-primary'>Live Demo</button>
                     </div>
                 </section>
                 <section>

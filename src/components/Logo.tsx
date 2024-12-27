@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useContext } from 'react'
 
-import logo from '@/public/hero/nodeplace logo - white2.png'
+import logo from '@/public/hero/logo.png'
 import AppContext from '../context/AppstateProvider'
 
 function Logo() {
@@ -25,9 +25,9 @@ function Logo() {
                 />
             </div>
             {/* </div> */}
-            <div className="">
+            {/* <div className="text-orange-300">
                 <p className={`text-xs font-medium `}>NodePlace</p>
-            </div>
+            </div> */}
         </Link>
     )
 }

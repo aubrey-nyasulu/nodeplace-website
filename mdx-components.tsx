@@ -21,23 +21,23 @@ type BlockquoteProps = ComponentPropsWithoutRef<'blockquote'>;
 
 const components = {
   h1: (props: HeadingProps) => (
-    <h1 className="text-3xl font-medium pt-16 pb-2 block fade-in" {...props} />
+    <h1 className="text-3xl font-medium pt-0 pb-4 block fade-in" {...props} />
   ),
   h2: (props: HeadingProps) => (
-    <h2 className="text-2xl text-gray-800 font-medium " {...props} />
+    <h2 className="text-2xl  font-medium pt-8 pb-2 " {...props} />
   ),
   h3: (props: HeadingProps) => (
-    <h3 className="text-xl text-gray-800 font-medium pb-4" {...props} />
+    <h3 className="text-xl  font-medium pb-2" {...props} />
   ),
   h4: (props: HeadingProps) => <h4 className="text-lg font-medium" {...props} />,
   p: (props: ParagraphProps) => (
-    <p className="text-gray-800 leading-snug pb-4" {...props} />
+    <p className=" leading-snug pb-2" {...props} />
   ),
   ol: (props: ListProps) => (
-    <ol className="text-gray-800 list-decimal pl-5 pb-4 space-y-2" {...props} />
+    <ol className=" list-decimal pl-5 pb-4 space-y-2" {...props} />
   ),
   ul: (props: ListProps) => (
-    <ul className="text-gray-800 list-none pl-2 pb-4 space-y-1" {...props} />
+    <ul className=" list-none pl-2 pb-4 space-y-1" {...props} />
   ),
   li: (props: ListItemProps) => <li className="pl-1" {...props} />,
   em: (props: ComponentPropsWithoutRef<'em'>) => (

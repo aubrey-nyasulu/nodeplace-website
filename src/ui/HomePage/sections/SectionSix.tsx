@@ -21,7 +21,7 @@ function SectionSix() {
                         </div>
                         <div>
                             <h3 className="text-lg font-bold pb-2">Typescript Support</h3>
-                            <p>NodePlace ships with built-in type definitions for seamless integration. No extra setup—just start coding.</p>
+                            <p>NodePlace ships with built-in type definitions for seamless integration. No extra setup, just start coding.</p>
                         </div>
                     </div>
                     {/* <div className="space-y-2">
