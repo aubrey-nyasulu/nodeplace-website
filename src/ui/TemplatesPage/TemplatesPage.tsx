@@ -6,7 +6,12 @@ import Link from "next/link"
 function TemplatesPage() {
     return (
         <>
-            <button className="btn-secondary fixed bottom-4 right-4 z-40">Submit Template</button>
+            <Link
+                href="/templates/submit"
+                className="btn-secondary fixed bottom-4 right-4 z-40"
+            >
+                Submit Template
+            </Link>
 
             <div className="w-full flex gap-4 md:gap-16 md:items-center flex-col md:flex-row">
                 <h1 className="text-3xl font-bold">#Templates</h1>

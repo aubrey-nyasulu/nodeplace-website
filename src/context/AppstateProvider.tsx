@@ -32,12 +32,22 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
 
         if (theme) {
             setCurrentTheme(theme)
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark')
+            } else if (theme === 'light') {
+                document.documentElement.classList.remove('dark')
+            } else {
+                const userTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+
+                setCurrentTheme(userTheme ? 'light' : 'dark')
+                document.documentElement.classList.toggle('dark', userTheme)
+            }
         } else {
             const userTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
 
             setCurrentTheme('system')
-            document.documentElement.classList.add(userTheme ? 'dark' : 'light')
             localStorage.setItem('theme', 'system')
+            document.documentElement.classList.toggle('dark', userTheme)
         }
     }, [])
 

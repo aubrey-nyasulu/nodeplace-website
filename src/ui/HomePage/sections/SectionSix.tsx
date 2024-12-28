@@ -7,6 +7,16 @@ function SectionSix() {
                 <h2 className="text-2xl md:text-4xl font-bold text-center max-w-[800px] pb-4 md:pb-8">Start Developing as soon as you install</h2>
                 <div className="grid gap-8 md:gap-16 md:grid-cols-2 mt-8 ">
                     <div className="p-4 space-y-2 border border-stone-400/50 dark:border-stone-800 rounded-md">
+                        <div className="grid place-content-center aspect-square w-20 rounded-lg bg-gradient-to-br from-teal-400 to-blue-500">
+                            <DynamicRoute />
+                        </div>
+                        <div>
+                            <h3 className="text-lg font-bold pb-2">Intergrated Development</h3>
+                            <p>NodePlace simplifies your workflow with built-in type definitions and inline IDE documentation. Just install and start coding, no extra setup required.</p>
+                        </div>
+                    </div>
+
+                    <div className="p-4 space-y-2 border border-stone-400/50 dark:border-stone-800 rounded-md">
                         <div className="grid place-content-center aspect-square w-20 rounded-lg bg-gradient-to-br from-orange-600 to-orange-600">
                             <Fire />
                         </div>
@@ -15,25 +25,6 @@ function SectionSix() {
                             <p>Upgrade effortlessly, no compatibility headaches, just focus on building your server applications</p>
                         </div>
                     </div>
-                    <div className="p-4 space-y-2 border border-stone-400/50 dark:border-stone-800 rounded-md">
-                        <div className="grid place-content-center aspect-square w-20 rounded-lg bg-gradient-to-br from-teal-400 to-blue-500">
-                            <DynamicRoute />
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-bold pb-2">Typescript Support</h3>
-                            <p>NodePlace ships with built-in type definitions for seamless integration. No extra setup, just start coding.</p>
-                        </div>
-                    </div>
-                    {/* <div className="space-y-2">
-                        <div className="grid place-content-center aspect-square w-20 rounded-lg bg-gradient-to-br from-purple-500 to-blue-700">
-                            <Airoplane />
-                        </div>
-                        <div>
-                            <h3 className="text-lg font-bold">Performance Optimization</h3>
-                            <p>Engineered for speed and scalability, perfect for demanding aplications.</p>
-
-                        </div>
-                    </div> */}
                 </div>
             </div>
         </section>

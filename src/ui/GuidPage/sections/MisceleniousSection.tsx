@@ -8,7 +8,7 @@ function MisceleniousSection() {
 
   return (
     <Section
-      id='miscellenious-route'
+      id='miscellaneous-route'
       isRoute={true}
       className="w-full flex flex-col gap-8 z-10"
     >

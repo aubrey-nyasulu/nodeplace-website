@@ -12,7 +12,7 @@ function NodePlaceSection() {
         <Section
             id='nodeplace-route'
             isRoute={true}
-            className="w-full flex flex-col gap-8 z-40"
+            className="w-full flex flex-col gap-8 "
         >
             <Section
                 id='introduction'

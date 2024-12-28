@@ -40,8 +40,8 @@ export const documentationNavLinks = {
         { id: 'handling.routes', name: 'Handling Routes with Router' },
         { id: 'mounting.routers', name: 'Mounting Routers' },
         { id: 'router.level.middleware', name: 'Router-Level Middleware' },
-        { id: 'nested.routers', name: 'Nested Routers' },
         { id: 'router.route.method', name: 'Method: router.route(path)' },
+        { id: 'nested.routers', name: 'Nested Routers' },
     ],
 }
 

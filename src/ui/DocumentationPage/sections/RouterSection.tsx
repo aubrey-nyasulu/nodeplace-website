@@ -231,44 +231,6 @@ router.get('/profile', (req, res) => {
                 </ul>
             </Section>
 
-            {/* <Section
-                id='nested.routers'
-            >
-                <div className='mb-8'></div>
-
-                <Divider />
-
-                <h3 className='text-xl font-bold pt-8'>
-                    Nested Routers
-                </h3>
-
-                <p className="pb-2">Middleware specific to a router can be added using router.use().</p>
-
-                <p className='pb-2'>
-                    Example: Router Middleware
-                </p>
-
-                <Highlighter language='js'>
-                    {`const loggingMiddleware = (req, res, next) => {
-    console.log(\`Request Method: \${req.method}, Path: \${req.path}\`)
-                    next()
-}
-
-                    router.use(loggingMiddleware)
-
-router.get('/profile', (req, res) => {
-                        res.send('Profile Page')
-                    })
-`}
-                </Highlighter>
-
-                <p className='pb-1'>Explanation:</p>
-
-                <ul className='pl-8 space-y-2 list-disc'>
-                    <li>The middleware logs each request method and path before the route handler is executed.</li>
-                </ul>
-            </Section> */}
-
             <Section
                 id='router.route.method'
             >
@@ -280,7 +242,7 @@ router.get('/profile', (req, res) => {
                     Method: router.route(path)
                 </h3>
 
-                <p className="pb-2">Defines multiple HTTP method handlers for a single route.</p>
+                <p className="py-2">Defines multiple HTTP method handlers for a single route.</p>
 
                 <p className='pb-2'>
                     Example: Handling Multiple Methods
@@ -310,6 +272,129 @@ router.get('/profile', (req, res) => {
                 </ul>
             </Section>
 
+            <Section
+                id='nested.routers'
+            >
+                <div className='mb-8'></div>
+
+                <Divider />
+
+                <h3 className='text-xl font-bold pt-8'>
+                    Nested Routers
+                </h3>
+
+                <p className="py-2">
+                    NodePlace allows routers to be nested infinitely, providing a powerful way to organize complex applications into manageable modules. Nested routers inherit middleware and routing logic from their parent routers, enabling seamless composition of application features.
+                </p>
+
+                <p className='py-2'>
+                    Example: Basic Nested Router Setup
+                </p>
+
+                <Highlighter language='js'>
+                    {`const nodeplace = require('nodeplace')
+const app = nodeplace()
+
+// Main Router
+const mainRouter = nodeplace.Router()
+
+// Sub Router
+const subRouter = nodeplace.Router()
+
+subRouter.get('/info', (req, res) => {
+    res.send('This is nested inside the main router!')
+})
+
+// Mount Sub Router onto Main Router
+mainRouter.use('/sub', subRouter)
+
+// Mount Main Router onto the App
+app.use('/main', mainRouter)
+`}
+                </Highlighter>
+
+                <p className='pb-1'>Explanation:</p>
+
+                <ul className='pl-8 space-y-2 list-disc'>
+                    <li>The subRouter is mounted on the /sub path of mainRouter</li>
+                    <li>The mainRouter is mounted on the /main path of the app.</li>
+                    <li>A request to /main/sub/info will pass through both the mainRouter and subRouter.</li>
+                </ul>
+
+                <p className='pb-2 pt-8'>
+                    Example: Middleware in Nested Routers
+                </p>
+
+                <Highlighter language='js'>
+                    {`// Define middleware for subRouter
+subRouter.use((req, res, next) => {
+    console.log('SubRouter Middleware Triggered')
+    next()
+})
+
+subRouter.get('/data', (req, res) => {
+    res.json({ message: 'Nested router data' })
+})
+
+// Main Router Middleware
+mainRouter.use((req, res, next) => {
+    console.log('MainRouter Middleware Triggered')
+    next()
+})
+
+// Mount the Sub Router onto Main Router
+mainRouter.use('/sub', subRouter)
+`}
+                </Highlighter>
+
+                <p className='pb-1'>Explanation:</p>
+
+                <ul className='pl-8 space-y-2 list-disc'>
+                    <li>Middleware defined in mainRouter is executed before any middleware or routes in subRouter.</li>
+
+                    <li>Nested routers allow middleware at different levels of the hierarchy to work together.</li>
+                </ul>
+
+                <p className='pb-2 pt-8'>
+                    Example: Deeply Nested Routers
+                </p>
+
+                <Highlighter language='js'>
+                    {`// Level 3 Router
+const level3Router = nodeplace.Router()
+
+level3Router.get('/deep', (req, res) => {
+    res.send('Deeply nested route')
+})
+
+// Level 2 Router
+const level2Router = nodeplace.Router()
+level2Router.use('/level3', level3Router)
+
+// Level 1 Router
+const level1Router = nodeplace.Router()
+level1Router.use('/level2', level2Router)
+
+// Mount Level 1 Router onto the App
+app.use('/level1', level1Router)
+`}
+                </Highlighter>
+
+                <p className='pb-1'>Explanation:</p>
+
+                <ul className='pl-8 space-y-2 list-disc'>
+                    <li>The level3Router is nested within level2Router, which is nested within level1Router.</li>
+                    <li>A request to /level1/level2/level3/deep passes through all routers in the hierarchy.</li>
+                </ul>
+
+                <h4 className='pt-8 font-semibold'>Key Benefits of Nested Routers</h4>
+
+                <ul className='pl-8 pt-1 space-y-2 list-disc'>
+                    <li>Modularization: Split application logic into smaller, reusable units.</li>
+                    <li>Hierarchy: Build complex applications with clear routing hierarchies.</li>
+                    <li>Isolation: Each router can have its own middleware and error-handling logic, ensuring clean separation of concerns.</li>
+                </ul>
+            </Section>
         </Section>
     )
 }

@@ -3,12 +3,12 @@
 import { useContext, useEffect, useState } from "react"
 import DocumentationContext from "../../../context/DocumentationStateProvider"
 import { twMerge } from "tailwind-merge"
-import { GuideNavLinks } from "../../../lib/constants"
+import { documentationNavLinks } from "../../../lib/constants"
 import LiElement from "../../../components/LiElement"
 import Link from "next/link"
 import VersionSelector from "@/src/components/VersionSelector"
 
-function GuideSideNavMobile() {
+function DocumentationSideNavMobile() {
     const [menuOpen, setMenuOpen] = useState(false)
     const { currentSection, setCurrentSection } = useContext(DocumentationContext)
     const [lastScrollY, setLastScrollY] = useState(0)
@@ -46,70 +46,10 @@ function GuideSideNavMobile() {
                         <Link
                             href="#nodeplace-route"
                             className={twMerge(' hidden', currentSection.route === 'nodeplace-route' && 'block ')}
-                        >nodeplace:</Link>
+                        >Nodeplace:</Link>
                         <ul className={` ${currentSection.route === 'nodeplace-route' ? 'block' : 'hidden'} `}>
                             {
-                                GuideNavLinks.nodeplace.map((meta, index) => (
-                                    currentSection.id === meta.id &&
-                                    <LiElement
-                                        key={meta.id + index}
-                                        {...{ meta, currentSection }}
-                                    />
-                                ))
-                            }
-                        </ul>
-                    </li>
-                    <li
-                        onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'routing-route' }))}
-                        className={`w-full opacity-100 h-fit flex items-center gap-2`}
-                    >
-                        <Link
-                            href="#routing-route"
-                            className={twMerge(' hidden', currentSection.route === 'routing-route' && 'block text-white')}
-                        >Routing:</Link>
-                        <ul className={` ${currentSection.route === 'routing-route' ? 'block' : 'hidden'} `}>
-                            {
-                                GuideNavLinks.Routing.map((meta, index) => (
-                                    currentSection.id === meta.id &&
-                                    <LiElement
-                                        key={meta.id + index}
-                                        {...{ meta, currentSection }}
-                                    />
-                                ))
-                            }
-                        </ul>
-                    </li>
-                    <li
-                        onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'middleware-route' }))}
-                        className={`w-full opacity-100 h-fit flex items-center gap-2`}
-                    >
-                        <Link
-                            href="#middleware-route"
-                            className={twMerge(' hidden', currentSection.route === 'middleware-route' && 'block text-white')}
-                        >Middleware:</Link>
-                        <ul className={` ${currentSection.route === 'middleware-route' ? 'block' : 'hidden'} `}>
-                            {
-                                GuideNavLinks.Middleware.map((meta, index) => (
-                                    currentSection.id === meta.id &&
-                                    <LiElement
-                                        key={meta.id + index}
-                                        {...{ meta, currentSection }}
-                                    />
-                                ))
-                            }
-                        </ul>
-                    </li>
-                    <li
-                        onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'error-handlering-route' }))}
-                        className={`w-full opacity-100 h-fit flex items-center gap-2`}
-                    >
-                        <Link
-                            href="#error-handlering-route"
-                            className={twMerge(' hidden', currentSection.route === 'error-handlering-route' && 'block text-white')}
-                        >Error Handling:</Link>
-                        <ul className={` ${currentSection.route === 'error-handlering-route' ? 'block' : 'hidden'} `}>
-                            {
-                                GuideNavLinks["Error Handling"].map((meta, index) => (
+                                documentationNavLinks.nodeplace.map((meta, index) => (
                                     currentSection.id === meta.id &&
                                     <LiElement
                                         key={meta.id + index}
@@ -121,16 +61,79 @@ function GuideSideNavMobile() {
                     </li>
 
                     <li
-                        onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'miscellenious-route' }))}
+                        onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'application-route' }))}
                         className={`w-full opacity-100 h-fit flex items-center gap-2`}
                     >
                         <Link
-                            href="#miscellaneous-route"
-                            className={twMerge(' hidden', currentSection.route === 'miscellaneous-route' && 'block text-white')}
-                        >Miscellaneous:</Link>
-                        <ul className={`${currentSection.route === 'miscellaneous-route' ? 'block' : 'hidden'} `}>
+                            href="#application-route"
+                            className={twMerge(' hidden', currentSection.route === 'application-route' && 'block ')}
+                        >Application:</Link>
+                        <ul className={` ${currentSection.route === 'application-route' ? 'block' : 'hidden'} `}>
                             {
-                                GuideNavLinks["Miscellaneous"].map((meta, index) => (
+                                documentationNavLinks.application.map((meta, index) => (
+                                    currentSection.id === meta.id &&
+                                    <LiElement
+                                        key={meta.id + index}
+                                        {...{ meta, currentSection }}
+                                    />
+                                ))
+                            }
+                        </ul>
+                    </li>
+
+                    <li
+                        onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'request-route' }))}
+                        className={`w-full opacity-100 h-fit flex items-center gap-2`}
+                    >
+                        <Link
+                            href="#request-route"
+                            className={twMerge(' hidden', currentSection.route === 'request-route' && 'block ')}
+                        >request:</Link>
+                        <ul className={` ${currentSection.route === 'request-route' ? 'block' : 'hidden'} `}>
+                            {
+                                documentationNavLinks.request.map((meta, index) => (
+                                    currentSection.id === meta.id &&
+                                    <LiElement
+                                        key={meta.id + index}
+                                        {...{ meta, currentSection }}
+                                    />
+                                ))
+                            }
+                        </ul>
+                    </li>
+
+                    <li
+                        onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'response-route' }))}
+                        className={`w-full opacity-100 h-fit flex items-center gap-2`}
+                    >
+                        <Link
+                            href="#response-route"
+                            className={twMerge(' hidden', currentSection.route === 'response-route' && 'block ')}
+                        >response:</Link>
+                        <ul className={` ${currentSection.route === 'response-route' ? 'block' : 'hidden'} `}>
+                            {
+                                documentationNavLinks.response.map((meta, index) => (
+                                    currentSection.id === meta.id &&
+                                    <LiElement
+                                        key={meta.id + index}
+                                        {...{ meta, currentSection }}
+                                    />
+                                ))
+                            }
+                        </ul>
+                    </li>
+
+                    <li
+                        onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'router-route' }))}
+                        className={`w-full opacity-100 h-fit flex items-center gap-2`}
+                    >
+                        <Link
+                            href="#router-route"
+                            className={twMerge(' hidden', currentSection.route === 'router-route' && 'block ')}
+                        >Router:</Link>
+                        <ul className={`${currentSection.route === 'router-route' ? 'block' : 'hidden'} `}>
+                            {
+                                documentationNavLinks.router.map((meta, index) => (
                                     currentSection.id === meta.id &&
                                     <LiElement
                                         key={meta.id + index}
@@ -148,9 +151,7 @@ function GuideSideNavMobile() {
             {
                 menuOpen &&
                 <div className="w-screen px-4 min-h-screen">
-                    <ul
-                        className="sticky top-0 space-y-2 mt-5 peer-hover:blur-sm"
-                    >
+                    <ul className="sticky top-0 space-y-2 mt-5 peer-hover:blur-sm">
                         <li
                             onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'nodeplace-route' }))}
                             className={`w-full opacity-100 h-fit`}
@@ -158,10 +159,10 @@ function GuideSideNavMobile() {
                             <Link
                                 href="#nodeplace-route"
                                 className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'nodeplace-route' && 'bg-stone-800 dark:bg-orange-500/20 text-white')}
-                            >nodeplace</Link>
+                            >nodeplace()</Link>
                             <ul className={`px-6 pt-2 ${currentSection.route === 'nodeplace-route' ? 'block' : 'hidden'} `}>
                                 {
-                                    GuideNavLinks.nodeplace.map((meta, index) => (
+                                    documentationNavLinks.nodeplace.map((meta, index) => (
                                         <LiElement
                                             key={meta.id + index}
                                             {...{ meta, currentSection }}
@@ -170,18 +171,17 @@ function GuideSideNavMobile() {
                                 }
                             </ul>
                         </li>
-
                         <li
-                            onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'routing-route' }))}
-                            className="w-full opacity-100 h-fit"
+                            onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'application-route' }))}
+                            className="w-full h opacity-100-fit"
                         >
                             <Link
-                                href="#routing-route"
-                                className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'routing-route' && 'bg-stone-800 dark:bg-orange-500/20 text-white')}
-                            >Routing</Link>
-                            <ul className={`px-6 pt-2 ${currentSection.route === 'routing-route' ? 'block' : 'hidden'} `}>
+                                href="#application-route"
+                                className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'application-route' && 'bg-stone-800 dark:bg-orange-500/20 text-white')}
+                            >Application</Link>
+                            <ul className={`px-6 pt-2 ${currentSection.route === 'application-route' ? 'block' : 'hidden'} `}>
                                 {
-                                    GuideNavLinks.Routing.map((meta, index) => (
+                                    documentationNavLinks.application.map((meta, index) => (
                                         <LiElement
                                             key={meta.id + index}
                                             {...{ meta, currentSection }}
@@ -190,18 +190,17 @@ function GuideSideNavMobile() {
                                 }
                             </ul>
                         </li>
-
                         <li
-                            onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'middleware-route' }))}
-                            className="w-full opacity-100 h-fit"
+                            onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'request-route' }))}
+                            className="w-full h opacity-100-fit"
                         >
                             <Link
-                                href="#middleware-route"
-                                className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'middleware-route' && 'bg-stone-800 dark:bg-orange-500/20 text-white')}
-                            >Middleware</Link>
-                            <ul className={`px-6 pt-2 ${currentSection.route === 'middleware-route' ? 'block' : 'hidden'} `}>
+                                href="#request-route"
+                                className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'request-route' && 'bg-stone-800 dark:bg-orange-500/20 text-white')}
+                            >request</Link>
+                            <ul className={`px-6 pt-2 ${currentSection.route === 'request-route' ? 'block' : 'hidden'} `}>
                                 {
-                                    GuideNavLinks.Middleware.map((meta, index) => (
+                                    documentationNavLinks.request.map((meta, index) => (
                                         <LiElement
                                             key={meta.id + index}
                                             {...{ meta, currentSection }}
@@ -210,18 +209,17 @@ function GuideSideNavMobile() {
                                 }
                             </ul>
                         </li>
-
                         <li
-                            onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'error-handlering-route' }))}
-                            className="w-full opacity-100 h-fit"
+                            onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'response-route' }))}
+                            className="w-full h opacity-100-fit"
                         >
                             <Link
-                                href="#error-handlering-route"
-                                className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'error-handlering-route' && 'bg-stone-800 dark:bg-orange-500/20 text-white')}
-                            >Error Handling</Link>
-                            <ul className={`px-6 pt-2 ${currentSection.route === 'error-handlering-route' ? 'block' : 'hidden'} `}>
+                                href="#response-route"
+                                className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'response-route' && 'bg-stone-800 dark:bg-orange-500/20 text-white')}
+                            >response</Link>
+                            <ul className={`px-6 pt-2 ${currentSection.route === 'response-route' ? 'block' : 'hidden'} `}>
                                 {
-                                    GuideNavLinks["Error Handling"].map((meta, index) => (
+                                    documentationNavLinks.response.map((meta, index) => (
                                         <LiElement
                                             key={meta.id + index}
                                             {...{ meta, currentSection }}
@@ -230,18 +228,17 @@ function GuideSideNavMobile() {
                                 }
                             </ul>
                         </li>
-
                         <li
-                            onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'miscellenious-route' }))}
-                            className="w-full opacity-100 h-fit"
+                            onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'router-route' }))}
+                            className="w-full h opacity-100-fit"
                         >
                             <Link
-                                href="#miscellaneous-route"
-                                className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'miscellaneous-route' && 'bg-stone-800 dark:bg-orange-500/20 text-white')}
-                            >Miscellaneous</Link>
-                            <ul className={`px-6 pt-2 ${currentSection.route === 'miscellaneous-route' ? 'block' : 'hidden'} `}>
+                                href="#router-route"
+                                className={twMerge('w-full block py-3 px-4 rounded-md hover:bg-stone-400 bg-stone-200 dark:bg-stone-800', currentSection.route === 'router-route' && 'bg-stone-800 dark:bg-orange-500/20 text-white')}
+                            >Router</Link>
+                            <ul className={`px-6 pt-2 ${currentSection.route === 'router-route' ? 'block' : 'hidden'} `}>
                                 {
-                                    GuideNavLinks["Miscellaneous"].map((meta, index) => (
+                                    documentationNavLinks.router.map((meta, index) => (
                                         <LiElement
                                             key={meta.id + index}
                                             {...{ meta, currentSection }}
@@ -257,4 +254,4 @@ function GuideSideNavMobile() {
     )
 }
 
-export default GuideSideNavMobile
+export default DocumentationSideNavMobile
