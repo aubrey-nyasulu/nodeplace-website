@@ -31,8 +31,9 @@ function page() {
                     <p className='pt-8'>This template provides a solid foundation for building efficient and scalable RESTful APIs with the Nodeplace framework.</p>
 
                     <div className='pt-8 md:pt-12 flex gap-4'>
-                        <button className='btn-secondary'>GitHub Repo</button>
-                        <button className='btn-primary'>Live Demo</button>
+                        <Link href='https://github.com/aubrey-nyasulu/nodeplace-rest-api-mongodb'>
+                            <button className='btn-secondary'>GitHub Repo</button>
+                        </Link>
                     </div>
                 </section>
                 <section>
