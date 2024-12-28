@@ -7,6 +7,7 @@ import { documentationNavLinks } from "../../../lib/constants"
 import LiElement from "../../../components/LiElement"
 import Link from "next/link"
 import VersionSelector from "@/src/components/VersionSelector"
+import { Caret } from "@/src/assets/SVGComponents"
 
 function DocumentationSideNavMobile() {
     const [menuOpen, setMenuOpen] = useState(false)
@@ -37,7 +38,7 @@ function DocumentationSideNavMobile() {
             <div className={twMerge("w-full h-[60px] ", scrollDirection === 'down' && 'h-0 overflow-hidden')}>
                 <VersionSelector />
             </div>
-            <div className="w-full h-fit flex items-center justify-between gap-2 bg-stone-300/50  dark:bg-stone-800/50 peer-hover:blur-sm p-2">
+            <div className="w-full h-fit flex items-center justify-between gap-2 bg-stone-300/50  dark:bg-stone-800/50 peer-hover:blur-sm p-2 px-4">
                 <ul className="flex-1 sticky top-0 ">
                     <li
                         onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'nodeplace-route' }))}
@@ -145,7 +146,15 @@ function DocumentationSideNavMobile() {
                     </li>
                 </ul>
 
-                <button onClick={() => setMenuOpen(prevState => !prevState)}>menu</button>
+                <button
+                    onClick={() => setMenuOpen(prevState => !prevState)}
+                    className="font-semibold flex gap-1 items-center"
+                >
+                    menu
+                    <div className={twMerge(menuOpen ? "rotate-90" : "rotate-0")}>
+                        <Caret {...{ color: 'gray' }} />
+                    </div>
+                </button>
             </div>
 
             {

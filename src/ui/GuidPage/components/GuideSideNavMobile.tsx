@@ -7,6 +7,7 @@ import { GuideNavLinks } from "../../../lib/constants"
 import LiElement from "../../../components/LiElement"
 import Link from "next/link"
 import VersionSelector from "@/src/components/VersionSelector"
+import { Caret } from "@/src/assets/SVGComponents"
 
 function GuideSideNavMobile() {
     const [menuOpen, setMenuOpen] = useState(false)
@@ -37,7 +38,7 @@ function GuideSideNavMobile() {
             <div className={twMerge("w-full h-[60px] ", scrollDirection === 'down' && 'h-0 overflow-hidden')}>
                 <VersionSelector />
             </div>
-            <div className="w-full h-fit flex items-center justify-between gap-2 bg-stone-300/50  dark:bg-stone-800/50 peer-hover:blur-sm p-2">
+            <div className="w-full h-fit flex items-center justify-between gap-2 bg-stone-300/50  dark:bg-stone-800/50 peer-hover:blur-sm p-2 px-4">
                 <ul className="flex-1 sticky top-0 ">
                     <li
                         onClick={() => setCurrentSection(currentState => ({ ...currentState, route: 'nodeplace-route' }))}
@@ -65,7 +66,7 @@ function GuideSideNavMobile() {
                     >
                         <Link
                             href="#routing-route"
-                            className={twMerge(' hidden', currentSection.route === 'routing-route' && 'block text-white')}
+                            className={twMerge(' hidden', currentSection.route === 'routing-route' && 'block ')}
                         >Routing:</Link>
                         <ul className={` ${currentSection.route === 'routing-route' ? 'block' : 'hidden'} `}>
                             {
@@ -85,7 +86,7 @@ function GuideSideNavMobile() {
                     >
                         <Link
                             href="#middleware-route"
-                            className={twMerge(' hidden', currentSection.route === 'middleware-route' && 'block text-white')}
+                            className={twMerge(' hidden', currentSection.route === 'middleware-route' && 'block ')}
                         >Middleware:</Link>
                         <ul className={` ${currentSection.route === 'middleware-route' ? 'block' : 'hidden'} `}>
                             {
@@ -105,7 +106,7 @@ function GuideSideNavMobile() {
                     >
                         <Link
                             href="#error-handlering-route"
-                            className={twMerge(' hidden', currentSection.route === 'error-handlering-route' && 'block text-white')}
+                            className={twMerge(' hidden', currentSection.route === 'error-handlering-route' && 'block ')}
                         >Error Handling:</Link>
                         <ul className={` ${currentSection.route === 'error-handlering-route' ? 'block' : 'hidden'} `}>
                             {
@@ -126,7 +127,7 @@ function GuideSideNavMobile() {
                     >
                         <Link
                             href="#miscellaneous-route"
-                            className={twMerge(' hidden', currentSection.route === 'miscellaneous-route' && 'block text-white')}
+                            className={twMerge(' hidden', currentSection.route === 'miscellaneous-route' && 'block ')}
                         >Miscellaneous:</Link>
                         <ul className={`${currentSection.route === 'miscellaneous-route' ? 'block' : 'hidden'} `}>
                             {
@@ -142,7 +143,15 @@ function GuideSideNavMobile() {
                     </li>
                 </ul>
 
-                <button onClick={() => setMenuOpen(prevState => !prevState)}>menu</button>
+                <button
+                    onClick={() => setMenuOpen(prevState => !prevState)}
+                    className="font-semibold flex gap-1 items-center"
+                >
+                    menu
+                    <div className={twMerge(menuOpen ? "rotate-90" : "rotate-0")}>
+                        <Caret {...{ color: 'gray' }} />
+                    </div>
+                </button>
             </div>
 
             {
