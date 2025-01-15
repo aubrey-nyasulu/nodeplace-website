@@ -20,7 +20,7 @@ function GuidePage() {
                         <p className="text-lg font-semibold">Note</p>
                     </div>
                     <p className="pt-3">
-                        This documentation reflects the beta version of NodePlace, set to release in mid-January. The current alpha version is a pre-release, aimed at gathering feedback from the community to shape the final product and address key developer pain points.
+                        This documentation reflects the beta version of NodePlace. The current alpha version is a pre-release, aimed at gathering feedback from the community to shape the final product and address key developer pain points.
                     </p>
 
                     <p className="py-4">

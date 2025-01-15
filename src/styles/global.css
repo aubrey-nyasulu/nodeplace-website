@@ -17,12 +17,10 @@ body {
   scroll-behavior: smooth;
 }
 
-/* Create a custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
-/* Customize the scrollbar thumb */
 ::-webkit-scrollbar-thumb {
   background: #8889;
   backdrop-filter: blur(64px);
@@ -33,7 +31,6 @@ body {
   background: #8885;
 }
 
-/* Customize the scrollbar track */
 ::-webkit-scrollbar-track {
   /* background: #f1f1f1; */
   border: 1px solid #29252430;
@@ -44,7 +41,6 @@ body {
   border: 1px solid #292524;
 }
 
-/* Hover effects */
 ::-webkit-scrollbar-thumb:hover {
   background: #888;
 }
