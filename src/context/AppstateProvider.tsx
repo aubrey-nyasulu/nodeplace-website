@@ -83,9 +83,6 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
             }
 
         }
-
-
-
     }
 
     function setThemeState(arg?: any) {

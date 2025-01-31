@@ -9,7 +9,7 @@ export default function Year() {
         const sec = new Date().getFullYear()
 
         setYear(sec)
-    })
+    }, [])
 
     return (
         <span>{year}</span>
